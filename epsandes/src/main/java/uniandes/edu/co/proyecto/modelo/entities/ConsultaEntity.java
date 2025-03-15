@@ -1,10 +1,7 @@
 package uniandes.edu.co.epsandes.modelo;
 
 import jakarta.persistence.*;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import java.util.Date;
 
 @Entity
 @Table(name = "Consultas")
@@ -17,26 +14,37 @@ public class ConsultaEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoConsulta tipoConsulta;
+    
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Date fecha;
+    
+    @Column(nullable = false)
+    private String diagnostico;
 
     @ManyToOne
     @JoinColumn(name = "idAfiliado", nullable = false)
     private AfiliadoEntity afiliado;
 
+    
     @ManyToOne
-    @JoinColumn(name = "idExamen", nullable = false)
-    private ExamenEntity diagnosticoRelacionado;
+    @JoinColumn(name = "idExamen", nullable = true)
+    private ExamenDiagnosticoEntity diagnosticoRelacionado;
 
-    public Consulta() {
+    public ConsultaEntity() {
         ;
     }
 
-    public ConsultaEntity(TipoConsulta tipoConsulta, AfiliadoEntity afiliado,
-            ExamenEntity diagnosticoRelacionado, String diagnostico) {
+    public ConsultaEntity(TipoConsulta tipoConsulta, Date fecha, String diagnostico, AfiliadoEntity afiliado,
+            ExamenDiagnosticoEntity diagnosticoRelacionado) {
         this.tipoConsulta = tipoConsulta;
+        this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.afiliado = afiliado;
         this.diagnosticoRelacionado = diagnosticoRelacionado;
     }
+
+    
 
     public Integer getIdConsulta() {
         return idConsulta;
@@ -52,6 +60,14 @@ public class ConsultaEntity {
 
     public void setTipoConsulta(TipoConsulta tipoConsulta) {
         this.tipoConsulta = tipoConsulta;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getDiagnostico() {
@@ -70,11 +86,11 @@ public class ConsultaEntity {
         this.afiliado = afiliado;
     }
 
-    public ExamenEntity getDiagnosticoRelacionado() {
+    public ExamenDiagnosticoEntity getDiagnosticoRelacionado() {
         return diagnosticoRelacionado;
     }
 
-    public void setDiagnosticoRelacionado(ExamenEntity diagnosticoRelacionado) {
+    public void setDiagnosticoRelacionado(ExamenDiagnosticoEntity diagnosticoRelacionado) {
         this.diagnosticoRelacionado = diagnosticoRelacionado;
     }
 
@@ -83,7 +99,8 @@ public class ConsultaEntity {
         return "ConsultaEntity [idConsulta=" + idConsulta + ", tipoConsulta=" + tipoConsulta +
                 ", fecha=" + fecha + ", diagnostico=" + diagnostico +
                 ", afiliado=" + (afiliado != null ? afiliado.getIdAfiliado() : "NULL") +
-                ", diagnosticoRelacionado="
-                + (diagnosticoRelacionado != null ? diagnosticoRelacionado.getIdDiagnostico() : "NULL") + "]";
+                ", diagnosticoRelacionado=" +
+                (diagnosticoRelacionado != null ? diagnosticoRelacionado.getIdExamen() : "NULL") + "]";
     }
 }
+
