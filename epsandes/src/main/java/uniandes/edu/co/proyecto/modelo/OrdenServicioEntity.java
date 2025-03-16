@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import java.util.Date;
@@ -20,7 +20,7 @@ public class OrdenServicioEntity {
 
     @ManyToOne
     @JoinColumn(name = "idMedico", nullable = false)
-    private Medico medico;
+    private MedicoEntity medico;
 
     @ManyToOne
     @JoinColumn(name = "idConsulta", nullable = false)

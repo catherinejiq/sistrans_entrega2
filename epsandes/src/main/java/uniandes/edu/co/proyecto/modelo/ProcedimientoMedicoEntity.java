@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import jakarta.persistence.JoinColumn;
@@ -18,11 +18,11 @@ public class ProcedimientoMedicoEntity {
 
     @ManyToOne
     @JoinColumn(name = "idOrden", nullable = false)
-    private OrdenServicio ordenServicio;
+    private OrdenServicioEntity ordenServicio;
 
-    public ProcedimientoMedico() {;}
+    public ProcedimientoMedicoEntity() {;}
 
-    public ProcedimientoMedico(String tipo, Integer cantidad, OrdenServicioEntity ordenServicio) {
+    public ProcedimientoMedicoEntity(String tipo, Integer cantidad, OrdenServicioEntity ordenServicio) {
         this.tipo = tipo;
         this.cantidad = cantidad;
         this.ordenServicio = ordenServicio;
