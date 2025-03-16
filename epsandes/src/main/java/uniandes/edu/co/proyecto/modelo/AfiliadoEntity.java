@@ -1,11 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Afiliados")
@@ -115,5 +110,15 @@ public class AfiliadoEntity {
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
-    
+    @Override
+    public String toString() {
+    return "AfiliadoEntity [idAfiliado=" + idAfiliado +
+           ", tipoDocumento=" + tipoDocumento +
+           ", nombre=" + nombre +
+           ", fechaNacimiento=" + fechaNacimiento +
+           ", direccion=" + direccion +
+           ", telefono=" + telefono +
+           ", parentesco=" + parentesco +
+           ", tipoAfiliado=" + tipoAfiliado + "]";
+}
 }

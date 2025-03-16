@@ -6,15 +6,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Collection;
 
-import uniandes.edu.co.proyecto.repositories.IpsRepository;
-import uniandes.edu.co.proyecto.modelo.IpsEntity;
+import uniandes.edu.co.proyecto.repositories.AfiliadoRepository;
+import uniandes.edu.co.proyecto.modelo.AfiliadoEntity;
 
 
 @SpringBootApplication
 public class ProyectoApplication implements CommandLineRunner{
 
 	@Autowired
-	private IpsRepository ipsRepository;
+	private AfiliadoRepository afiliadoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
@@ -24,11 +24,11 @@ public class ProyectoApplication implements CommandLineRunner{
 	public void run(String... args) {
 		System.out.println("Ejecutando CommandLineRunner...");
 		
-		Collection<IpsEntity> ips = ipsRepository.darIps();
-		System.out.println("Ipsrecuperadas: " + ips.size());
+		Collection<AfiliadoEntity> afiliados = afiliadoRepository.darAfiliados();
+		System.out.println("Afiliados: " + afiliados.size());
 	
-		for (IpsEntity ip : ips) {
-			System.out.println(ip);
+		for (AfiliadoEntity a : afiliados) {
+			System.out.println(a);
 		}
 		
 		System.out.println("Finalizando CommandLineRunner...");
