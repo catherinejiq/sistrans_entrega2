@@ -8,15 +8,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
 @Entity
-@Table(name = "PROCEDIMIENTOS_MEDICOS")
+@Table(name = "ProcedimientosMedicos")
 public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
 
     @Column(nullable = false)
     private String tipo;
 
-    @Column(nullable = false)
-    private Integer cantidad;
-    
+
     @ManyToOne
     @JoinColumn(name = "idOrden", nullable = false)
     private OrdenServicioEntity ordenServicio;
@@ -27,10 +25,9 @@ public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
     }
 
     public ProcedimientoMedicoEntity(java.util.Date fecha, String descripcion,
-                                    String tipo, Integer cantidad, OrdenServicioEntity ordenServicio) {
+                                    String tipo, OrdenServicioEntity ordenServicio) {
         super(fecha, descripcion);
         this.tipo = tipo;
-        this.cantidad = cantidad;
         this.ordenServicio = ordenServicio;
     }
 
@@ -41,16 +38,7 @@ public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
+    } 
     public OrdenServicioEntity getOrdenServicio() {
         return ordenServicio;
     }

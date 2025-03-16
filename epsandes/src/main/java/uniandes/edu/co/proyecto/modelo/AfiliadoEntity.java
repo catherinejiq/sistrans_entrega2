@@ -20,6 +20,7 @@ public class AfiliadoEntity {
     private String fechaNacimiento;
     private String direccion;
     private String telefono;
+    private String parentesco;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -34,7 +35,7 @@ public class AfiliadoEntity {
     }
 
     public AfiliadoEntity(String tipoDocumento, String nombre, String fechaNacimiento,
-            String direccion, String telefono, TipoAfiliado tipoAfiliado, AfiliadoEntity contribuyente) {
+            String direccion, String telefono, TipoAfiliado tipoAfiliado, AfiliadoEntity contribuyente, String parentesco) {
         this.tipoDocumento = tipoDocumento;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -42,6 +43,7 @@ public class AfiliadoEntity {
         this.telefono = telefono;
         this.tipoAfiliado = tipoAfiliado;
         this.contribuyente = contribuyente;
+        this.parentesco = parentesco;
     }
 
     public Integer getIdAfiliado() {
@@ -107,4 +109,11 @@ public class AfiliadoEntity {
     public void setContribuyente(AfiliadoEntity contribuyente) {
         this.contribuyente = contribuyente;
     }
+    public String getParentesco() {
+        return parentesco;
+    }
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+    
 }

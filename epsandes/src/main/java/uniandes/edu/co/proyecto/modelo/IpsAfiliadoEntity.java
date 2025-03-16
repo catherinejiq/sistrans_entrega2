@@ -3,7 +3,7 @@ package uniandes.edu.co.proyecto.modelo;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "IPS_AFILIADO")
+@Table(name = "Afiliado_Ips")
 public class IpsAfiliadoEntity {
 
     @EmbeddedId

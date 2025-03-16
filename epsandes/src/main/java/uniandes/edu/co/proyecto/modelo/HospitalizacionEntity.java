@@ -2,11 +2,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
@@ -15,9 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "HOSPITALIZACION")
+@Table(name = "Hospitalizaciones")
 public class HospitalizacionEntity extends ServicioSaludEntity {
-    
+
     private String estado;  
     private String tratamiento;
 
@@ -86,13 +82,6 @@ public class HospitalizacionEntity extends ServicioSaludEntity {
 
     public void setMedicos(List<MedicoEntity> medicos) {
         this.medicos = medicos;
-    }
-
-    public Integer getIdHospitalizacion() {
-        return idHospitalizacion;
-    }
-    public void setIdHospitalizacion(Integer idHospitalizacion) {
-        this.idHospitalizacion = idHospitalizacion;
     }
 
 }

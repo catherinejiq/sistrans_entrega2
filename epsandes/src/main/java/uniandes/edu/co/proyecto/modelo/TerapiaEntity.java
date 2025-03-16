@@ -6,7 +6,7 @@ import jakarta.persistence.Column;
 import java.util.Date;
 
 @Entity
-@Table(name = "TERAPIAS")
+@Table(name = "Terapias")
 public class TerapiaEntity extends ServicioSaludEntity {
 
     @Column(nullable = false)

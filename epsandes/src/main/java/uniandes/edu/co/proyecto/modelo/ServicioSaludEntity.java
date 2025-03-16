@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "SERVICIO_SALUD")
+@Table(name = "ServiciosSalud")
 public abstract class ServicioSaludEntity {
 
     @Id

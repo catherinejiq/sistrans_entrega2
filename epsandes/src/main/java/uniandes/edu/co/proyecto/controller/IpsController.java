@@ -11,6 +11,7 @@ import uniandes.edu.co.proyecto.repositories.IpsRepository;
 import java.util.Collection;
 
 @RestController
+@RequestMapping("/ips")
 public class IpsController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class IpsController {
     /**
      * Obtener todas las IPS
      */
-    @GetMapping("/ips")
+    @GetMapping("/ips/todas")
     public ResponseEntity<Collection<IpsEntity>> obtenerTodasIps() {
         try {
             Collection<IpsEntity> ips = ipsRepository.darIps();
