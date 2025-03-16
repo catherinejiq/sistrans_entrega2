@@ -31,3 +31,4 @@ public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
 }
 
 
+

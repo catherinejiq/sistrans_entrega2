@@ -78,5 +78,3 @@ public class HospitalizacionEntity extends ServicioSaludEntity {
         this.medicos = medicos;
     }
 }
-
-

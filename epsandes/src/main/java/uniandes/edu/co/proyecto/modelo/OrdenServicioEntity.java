@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "OrdenServicios")
+@Table(name = "ORDEN_SERVICIO")
 public class OrdenServicioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private String tipoOrden;
     private String receta;
@@ -16,26 +16,28 @@ public class OrdenServicioEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoOrden estado;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "idAfiliado", nullable = false)
+    private AfiliadoEntity afiliado;
 
     @ManyToOne
     @JoinColumn(name = "idMedico", nullable = false)
     private MedicoEntity medico;
 
-    @ManyToOne
-    @JoinColumn(name = "idConsulta", nullable = false)
-    private ConsultaEntity consulta;
+    public OrdenServicioEntity() {}
 
-    public OrdenServicioEntity() {;}
-
-    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, MedicoEntity medico,
-            ConsultaEntity consulta) {
+    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, AfiliadoEntity afiliado, MedicoEntity medico) {
         this.tipoOrden = tipoOrden;
         this.receta = receta;
         this.estado = estado;
         this.fecha = fecha;
+        this.afiliado = afiliado;
         this.medico = medico;
-        this.consulta = consulta;
     }
 
     public Integer getIdOrden() {
@@ -78,19 +80,19 @@ public class OrdenServicioEntity {
         this.fecha = fecha;
     }
 
+    public AfiliadoEntity getAfiliado() {
+        return afiliado;
+    }
+
+    public void setAfiliado(AfiliadoEntity afiliado) {
+        this.afiliado = afiliado;
+    }
+
     public MedicoEntity getMedico() {
         return medico;
     }
 
     public void setMedico(MedicoEntity medico) {
         this.medico = medico;
-    }
-
-    public ConsultaEntity getConsulta() {
-        return consulta;
-    }
-
-    public void setConsulta(ConsultaEntity consulta) {
-        this.consulta = consulta;
     }
 }

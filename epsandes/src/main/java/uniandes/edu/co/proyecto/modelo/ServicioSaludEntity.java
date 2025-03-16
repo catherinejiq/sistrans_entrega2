@@ -14,11 +14,12 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "SERVICIO_SALUD")
+@Table(name = "ServiciosSalud")
 public abstract class ServicioSaludEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idServicio")
     private Integer idServicio;
 
     @Temporal(TemporalType.DATE)
@@ -28,17 +29,14 @@ public abstract class ServicioSaludEntity {
     @Column(nullable = false)
     private String descripcion;
 
-    
     public ServicioSaludEntity() {
     }
 
-    
     public ServicioSaludEntity(Date fecha, String descripcion) {
         this.fecha = fecha;
         this.descripcion = descripcion;
     }
 
-    
     public Integer getIdServicio() {
         return idServicio;
     }

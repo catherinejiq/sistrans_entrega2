@@ -3,6 +3,7 @@ package uniandes.edu.co.proyecto.modelo;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "IPSs")
