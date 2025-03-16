@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Hospitalizacion_Medico")

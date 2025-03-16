@@ -2,19 +2,21 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "OrdenServicios")
 public class OrdenServicioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idOrden")
     private Integer idOrden;
     private String tipoOrden;
     private String receta;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "estado", nullable = false)
     private EstadoOrden estado;
     private Date fecha;
 
@@ -26,10 +28,12 @@ public class OrdenServicioEntity {
     @JoinColumn(name = "idConsulta", nullable = false)
     private ConsultaEntity consulta;
 
-    public OrdenServicioEntity() {;}
+    @OneToMany(mappedBy = "ordenServicio", cascade = CascadeType.ALL)
+    private List<ServicioEntity> servicios;
 
-    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, MedicoEntity medico,
-            ConsultaEntity consulta) {
+    public OrdenServicioEntity() {}
+
+    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, MedicoEntity medico, ConsultaEntity consulta) {
         this.tipoOrden = tipoOrden;
         this.receta = receta;
         this.estado = estado;
@@ -92,5 +96,13 @@ public class OrdenServicioEntity {
 
     public void setConsulta(ConsultaEntity consulta) {
         this.consulta = consulta;
+    }
+
+    public List<ServicioEntity> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<ServicioEntity> servicios) {
+        this.servicios = servicios;
     }
 }

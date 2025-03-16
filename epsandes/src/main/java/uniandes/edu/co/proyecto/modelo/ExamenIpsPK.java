@@ -11,7 +11,7 @@ public class ExamenIpsPK implements Serializable {
     private ExamenDiagnosticoEntity examen;
 
     @ManyToOne
-    @JoinColumn(name = "nit", nullable = false)
+    @JoinColumn(name = "nit", nullable = true)
     private IpsEntity ips;
 
     public ExamenIpsPK() {

@@ -1,19 +1,20 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Medico_Ips")
-public class MedicoIps {
+public class MedicoIpsEntity {
 
     @EmbeddedId
     private MedicoIpsPK pk;
 
-    public MedicoIps() {
+    public MedicoIpsEntity() {
         ;
     }
 
-    public MedicoIps(MedicoEntity medico, IpsEntity ips) {
+    public MedicoIpsEntity(MedicoEntity medico, IpsEntity ips) {
         this.pk = new MedicoIpsPK(medico, ips);
     }
 

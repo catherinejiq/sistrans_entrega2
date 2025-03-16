@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Examen_IPS")
@@ -25,5 +26,3 @@ public class ExamenIpsEntity {
         this.id = id;
     }
 }
-
-

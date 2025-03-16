@@ -5,6 +5,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Consultas")
@@ -20,7 +21,7 @@ public class ConsultaEntity {
     private TipoConsulta tipoConsulta;
 
     @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
+    @JoinColumn(name = "idAfiliado", nullable = true)
     private AfiliadoEntity afiliado;
 
     @ManyToOne
