@@ -13,6 +13,7 @@ public class ConsultaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idConsulta;
+    String diagnostico;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -31,9 +32,8 @@ public class ConsultaEntity {
     }
 
     public ConsultaEntity(TipoConsulta tipoConsulta, AfiliadoEntity afiliado,
-            ExamenDiagnosticoEntity diagnosticoRelacionado, String diagnosticoRelacionado) {
+            ExamenDiagnosticoEntity diagnosticoRelacionado, String diagnostico) {
         this.tipoConsulta = tipoConsulta;
-        this.diagnostico = diagnostico;
         this.afiliado = afiliado;
         this.diagnosticoRelacionado = diagnosticoRelacionado;
     }
@@ -70,11 +70,11 @@ public class ConsultaEntity {
         this.afiliado = afiliado;
     }
 
-    public ExamenEntity getDiagnosticoRelacionado() {
+    public ExamenDiagnosticoEntity getDiagnosticoRelacionado() {
         return diagnosticoRelacionado;
     }
 
-    public void setDiagnosticoRelacionado(ExamenEntity diagnosticoRelacionado) {
+    public void setDiagnosticoRelacionado(ExamenDiagnosticoEntity diagnosticoRelacionado) {
         this.diagnosticoRelacionado = diagnosticoRelacionado;
     }
 }

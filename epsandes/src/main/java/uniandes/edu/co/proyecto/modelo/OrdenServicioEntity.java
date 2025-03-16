@@ -24,12 +24,12 @@ public class OrdenServicioEntity {
 
     @ManyToOne
     @JoinColumn(name = "idConsulta", nullable = false)
-    private Consulta consulta;
+    private ConsultaEntity consulta;
 
-    public OrdenServicio() {;}
+    public OrdenServicioEntity() {;}
 
-    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, Medico medico,
-            Consulta consulta) {
+    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, MedicoEntity medico,
+            ConsultaEntity consulta) {
         this.tipoOrden = tipoOrden;
         this.receta = receta;
         this.estado = estado;

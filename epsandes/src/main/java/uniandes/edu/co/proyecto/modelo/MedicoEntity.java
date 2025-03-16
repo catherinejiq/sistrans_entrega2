@@ -26,7 +26,7 @@ public class MedicoEntity {
         ;
     }
 
-    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad, IPS ips) {
+    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad, IpsEntity ips) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.numRegistro = numRegistro;
