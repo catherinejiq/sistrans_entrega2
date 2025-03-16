@@ -38,19 +38,4 @@ public class TerapiaIpsPK implements Serializable {
     public void setIps(IpsEntity ips) {
         this.ips = ips;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        TerapiaIpsPK other = (TerapiaIpsPK) obj;
-        return terapia.equals(other.terapia) && ips.equals(other.ips);
-    }
-
-    @Override
-    public int hashCode() {
-        return terapia.hashCode() + ips.hashCode();
-    }
 }

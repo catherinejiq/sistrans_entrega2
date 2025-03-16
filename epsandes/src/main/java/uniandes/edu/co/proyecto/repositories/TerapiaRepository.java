@@ -7,4 +7,3 @@ import uniandes.edu.co.epsandes.modelo.TerapiaEntity;
 @Repository
 public interface TerapiaRepository extends JpaRepository<TerapiaEntity, Integer> {
 }
-

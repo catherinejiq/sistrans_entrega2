@@ -1,6 +1,10 @@
 package uniandes.edu.co.epsandes.modelo;
 
 import jakarta.persistence.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "Medicos")
@@ -8,26 +12,27 @@ public class MedicoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idMedico;
+    private Integer id;
     private String identificacion;
     private String nombre;
     private String numRegistro;
     private String especialidad;
 
+    @ManyToOne
+    @JoinColumn(name = "nit", nullable = false)
+    private IPS ips;
 
-
-    public MedicoEntity() {
+    public Medico() {
         ;
     }
 
-    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad) {
+    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad, IPS ips) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.numRegistro = numRegistro;
         this.especialidad = especialidad;
+        this.ips = ips;
     }
-
-   
 
     public Integer getIdMedico() {
         return idMedico;
@@ -69,11 +74,11 @@ public class MedicoEntity {
         this.especialidad = especialidad;
     }
 
-    @Override
-    public String toString() {
-        return "MedicoEntity [idMedico=" + idMedico + ", identificacion=" + identificacion +
-                ", nombre=" + nombre + ", numRegistro=" + numRegistro +
-                ", especialidad=" + especialidad + "]";
+    public IpsEntity getIps() {
+        return ips;
+    }
+
+    public void setIps(IpsEntity ips) {
+        this.ips = ips;
     }
 }
-

@@ -70,12 +70,4 @@ public class HospitalizacionEntity {
     public void setIps(IpsEntity ips) {
         this.ips = ips;
     }
-
-    @Override
-    public String toString() {
-        return "HospitalizacionEntity [idHospitalizacion=" + idHospitalizacion + ", estado=" + estado +
-                ", tratamiento=" + tratamiento +
-                ", afiliado=" + (afiliado != null ? afiliado.getIdAfiliado() : "NULL") +
-                ", ips=" + (ips != null ? ips.getNit() : "NULL") + "]";
-    }
 }

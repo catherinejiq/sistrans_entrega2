@@ -106,13 +106,4 @@ public class AfiliadoEntity {
     public void setContribuyente(AfiliadoEntity contribuyente) {
         this.contribuyente = contribuyente;
     }
-
-    @Override
-    public String toString() {
-        return "AfiliadoEntity [idAfiliado=" + idAfiliado + ", tipoDocumento=" + tipoDocumento +
-                ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento +
-                ", direccion=" + direccion + ", telefono=" + telefono +
-                ", tipoAfiliado=" + tipoAfiliado + ", contribuyente=" +
-                (contribuyente != null ? contribuyente.getIdAfiliado() : "NULL") + "]";
-    }
 }

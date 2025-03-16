@@ -16,23 +16,20 @@ public class OrdenServicioEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoOrden estado;
-
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
     private Date fecha;
 
     @ManyToOne
     @JoinColumn(name = "idMedico", nullable = false)
-    private MedicoEntity medico;
+    private Medico medico;
 
     @ManyToOne
     @JoinColumn(name = "idConsulta", nullable = false)
-    private ConsultaEntity consulta;
+    private Consulta consulta;
 
-    public OrdenServicioEntity() { }
+    public OrdenServicio() {;}
 
-    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, 
-                               MedicoEntity medico, ConsultaEntity consulta) {
+    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, Medico medico,
+            Consulta consulta) {
         this.tipoOrden = tipoOrden;
         this.receta = receta;
         this.estado = estado;
@@ -40,8 +37,6 @@ public class OrdenServicioEntity {
         this.medico = medico;
         this.consulta = consulta;
     }
-
-    
 
     public Integer getIdOrden() {
         return idOrden;
@@ -98,13 +93,4 @@ public class OrdenServicioEntity {
     public void setConsulta(ConsultaEntity consulta) {
         this.consulta = consulta;
     }
-
-    @Override
-    public String toString() {
-        return "OrdenServicioEntity [idOrden=" + idOrden + ", tipoOrden=" + tipoOrden +
-                ", receta=" + receta + ", estado=" + estado + ", fecha=" + fecha +
-                ", medico=" + (medico != null ? medico.getIdMedico() : "NULL") +
-                ", consulta=" + (consulta != null ? consulta.getIdConsulta() : "NULL") + "]";
-    }
 }
-
