@@ -24,10 +24,4 @@ public class MedicoIps {
     public void setPk(MedicoIpsPK pk) {
         this.pk = pk;
     }
-
-    @Override
-    public String toString() {
-        return "MedicoIps [medico=" + pk.getMedico().getIdMedico() +
-                ", ips=" + pk.getIps().getNit() + "]";
-    }
 }

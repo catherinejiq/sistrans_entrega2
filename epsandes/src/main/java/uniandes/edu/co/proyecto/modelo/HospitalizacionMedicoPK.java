@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
@@ -18,7 +18,7 @@ public class HospitalizacionMedicoPK implements Serializable {
         ;
     }
 
-    public HospitalizacionMedicoPK(HospitalizacionEntity hospitalizacion, Medico medico) {
+    public HospitalizacionMedicoPK(HospitalizacionEntity hospitalizacion, MedicoEntity medico) {
         this.hospitalizacion = hospitalizacion;
         this.medico = medico;
     }
@@ -31,26 +31,11 @@ public class HospitalizacionMedicoPK implements Serializable {
         this.hospitalizacion = hospitalizacion;
     }
 
-    public Medico getMedico() {
+    public MedicoEntity getMedico() {
         return medico;
     }
 
-    public void setMedico(Medico medico) {
+    public void setMedico(MedicoEntity medico) {
         this.medico = medico;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        HospitalizacionMedicoPK other = (HospitalizacionMedicoPK) obj;
-        return hospitalizacion.equals(other.hospitalizacion) && medico.equals(other.medico);
-    }
-
-    @Override
-    public int hashCode() {
-        return hospitalizacion.hashCode() + medico.hashCode();
     }
 }

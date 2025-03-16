@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 
@@ -23,11 +23,5 @@ public class HospitalizacionMedico {
 
     public void setPk(HospitalizacionMedicoPK pk) {
         this.pk = pk;
-    }
-
-    @Override
-    public String toString() {
-        return "HospitalizacionMedico [hospitalizacion=" + pk.getHospitalizacion().getIdHospitalizacion() +
-                ", medico=" + pk.getMedico().getIdMedico() + "]";
     }
 }

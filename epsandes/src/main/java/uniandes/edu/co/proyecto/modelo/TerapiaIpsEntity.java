@@ -24,11 +24,6 @@ public class TerapiaIpsEntity {
     public void setId(TerapiaIpsPK id) {
         this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "TerapiaIpsEntity [terapia=" + id.getTerapia().getIdTerapia() + ", ips=" + id.getIps().getNit() + "]";
-    }
 }
 
 

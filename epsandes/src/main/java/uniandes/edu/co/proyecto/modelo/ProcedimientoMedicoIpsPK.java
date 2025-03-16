@@ -48,10 +48,5 @@ public class ProcedimientoMedicoIpsPK implements Serializable {
         ProcedimientoMedicoIpsPK other = (ProcedimientoMedicoIpsPK) obj;
         return procedimiento.equals(other.procedimiento) && ips.equals(other.ips);
     }
-
-    @Override
-    public int hashCode() {
-        return procedimiento.hashCode() + ips.hashCode();
-    }
 }
 

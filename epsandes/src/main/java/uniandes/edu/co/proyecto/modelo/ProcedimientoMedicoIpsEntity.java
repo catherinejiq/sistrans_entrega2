@@ -24,11 +24,5 @@ public class ProcedimientoMedicoIpsEntity {
     public void setId(ProcedimientoMedicoIpsPK id) {
         this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "ProcedimientoMedicoIpsEntity [procedimiento=" + id.getProcedimiento().getIdProcedimiento() +
-                ", ips=" + id.getIps().getNit() + "]";
-    }
 }
 

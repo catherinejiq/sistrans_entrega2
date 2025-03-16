@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import jakarta.persistence.JoinColumn;
@@ -20,9 +20,9 @@ public class ExamenDiagnosticoEntity {
     @JoinColumn(name = "idOrden", nullable = false)
     private OrdenServicioEntity ordenServicio;
 
-    public ExamenDiagnostico() {;}
+    public ExamenDiagnosticoEntity() {;}
 
-    public ExamenDiagnostico(String resultados, String muestras, OrdenServicioEntity ordenServicio) {
+    public ExamenDiagnosticoEntity(String resultados, String muestras, OrdenServicioEntity ordenServicio) {
         this.resultados = resultados;
         this.muestras = muestras;
         this.ordenServicio = ordenServicio;

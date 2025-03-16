@@ -59,11 +59,4 @@ public class TerapiaEntity {
     public void setOrdenServicio(OrdenServicioEntity ordenServicio) {
         this.ordenServicio = ordenServicio;
     }
-
-    @Override
-    public String toString() {
-        return "TerapiaEntity [idTerapia=" + idTerapia + ", tipo=" + tipo +
-                ", cantidadSesiones=" + cantidadSesiones + ", ordenServicio=" +
-                (ordenServicio != null ? ordenServicio.getIdOrden() : "NULL") + "]";
-    }
 }

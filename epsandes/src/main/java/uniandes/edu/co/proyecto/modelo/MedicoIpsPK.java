@@ -49,9 +49,4 @@ public class MedicoIpsPK implements Serializable {
         MedicoIpsPK other = (MedicoIpsPK) obj;
         return medico.equals(other.medico) && ips.equals(other.ips);
     }
-
-    @Override
-    public int hashCode() {
-        return medico.hashCode() + ips.hashCode();
-    }
 }

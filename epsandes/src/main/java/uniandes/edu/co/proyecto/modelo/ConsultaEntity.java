@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import jakarta.persistence.JoinColumn;
@@ -24,14 +24,14 @@ public class ConsultaEntity {
 
     @ManyToOne
     @JoinColumn(name = "idExamen", nullable = false)
-    private ExamenEntity diagnosticoRelacionado;
+    private ExamenDiagnosticoEntity diagnosticoRelacionado;
 
-    public Consulta() {
+    public ConsultaEntity () {
         ;
     }
 
     public ConsultaEntity(TipoConsulta tipoConsulta, AfiliadoEntity afiliado,
-            ExamenEntity diagnosticoRelacionado, String diagnostico) {
+            ExamenDiagnosticoEntity diagnosticoRelacionado, String diagnosticoRelacionado) {
         this.tipoConsulta = tipoConsulta;
         this.diagnostico = diagnostico;
         this.afiliado = afiliado;

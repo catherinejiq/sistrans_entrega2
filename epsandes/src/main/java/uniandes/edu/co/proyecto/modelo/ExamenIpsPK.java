@@ -38,19 +38,4 @@ public class ExamenIpsPK implements Serializable {
     public void setIps(IpsEntity ips) {
         this.ips = ips;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        ExamenIpsPK other = (ExamenIpsPK) obj;
-        return examen.equals(other.examen) && ips.equals(other.ips);
-    }
-
-    @Override
-    public int hashCode() {
-        return examen.hashCode() + ips.hashCode();
-    }
 }

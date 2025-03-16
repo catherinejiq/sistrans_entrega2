@@ -66,11 +66,4 @@ public class IpsEntity {
     public void setHorario(String horario) {
         this.horario = horario;
     }
-
-    @Override
-    public String toString() {
-        return "IpsEntity [nit=" + nit + ", nombre=" + nombre +
-                ", direccion=" + direccion + ", telefono=" + telefono +
-                ", horario=" + horario + "]";
-    }
 }

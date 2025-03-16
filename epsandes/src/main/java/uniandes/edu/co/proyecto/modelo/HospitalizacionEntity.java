@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 
@@ -14,17 +14,17 @@ public class HospitalizacionEntity {
 
     @ManyToOne
     @JoinColumn(name = "idAfiliado", nullable = false)
-    private Afiliado afiliado;
+    private AfiliadoEntity afiliado;
 
     @ManyToOne
     @JoinColumn(name = "nit", nullable = false)
-    private IPS ips;
+    private IpsEntity ips;
 
     public HospitalizacionEntity() {
         ;
     }
 
-    public HospitalizacionEntity(String estado, String tratamiento, Afiliado afiliado, IPS ips) {
+    public HospitalizacionEntity(String estado, String tratamiento, AfiliadoEntity afiliado, IpsEntity ips) {
         this.estado = estado;
         this.tratamiento = tratamiento;
         this.afiliado = afiliado;
@@ -55,15 +55,15 @@ public class HospitalizacionEntity {
         this.tratamiento = tratamiento;
     }
 
-    public Afiliado getAfiliado() {
+    public AfiliadoEntity getAfiliado() {
         return afiliado;
     }
 
-    public void setAfiliado(Afiliado afiliado) {
+    public void setAfiliado(AfiliadoEntity afiliado) {
         this.afiliado = afiliado;
     }
 
-    public IPS getIps() {
+    public IpsEntity getIps() {
         return ips;
     }
 

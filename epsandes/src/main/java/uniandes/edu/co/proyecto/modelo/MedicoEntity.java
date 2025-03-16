@@ -1,4 +1,4 @@
-package uniandes.edu.co.epsandes.modelo;
+package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import jakarta.persistence.JoinColumn;
@@ -12,7 +12,7 @@ public class MedicoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idMedico;
     private String identificacion;
     private String nombre;
     private String numRegistro;
@@ -20,9 +20,9 @@ public class MedicoEntity {
 
     @ManyToOne
     @JoinColumn(name = "nit", nullable = false)
-    private IPS ips;
+    private IpsEntity ips;
 
-    public Medico() {
+    public MedicoEntity() {
         ;
     }
 
