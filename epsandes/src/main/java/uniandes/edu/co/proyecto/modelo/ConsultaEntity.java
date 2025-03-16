@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-@Table(name = "CONSULTA")
+@Table(name = "Consultas")
 public class ConsultaEntity extends ServicioSaludEntity {
 
     @Column(nullable = false)
@@ -58,4 +58,3 @@ public class ConsultaEntity extends ServicioSaludEntity {
         this.medico = medico;
     }
 }
-

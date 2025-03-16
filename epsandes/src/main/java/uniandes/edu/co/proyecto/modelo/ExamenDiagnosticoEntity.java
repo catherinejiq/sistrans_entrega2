@@ -9,9 +9,10 @@ import jakarta.persistence.JoinColumn;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import uniandes.edu.co.proyecto.modelo.ConsultaEntity;
 
 @Entity
-@Table(name = "EXAMENES_DIAGNOSTICOS")
+@Table(name = "ExamenesDiagnosticos")
 public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
 
     @Column(nullable = false)
@@ -62,4 +63,3 @@ public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
         this.consultas = consultas;
     }
 }
-

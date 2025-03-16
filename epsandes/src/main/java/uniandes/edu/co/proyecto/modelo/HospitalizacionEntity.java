@@ -2,7 +2,6 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
@@ -11,13 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
-@Table(name = "HOSPITALIZACION")
+@Table(name = "Hospitalizaciones")
 public class HospitalizacionEntity extends ServicioSaludEntity {
-
-    @Column(nullable = false)
-    private String estado;
-
-    @Column(nullable = false)
+    
+    private String estado;  
     private String tratamiento;
 
     @ManyToMany
@@ -77,4 +73,12 @@ public class HospitalizacionEntity extends ServicioSaludEntity {
     public void setMedicos(List<MedicoEntity> medicos) {
         this.medicos = medicos;
     }
+
+    public Integer getIdHospitalizacion() {
+        return idHospitalizacion;
+    }
+    public void setIdHospitalizacion(Integer idHospitalizacion) {
+        this.idHospitalizacion = idHospitalizacion;
+    }
+
 }
