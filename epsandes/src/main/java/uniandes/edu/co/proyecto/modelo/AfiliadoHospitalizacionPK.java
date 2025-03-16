@@ -2,7 +2,6 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Embeddable
 public class AfiliadoHospitalizacionPK implements Serializable {
