@@ -1,65 +1,45 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import java.util.Date;
 
 @Entity
-@Table(name = "Consultas")
-public class ConsultaEntity {
+@Table(name = "CONSULTA")
+public class ConsultaEntity extends ServicioSaludEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idConsulta;
-    String diagnostico;
-
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TipoConsulta tipoConsulta;
+    private String tipoConsulta;
 
     @ManyToOne
     @JoinColumn(name = "idAfiliado", nullable = false)
     private AfiliadoEntity afiliado;
 
     @ManyToOne
-    @JoinColumn(name = "idExamen", nullable = false)
-    private ExamenDiagnosticoEntity diagnosticoRelacionado;
+    @JoinColumn(name = "idMedico", nullable = false)
+    private MedicoEntity medico;
 
-    public ConsultaEntity () {
-        ;
+    public ConsultaEntity() {
+        super();
     }
 
-    public ConsultaEntity(TipoConsulta tipoConsulta, AfiliadoEntity afiliado,
-            ExamenDiagnosticoEntity diagnosticoRelacionado, String diagnostico) {
+    public ConsultaEntity(Date fecha, String descripcion, String tipoConsulta,
+                            AfiliadoEntity afiliado, MedicoEntity medico) {
+        super(fecha, descripcion);
         this.tipoConsulta = tipoConsulta;
         this.afiliado = afiliado;
-        this.diagnosticoRelacionado = diagnosticoRelacionado;
+        this.medico = medico;
     }
 
-    public Integer getIdConsulta() {
-        return idConsulta;
-    }
-
-    public void setIdConsulta(Integer idConsulta) {
-        this.idConsulta = idConsulta;
-    }
-
-    public TipoConsulta getTipoConsulta() {
+    public String getTipoConsulta() {
         return tipoConsulta;
     }
 
-    public void setTipoConsulta(TipoConsulta tipoConsulta) {
+    public void setTipoConsulta(String tipoConsulta) {
         this.tipoConsulta = tipoConsulta;
-    }
-
-    public String getDiagnostico() {
-        return diagnostico;
-    }
-
-    public void setDiagnostico(String diagnostico) {
-        this.diagnostico = diagnostico;
     }
 
     public AfiliadoEntity getAfiliado() {
@@ -70,11 +50,12 @@ public class ConsultaEntity {
         this.afiliado = afiliado;
     }
 
-    public ExamenDiagnosticoEntity getDiagnosticoRelacionado() {
-        return diagnosticoRelacionado;
+    public MedicoEntity getMedico() {
+        return medico;
     }
 
-    public void setDiagnosticoRelacionado(ExamenDiagnosticoEntity diagnosticoRelacionado) {
-        this.diagnosticoRelacionado = diagnosticoRelacionado;
+    public void setMedico(MedicoEntity medico) {
+        this.medico = medico;
     }
 }
+

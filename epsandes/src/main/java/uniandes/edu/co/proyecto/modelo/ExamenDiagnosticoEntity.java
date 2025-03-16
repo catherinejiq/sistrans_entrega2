@@ -1,39 +1,41 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
 
 @Entity
-@Table(name = "ExamenesDiagnosticos")
-public class ExamenDiagnosticoEntity {
+@Table(name = "EXAMENES_DIAGNOSTICOS")
+public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idExamen;
+    @Column(nullable = false)
     private String resultados;
+
+    @Column(nullable = false)
     private String muestras;
 
-    @ManyToOne
-    @JoinColumn(name = "idOrden", nullable = false)
-    private OrdenServicioEntity ordenServicio;
+    @ManyToMany
+    @JoinTable(
+        name = "CONSULTA_EXAMEN",
+        joinColumns = @JoinColumn(name = "idExamen"),
+        inverseJoinColumns = @JoinColumn(name = "idConsulta")
+    )
+    private List<ConsultaEntity> consultas = new ArrayList<>();
 
-    public ExamenDiagnosticoEntity() {;}
+    public ExamenDiagnosticoEntity() {
+        super();
+    }
 
-    public ExamenDiagnosticoEntity(String resultados, String muestras, OrdenServicioEntity ordenServicio) {
+    public ExamenDiagnosticoEntity(Date fecha, String descripcion, String resultados, String muestras) {
+        super(fecha, descripcion);
         this.resultados = resultados;
         this.muestras = muestras;
-        this.ordenServicio = ordenServicio;
-    }
-
-    public Integer getIdExamen() {
-        return idExamen;
-    }
-
-    public void setIdExamen(Integer idExamen) {
-        this.idExamen = idExamen;
     }
 
     public String getResultados() {
@@ -52,11 +54,12 @@ public class ExamenDiagnosticoEntity {
         this.muestras = muestras;
     }
 
-    public OrdenServicioEntity getOrdenServicio() {
-        return ordenServicio;
+    public List<ConsultaEntity> getConsultas() {
+        return consultas;
     }
 
-    public void setOrdenServicio(OrdenServicioEntity ordenServicio) {
-        this.ordenServicio = ordenServicio;
+    public void setConsultas(List<ConsultaEntity> consultas) {
+        this.consultas = consultas;
     }
 }
+
