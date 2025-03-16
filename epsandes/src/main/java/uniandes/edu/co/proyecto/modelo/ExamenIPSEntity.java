@@ -24,11 +24,6 @@ public class ExamenIpsEntity {
     public void setId(ExamenIpsPK id) {
         this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "ExamenIpsEntity [examen=" + id.getExamen().getIdExamen() + ", ips=" + id.getIps().getNit() + "]";
-    }
 }
 
 
