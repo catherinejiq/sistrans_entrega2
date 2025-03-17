@@ -23,7 +23,6 @@ public interface AfiliadoRepository extends JpaRepository<AfiliadoEntity, Intege
     @Query(value = "INSERT INTO Afiliados ( tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) "
                  + "VALUES ( :tipoDocumento, :nombre, TO_DATE(:fechaNacimiento, 'YYYY-MM-DD'), :direccion, :telefono, :parentesco, :tipoAfiliado, :idContribuyente)", 
            nativeQuery = true)
-
     void insertarAfiliado(@Param("tipoDocumento") String tipoDocumento,
                           @Param("nombre") String nombre,
                           @Param("fechaNacimiento") String fechaNacimiento,
