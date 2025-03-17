@@ -16,24 +16,25 @@ public class ConsultaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idConsulta;
 
     @Column(nullable = false)
     private String tipoConsulta;
 
     @OneToOne
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false, referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
     @ManyToOne
-    @JoinColumn(name = "idMedico", nullable = false)
+    @JoinColumn(name = "idMedico", nullable = false,referencedColumnName = "idMedico")
     private MedicoEntity medico;
 
     @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
+    @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName = "idAfiliado")
     private AfiliadoEntity afiliado;
 
     public ConsultaEntity() {
+        ;
     }
 
     public ConsultaEntity(String tipoConsulta, ServicioSaludEntity servicio, MedicoEntity medico, AfiliadoEntity afiliado) {
@@ -44,11 +45,11 @@ public class ConsultaEntity {
     }
 
     public Integer getId() {
-        return id;
+        return idConsulta;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idConsulta = id;
     }
 
     public String getTipoConsulta() {

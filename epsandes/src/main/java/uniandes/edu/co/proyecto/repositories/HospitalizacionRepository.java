@@ -13,18 +13,18 @@ public interface HospitalizacionRepository extends JpaRepository<Hospitalizacion
     @Query(value = "SELECT * FROM Hospitalizaciones", nativeQuery = true)
     Collection<HospitalizacionEntity> darHospitalizaciones();
 
-    @Query(value = "SELECT * FROM Hospitalizaciones WHERE idHospitalizacion = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM Hospitalizaciones WHERE id = :id", nativeQuery = true)
     HospitalizacionEntity darHospitalizacion(@Param("id") int id);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Hospitalizaciones SET estado = :estado, tratamiento = :tratamiento WHERE idHospitalizacion = :id", nativeQuery = true)
+    @Query(value = "UPDATE Hospitalizaciones SET estado = :estado, tratamiento = :tratamiento WHERE id = :id", nativeQuery = true)
     void actualizarHospitalizacion(@Param("id") int id,
                                    @Param("estado") String estado,
                                    @Param("tratamiento") String tratamiento);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM Hospitalizaciones WHERE idHospitalizacion = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM Hospitalizaciones WHERE id = :id", nativeQuery = true)
     void eliminarHospitalizacion(@Param("id") int id);
 }

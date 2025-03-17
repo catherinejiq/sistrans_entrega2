@@ -1,34 +1,46 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.io.Serializable;
 
 @Embeddable
 public class OrdenServicioServiciosPK implements Serializable {
+    
+    @ManyToOne
+    @JoinColumn(name="idOrden",nullable=false,referencedColumnName = "idOrden")
+    private OrdenServicioEntity ordenServicioEntity;
 
-    private Integer idOrden;
-    private Integer idServicio;
+    @ManyToOne
+    @JoinColumn(name = "idServicio",nullable =false,referencedColumnName = "idServicio")
+    private ServicioSaludEntity servicioSaludEntity;
 
-    public OrdenServicioServiciosPK() {}
-
-    public OrdenServicioServiciosPK(Integer idOrden, Integer idServicio) {
-        this.idOrden = idOrden;
-        this.idServicio = idServicio;
+    public OrdenServicioServiciosPK() {
+        ;
     }
 
-    public Integer getIdOrden() {
-        return idOrden;
+    public OrdenServicioServiciosPK(OrdenServicioEntity ordenServicioEntity, ServicioSaludEntity servicioSaludEntity) {
+        super();
+        this.ordenServicioEntity = ordenServicioEntity;
+        this.servicioSaludEntity= servicioSaludEntity;
     }
 
-    public void setIdOrden(Integer idOrden) {
-        this.idOrden = idOrden;
+    public OrdenServicioEntity getOrdenServicioEntity() {
+        return ordenServicioEntity;
     }
 
-    public Integer getIdServicio() {
-        return idServicio;
+    public void setOrdenServicioEntity(OrdenServicioEntity ordenServicioEntity) {
+        this.ordenServicioEntity = ordenServicioEntity;
     }
 
-    public void setIdServicio(Integer idServicio) {
-        this.idServicio = idServicio;
+    public ServicioSaludEntity getServicioSaludEntity() {
+        return servicioSaludEntity;
     }
+
+    public void setServicioSaludEntity(ServicioSaludEntity servicioSaludEntity) {
+        this.servicioSaludEntity = servicioSaludEntity;
+    }
+    
 }

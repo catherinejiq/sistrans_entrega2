@@ -4,12 +4,15 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Medico_Afiliado")
+
 public class MedicoAfiliadoEntity {
 
     @EmbeddedId
     private MedicoAfiliadoPK id;
 
-    public MedicoAfiliadoEntity() {}
+    public MedicoAfiliadoEntity() {
+        ;
+    }
 
     public MedicoAfiliadoEntity(MedicoEntity medico, AfiliadoEntity afiliado) {
         this.id = new MedicoAfiliadoPK(medico, afiliado);

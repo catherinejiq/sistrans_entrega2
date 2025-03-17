@@ -1,25 +1,27 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.io.Serializable;
+
 import jakarta.persistence.*;
 
 @Embeddable
-@Table(name = "IPS_SERVICIO")
-public class IpsServicioPK {
+public class IpsServicioPK implements Serializable {
 
 
     @ManyToOne
-    @MapsId("nit")
-    @JoinColumn(name = "nit", nullable = false)
+    @JoinColumn(name = "nit", nullable = false,referencedColumnName = "nit")
     private IpsEntity ips;
 
     @ManyToOne
-    @MapsId("idServicio")
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false,referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
-    public IpsServicioPK() {}
+    public IpsServicioPK() {
+        ;
+    }
 
     public IpsServicioPK(IpsEntity ips, ServicioSaludEntity servicio) {
+        super();
         this.ips = ips;
         this.servicio = servicio;
     }

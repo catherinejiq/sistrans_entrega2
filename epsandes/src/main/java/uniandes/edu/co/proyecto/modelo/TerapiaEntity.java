@@ -15,7 +15,7 @@ public class TerapiaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idTerapia;
 
     @Column(nullable = false)
     private String tipo;
@@ -24,10 +24,11 @@ public class TerapiaEntity {
     private Integer cantidadSesiones;
 
     @OneToOne
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false,referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
     public TerapiaEntity() {
+        ;
     }
 
     public TerapiaEntity(String tipo, Integer cantidadSesiones, ServicioSaludEntity servicio) {
@@ -37,11 +38,11 @@ public class TerapiaEntity {
     }
 
     public Integer getId() {
-        return id;
+        return idTerapia;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idTerapia = id;
     }
 
     public String getTipo() {

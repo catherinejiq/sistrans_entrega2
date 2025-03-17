@@ -19,7 +19,7 @@ public class HospitalizacionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idHospitalizacion;
 
     @Column(nullable = false)
     private String estado;
@@ -28,26 +28,11 @@ public class HospitalizacionEntity {
     private String tratamiento;
 
     @OneToOne
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false, referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
-    @ManyToMany
-    @JoinTable(
-        name = "HOSPITALIZACION_MEDICO",
-        joinColumns = @JoinColumn(name = "idHospitalizacion"),
-        inverseJoinColumns = @JoinColumn(name = "idMedico")
-    )
-    private List<MedicoEntity> medicos = new ArrayList<>();
-
-    @ManyToMany
-    @JoinTable(
-        name = "HOSPITALIZACION_AFILIADO",
-        joinColumns = @JoinColumn(name = "idHospitalizacion"),
-        inverseJoinColumns = @JoinColumn(name = "idAfiliado")
-    )
-    private List<AfiliadoEntity> afiliados = new ArrayList<>();
-
     public HospitalizacionEntity() {
+        ;
     }
 
     public HospitalizacionEntity(String estado, String tratamiento, ServicioSaludEntity servicio) {
@@ -57,11 +42,11 @@ public class HospitalizacionEntity {
     }
 
     public Integer getId() {
-        return id;
+        return idHospitalizacion;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idHospitalizacion = id;
     }
 
     public String getEstado() {
@@ -86,21 +71,5 @@ public class HospitalizacionEntity {
 
     public void setServicio(ServicioSaludEntity servicio) {
         this.servicio = servicio;
-    }
-
-    public List<MedicoEntity> getMedicos() {
-        return medicos;
-    }
-
-    public void setMedicos(List<MedicoEntity> medicos) {
-        this.medicos = medicos;
-    }
-
-    public List<AfiliadoEntity> getAfiliados() {
-        return afiliados;
-    }
-
-    public void setAfiliados(List<AfiliadoEntity> afiliados) {
-        this.afiliados = afiliados;
     }
 }

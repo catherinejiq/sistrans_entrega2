@@ -19,7 +19,7 @@ public class ExamenDiagnosticoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idExamen;
 
     @Column(nullable = false)
     private String resultados;
@@ -28,18 +28,12 @@ public class ExamenDiagnosticoEntity {
     private String muestras;
 
     @OneToOne
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false,referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
-    @ManyToMany
-    @JoinTable(
-        name = "EXAMENES_CONSULTA",
-        joinColumns = @JoinColumn(name = "idExamen"),
-        inverseJoinColumns = @JoinColumn(name = "idConsulta")
-    )
-    private List<ConsultaEntity> consultas = new ArrayList<>();
 
     public ExamenDiagnosticoEntity() {
+        ;
     }
 
     public ExamenDiagnosticoEntity(String resultados, String muestras, ServicioSaludEntity servicio) {
@@ -49,11 +43,11 @@ public class ExamenDiagnosticoEntity {
     }
 
     public Integer getId() {
-        return id;
+        return idExamen;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idExamen = id;
     }
 
     public String getResultados() {
@@ -80,13 +74,6 @@ public class ExamenDiagnosticoEntity {
         this.servicio = servicio;
     }
 
-    public List<ConsultaEntity> getConsultas() {
-        return consultas;
-    }
-
-    public void setConsultas(List<ConsultaEntity> consultas) {
-        this.consultas = consultas;
-    }
 }
 
 

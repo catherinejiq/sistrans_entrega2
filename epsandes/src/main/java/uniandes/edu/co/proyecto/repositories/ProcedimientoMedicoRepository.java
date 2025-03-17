@@ -10,23 +10,20 @@ import uniandes.edu.co.proyecto.modelo.ProcedimientoMedicoEntity;
 
 public interface ProcedimientoMedicoRepository extends JpaRepository<ProcedimientoMedicoEntity, Integer> {
 
-    @Query(value = "SELECT * FROM ProcedimientosMedicos", nativeQuery = true)
+    @Query(value = "SELECT * FROM PROCEDIMIENTOS_MEDICOS", nativeQuery = true)
     Collection<ProcedimientoMedicoEntity> darProcedimientosMedicos();
 
-    @Query(value = "SELECT * FROM ProcedimientosMedicos WHERE idServicio = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM PROCEDIMIENTOS_MEDICOS WHERE id = :id", nativeQuery = true)
     ProcedimientoMedicoEntity darProcedimientoMedico(@Param("id") int id);
 
-
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ProcedimientosMedicos SET tipo = :tipo, idOrden = :idOrden WHERE idServicio = :id", nativeQuery = true)
+    @Query(value = "UPDATE PROCEDIMIENTOS_MEDICOS SET tipo = :tipo WHERE id = :id", nativeQuery = true)
     void actualizarProcedimientoMedico(@Param("id") int id,
-                                       @Param("tipo") String tipo,
-                                       @Param("idOrden") int idOrden);
+                                       @Param("tipo") String tipo);
 
-    // Elimina un procedimiento médico por su id
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM ProcedimientosMedicos WHERE idServicio = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM PROCEDIMIENTOS_MEDICOS WHERE id = :id", nativeQuery = true)
     void eliminarProcedimientoMedico(@Param("id") int id);
 }

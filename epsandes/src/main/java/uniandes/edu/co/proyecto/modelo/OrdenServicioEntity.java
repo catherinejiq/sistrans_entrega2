@@ -22,14 +22,15 @@ public class OrdenServicioEntity {
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
+    @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName ="idAfiliado" )
     private AfiliadoEntity afiliado;
 
     @ManyToOne
-    @JoinColumn(name = "idMedico", nullable = false)
+    @JoinColumn(name = "idMedico", nullable = false,referencedColumnName = "idMedico")
     private MedicoEntity medico;
 
-    public OrdenServicioEntity() {}
+    public OrdenServicioEntity() {;
+    }
 
     public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, AfiliadoEntity afiliado, MedicoEntity medico) {
         this.tipoOrden = tipoOrden;

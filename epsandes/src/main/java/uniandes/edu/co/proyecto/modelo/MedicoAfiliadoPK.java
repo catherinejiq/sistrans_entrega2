@@ -7,16 +7,19 @@ import java.io.Serializable;
 public class MedicoAfiliadoPK implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "idMedico", nullable = false)
+    @JoinColumn(name = "idMedico", nullable = false,referencedColumnName = "idMedico")
     private MedicoEntity medico;
 
     @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
+    @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName = "idAfiliado")
     private AfiliadoEntity afiliado;
 
-    public MedicoAfiliadoPK() {}
+    public MedicoAfiliadoPK() {
+        ;
+    }
 
     public MedicoAfiliadoPK(MedicoEntity medico, AfiliadoEntity afiliado) {
+        super();
         this.medico = medico;
         this.afiliado = afiliado;
     }

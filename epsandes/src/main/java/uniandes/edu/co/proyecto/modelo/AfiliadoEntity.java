@@ -2,9 +2,9 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "Afiliados")
-
 public class AfiliadoEntity {
 
     @Id
@@ -25,10 +25,6 @@ public class AfiliadoEntity {
     @JoinColumn(name = "idContribuyente", nullable = true)
     private AfiliadoEntity contribuyente;
 
-    public AfiliadoEntity() {
-        ;
-    }
-
     public AfiliadoEntity(String tipoDocumento, String nombre, String fechaNacimiento,
             String direccion, String telefono, TipoAfiliado tipoAfiliado, AfiliadoEntity contribuyente, String parentesco) {
         this.tipoDocumento = tipoDocumento;
@@ -40,6 +36,10 @@ public class AfiliadoEntity {
         this.contribuyente = contribuyente;
         this.parentesco = parentesco;
     }
+    public AfiliadoEntity() {
+        ;
+    }
+
 
     public Integer getIdAfiliado() {
         return idAfiliado;

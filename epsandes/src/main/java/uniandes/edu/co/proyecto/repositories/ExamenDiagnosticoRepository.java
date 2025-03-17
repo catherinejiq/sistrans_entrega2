@@ -12,22 +12,19 @@ public interface ExamenDiagnosticoRepository extends JpaRepository<ExamenDiagnos
 
     @Query(value = "SELECT * FROM ExamenesDiagnosticos", nativeQuery = true)
     Collection<ExamenDiagnosticoEntity> darExamenesDiagnosticos();
-    
-    @Query(value = "SELECT * FROM ExamenesDiagnosticos WHERE idExamen = :id", nativeQuery = true)
+
+    @Query(value = "SELECT * FROM ExamenesDiagnosticos WHERE id = :id", nativeQuery = true)
     ExamenDiagnosticoEntity darExamenDiagnostico(@Param("id") int id);
-    
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ExamenesDiagnosticos SET resultados = :resultados, muestras = :muestras "
-                 + "WHERE idExamen = :id", nativeQuery = true)
+    @Query(value = "UPDATE ExamenesDiagnosticos SET resultados = :resultados, muestras = :muestras WHERE id = :id", nativeQuery = true)
     void actualizarExamenDiagnostico(@Param("id") int id,
                                      @Param("resultados") String resultados,
                                      @Param("muestras") String muestras);
-    
-  
+
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM ExamenesDiagnosticos WHERE idExamen = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM ExamenesDiagnosticos WHERE id = :id", nativeQuery = true)
     void eliminarExamenDiagnostico(@Param("id") int id);
 }

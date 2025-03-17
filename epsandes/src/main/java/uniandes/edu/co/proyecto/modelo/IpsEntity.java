@@ -17,16 +17,16 @@ public class IpsEntity {
     private String telefono;
     private String horario;
 
-    public IpsEntity() {
-        ;
-    }
-
     public IpsEntity(String nombre, String direccion, String telefono, String horario) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.horario = horario;
     }
+    public IpsEntity() {
+        ;
+    }
+
 
     public Integer getNit() {
         return nit;

@@ -15,16 +15,17 @@ public class ProcedimientoMedicoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idProcedimiento;
 
     @Column(nullable = false)
     private String tipo;
 
     @OneToOne
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false,referencedColumnName = "idServicio")
     private ServicioSaludEntity servicio;
 
     public ProcedimientoMedicoEntity() {
+        ;
     }
 
     public ProcedimientoMedicoEntity(String tipo, ServicioSaludEntity servicio) {
@@ -33,11 +34,11 @@ public class ProcedimientoMedicoEntity {
     }
 
     public Integer getId() {
-        return id;
+        return idProcedimiento;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idProcedimiento = id;
     }
 
     public String getTipo() {

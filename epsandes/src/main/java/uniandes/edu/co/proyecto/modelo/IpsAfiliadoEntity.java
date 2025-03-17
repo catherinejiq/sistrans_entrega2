@@ -3,13 +3,16 @@ package uniandes.edu.co.proyecto.modelo;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Afiliado_Ips")
+@Table(name = "Afiliado_IPS")
+
 public class IpsAfiliadoEntity {
 
     @EmbeddedId
     private IpsAfiliadoPK id;
 
-    public IpsAfiliadoEntity() {}
+    public IpsAfiliadoEntity() {
+        ;
+    }
 
     public IpsAfiliadoEntity(IpsEntity ips, AfiliadoEntity afiliado) {
         this.id = new IpsAfiliadoPK(ips, afiliado);
