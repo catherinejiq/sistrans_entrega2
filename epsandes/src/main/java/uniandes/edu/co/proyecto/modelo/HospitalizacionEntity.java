@@ -2,44 +2,66 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Hospitalizaciones")
-public class HospitalizacionEntity extends ServicioSaludEntity {
-    
-    private String estado;  
+public class HospitalizacionEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(nullable = false)
+    private String estado;
+
+    @Column(nullable = false)
     private String tratamiento;
 
-    @ManyToMany
-    @JoinTable(
-        name = "AFILIADO_HOSPITALIZACION",
-        joinColumns = @JoinColumn(name = "idHospitalizacion"),
-        inverseJoinColumns = @JoinColumn(name = "idAfiliado")
-    )
-    private List<AfiliadoEntity> afiliados = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "idServicio", nullable = false)
+    private ServicioSaludEntity servicio;
 
     @ManyToMany
     @JoinTable(
-        name = "MEDICO_HOSPITALIZACION",
+        name = "HOSPITALIZACION_MEDICO",
         joinColumns = @JoinColumn(name = "idHospitalizacion"),
         inverseJoinColumns = @JoinColumn(name = "idMedico")
     )
     private List<MedicoEntity> medicos = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+        name = "HOSPITALIZACION_AFILIADO",
+        joinColumns = @JoinColumn(name = "idHospitalizacion"),
+        inverseJoinColumns = @JoinColumn(name = "idAfiliado")
+    )
+    private List<AfiliadoEntity> afiliados = new ArrayList<>();
+
     public HospitalizacionEntity() {
-        super();
     }
 
-    public HospitalizacionEntity(Date fecha, String descripcion, String estado, String tratamiento) {
-        super(fecha, descripcion);
+    public HospitalizacionEntity(String estado, String tratamiento, ServicioSaludEntity servicio) {
         this.estado = estado;
         this.tratamiento = tratamiento;
+        this.servicio = servicio;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEstado() {
@@ -58,12 +80,12 @@ public class HospitalizacionEntity extends ServicioSaludEntity {
         this.tratamiento = tratamiento;
     }
 
-    public List<AfiliadoEntity> getAfiliados() {
-        return afiliados;
+    public ServicioSaludEntity getServicio() {
+        return servicio;
     }
 
-    public void setAfiliados(List<AfiliadoEntity> afiliados) {
-        this.afiliados = afiliados;
+    public void setServicio(ServicioSaludEntity servicio) {
+        this.servicio = servicio;
     }
 
     public List<MedicoEntity> getMedicos() {
@@ -74,11 +96,11 @@ public class HospitalizacionEntity extends ServicioSaludEntity {
         this.medicos = medicos;
     }
 
-    public Integer getIdHospitalizacion() {
-        return idHospitalizacion;
-    }
-    public void setIdHospitalizacion(Integer idHospitalizacion) {
-        this.idHospitalizacion = idHospitalizacion;
+    public List<AfiliadoEntity> getAfiliados() {
+        return afiliados;
     }
 
+    public void setAfiliados(List<AfiliadoEntity> afiliados) {
+        this.afiliados = afiliados;
+    }
 }

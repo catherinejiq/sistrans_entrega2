@@ -2,18 +2,24 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
-import uniandes.edu.co.proyecto.modelo.ConsultaEntity;
 
 @Entity
 @Table(name = "ExamenesDiagnosticos")
-public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
+public class ExamenDiagnosticoEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(nullable = false)
     private String resultados;
@@ -21,22 +27,33 @@ public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
     @Column(nullable = false)
     private String muestras;
 
+    @OneToOne
+    @JoinColumn(name = "idServicio", nullable = false)
+    private ServicioSaludEntity servicio;
+
     @ManyToMany
     @JoinTable(
-        name = "CONSULTA_EXAMEN",
+        name = "EXAMENES_CONSULTA",
         joinColumns = @JoinColumn(name = "idExamen"),
         inverseJoinColumns = @JoinColumn(name = "idConsulta")
     )
     private List<ConsultaEntity> consultas = new ArrayList<>();
 
     public ExamenDiagnosticoEntity() {
-        super();
     }
 
-    public ExamenDiagnosticoEntity(Date fecha, String descripcion, String resultados, String muestras) {
-        super(fecha, descripcion);
+    public ExamenDiagnosticoEntity(String resultados, String muestras, ServicioSaludEntity servicio) {
         this.resultados = resultados;
         this.muestras = muestras;
+        this.servicio = servicio;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getResultados() {
@@ -55,6 +72,14 @@ public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
         this.muestras = muestras;
     }
 
+    public ServicioSaludEntity getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServicioSaludEntity servicio) {
+        this.servicio = servicio;
+    }
+
     public List<ConsultaEntity> getConsultas() {
         return consultas;
     }
@@ -63,3 +88,6 @@ public class ExamenDiagnosticoEntity extends ServicioSaludEntity {
         this.consultas = consultas;
     }
 }
+
+
+

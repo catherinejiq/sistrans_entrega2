@@ -2,36 +2,53 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import java.util.Date;
 
 @Entity
 @Table(name = "Consultas")
-public class ConsultaEntity extends ServicioSaludEntity {
+public class ConsultaEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(nullable = false)
     private String tipoConsulta;
 
-    @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
-    private AfiliadoEntity afiliado;
+    @OneToOne
+    @JoinColumn(name = "idServicio", nullable = false)
+    private ServicioSaludEntity servicio;
 
     @ManyToOne
     @JoinColumn(name = "idMedico", nullable = false)
     private MedicoEntity medico;
 
+    @ManyToOne
+    @JoinColumn(name = "idAfiliado", nullable = false)
+    private AfiliadoEntity afiliado;
+
     public ConsultaEntity() {
-        super();
     }
 
-    public ConsultaEntity(Date fecha, String descripcion, String tipoConsulta,
-                            AfiliadoEntity afiliado, MedicoEntity medico) {
-        super(fecha, descripcion);
+    public ConsultaEntity(String tipoConsulta, ServicioSaludEntity servicio, MedicoEntity medico, AfiliadoEntity afiliado) {
         this.tipoConsulta = tipoConsulta;
-        this.afiliado = afiliado;
+        this.servicio = servicio;
         this.medico = medico;
+        this.afiliado = afiliado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTipoConsulta() {
@@ -42,12 +59,12 @@ public class ConsultaEntity extends ServicioSaludEntity {
         this.tipoConsulta = tipoConsulta;
     }
 
-    public AfiliadoEntity getAfiliado() {
-        return afiliado;
+    public ServicioSaludEntity getServicio() {
+        return servicio;
     }
 
-    public void setAfiliado(AfiliadoEntity afiliado) {
-        this.afiliado = afiliado;
+    public void setServicio(ServicioSaludEntity servicio) {
+        this.servicio = servicio;
     }
 
     public MedicoEntity getMedico() {
@@ -57,4 +74,13 @@ public class ConsultaEntity extends ServicioSaludEntity {
     public void setMedico(MedicoEntity medico) {
         this.medico = medico;
     }
+
+    public AfiliadoEntity getAfiliado() {
+        return afiliado;
+    }
+
+    public void setAfiliado(AfiliadoEntity afiliado) {
+        this.afiliado = afiliado;
+    }
 }
+
