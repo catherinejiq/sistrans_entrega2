@@ -53,6 +53,4 @@ public interface AfiliadoRepository extends JpaRepository<AfiliadoEntity, Intege
     @Query(value = "DELETE FROM Afiliados WHERE idAfiliado = :id", nativeQuery = true)
     void eliminarAfiliado(@Param("id") int id);
     
-    @Query(value = "SELECT COUNT(*) FROM Afiliados WHERE tipoAfiliado = :tipo", nativeQuery = true)
-    int contarAfiliadosPorTipo(@Param("tipo") String tipo);
 }

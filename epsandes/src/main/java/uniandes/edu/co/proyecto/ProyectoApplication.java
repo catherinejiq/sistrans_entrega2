@@ -24,13 +24,17 @@ public class ProyectoApplication implements CommandLineRunner{
 	public void run(String... args) {
 		System.out.println("Ejecutando CommandLineRunner...");
 		
-		Collection<AfiliadoEntity> afiliados = afiliadoRepository.darAfiliados();
-		System.out.println("Afiliados: " + afiliados.size());
-	
-		for (AfiliadoEntity a : afiliados) {
-			System.out.println(a);
-		}
+		//Collection<AfiliadoEntity> afiliados = afiliadoRepository.darAfiliados();
+		//System.out.println("Afiliados: " + afiliados.size());
+		//AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(1);
+		//System.out.println(afiliado);
+		//for (AfiliadoEntity a : afiliados) {
+	//		System.out.println(a);
+		//}
 		
+		afiliadoRepository.eliminarAfiliado(9);
+		AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(9);
+		System.out.println(afiliado);
 		System.out.println("Finalizando CommandLineRunner...");
 	}
 	
