@@ -7,14 +7,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Collection;
 
 import uniandes.edu.co.proyecto.repositories.AfiliadoRepository;
+import uniandes.edu.co.proyecto.repositories.IpsRepository;
 import uniandes.edu.co.proyecto.modelo.AfiliadoEntity;
+import uniandes.edu.co.proyecto.modelo.IpsEntity;
 
 
 @SpringBootApplication
 public class ProyectoApplication implements CommandLineRunner{
 
 	@Autowired
-	private AfiliadoRepository afiliadoRepository;
+	private IpsRepository afiliadoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
@@ -24,17 +26,18 @@ public class ProyectoApplication implements CommandLineRunner{
 	public void run(String... args) {
 		System.out.println("Ejecutando CommandLineRunner...");
 		
-		//Collection<AfiliadoEntity> afiliados = afiliadoRepository.darAfiliados();
-		//System.out.println("Afiliados: " + afiliados.size());
+		Collection<IpsEntity> afiliados = afiliadoRepository.darIps();
+		System.out.println("Afiliados: " + afiliados.size());
 		//AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(1);
 		//System.out.println(afiliado);
-		//for (AfiliadoEntity a : afiliados) {
-	//		System.out.println(a);
-		//}
-		
-		afiliadoRepository.eliminarAfiliado(9);
-		AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(9);
-		System.out.println(afiliado);
+		for (IpsEntity a : afiliados) {
+			System.out.println(a);
+		}
+		//AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(1);
+		//System.out.println(afiliado);
+		//afiliadoRepository.eliminarAfiliado(9);
+		//AfiliadoEntity afiliado = afiliadoRepository.darAfiliado(9);
+		//System.out.println(afiliado);
 		System.out.println("Finalizando CommandLineRunner...");
 	}
 	

@@ -1,12 +1,13 @@
 package uniandes.edu.co.proyecto.repositories;
 
-import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
+import uniandes.edu.co.proyecto.modelo.MedicoEntity;
+
+import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import uniandes.edu.co.proyecto.modelo.MedicoEntity;
 
 public interface MedicoRepository extends JpaRepository<MedicoEntity, Integer> {
 
@@ -18,25 +19,20 @@ public interface MedicoRepository extends JpaRepository<MedicoEntity, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad, nit) "
-                 + "VALUES (:identificacion, :nombre, :numRegistro, :especialidad, :nit)", nativeQuery = true)
+    @Query(value = "INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad) VALUES (:identificacion, :nombre, :numRegistro, :especialidad)", nativeQuery = true)
     void insertarMedico(@Param("identificacion") String identificacion,
-                        @Param("nombre") String nombre,
-                        @Param("numRegistro") String numRegistro,
-                        @Param("especialidad") String especialidad,
-                        @Param("nit") Integer nit);
+                         @Param("nombre") String nombre,
+                         @Param("numRegistro") String numRegistro,
+                         @Param("especialidad") String especialidad);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Medicos SET identificacion = :identificacion, nombre = :nombre, "
-                 + "numRegistro = :numRegistro, especialidad = :especialidad, nit = :nit "
-                 + "WHERE idMedico = :id", nativeQuery = true)
+    @Query(value = "UPDATE Medicos SET identificacion = :identificacion, nombre = :nombre, numRegistro = :numRegistro, especialidad = :especialidad WHERE idMedico = :id", nativeQuery = true)
     void actualizarMedico(@Param("id") int id,
                           @Param("identificacion") String identificacion,
                           @Param("nombre") String nombre,
                           @Param("numRegistro") String numRegistro,
-                          @Param("especialidad") String especialidad,
-                          @Param("nit") Integer nit);
+                          @Param("especialidad") String especialidad);
 
     @Modifying
     @Transactional
