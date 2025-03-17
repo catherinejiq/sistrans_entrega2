@@ -1,34 +1,35 @@
 package uniandes.edu.co.proyecto.repositories;
 
-import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import uniandes.edu.co.proyecto.modelo.OrdenServicioEntity;
+import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import uniandes.edu.co.proyecto.modelo.OrdenServicioEntity;
 
 public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEntity, Integer> {
 
     @Query(value = "SELECT * FROM OrdenServicios", nativeQuery = true)
-    Collection<OrdenServicioEntity> darOrdenesServicios();
-    
+    Collection<OrdenServicioEntity> darOrdenesServicio();
+
     @Query(value = "SELECT * FROM OrdenServicios WHERE idOrden = :id", nativeQuery = true)
     OrdenServicioEntity darOrdenServicio(@Param("id") int id);
-    
+
+    // Consulta para obtener órdenes de servicio por afiliado 
+    @Query(value = "SELECT * FROM OrdenServicios WHERE idAfiliado = :idAfiliado", nativeQuery = true)
+    Collection<OrdenServicioEntity> darOrdenesPorAfiliado(@Param("idAfiliado") int idAfiliado);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idAfiliado, idMedico) " +
-                   "VALUES (:tipoOrden, :receta, :estado, TO_DATE(:fecha, 'YYYY-MM-DD'), :idAfiliado, :idMedico)", 
-           nativeQuery = true)
+                   "VALUES (:tipoOrden, :receta, :estado, TO_DATE(:fecha, 'YYYY-MM-DD'), :idAfiliado, :idMedico)", nativeQuery = true)
     void insertarOrdenServicio(@Param("tipoOrden") String tipoOrden,
                                @Param("receta") String receta,
-                               @Param("estado") String estado,
-                               @Param("fecha") String fecha,
+                               @Param("estado") String estado, 
+                               @Param("fecha") String fecha, 
                                @Param("idAfiliado") int idAfiliado,
                                @Param("idMedico") int idMedico);
-    
 
     @Modifying
     @Transactional
@@ -42,7 +43,6 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
                                  @Param("fecha") String fecha,
                                  @Param("idAfiliado") int idAfiliado,
                                  @Param("idMedico") int idMedico);
-    
 
     @Modifying
     @Transactional
