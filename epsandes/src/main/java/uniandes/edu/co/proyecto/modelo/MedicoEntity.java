@@ -1,18 +1,13 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Medicos")
 public class MedicoEntity {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medico_seq")
+    @SequenceGenerator(name = "medico_seq", sequenceName = "MEDICO_SEQ", allocationSize = 1)
     private Integer idMedico;
     private String identificacion;
     private String nombre;

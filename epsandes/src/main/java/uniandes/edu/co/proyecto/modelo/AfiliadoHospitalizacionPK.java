@@ -6,6 +6,7 @@ import java.io.Serializable;
 @Embeddable
 public class AfiliadoHospitalizacionPK implements Serializable {
 
+
     @ManyToOne
     @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName ="idAfiliado")
     private AfiliadoEntity afiliado;

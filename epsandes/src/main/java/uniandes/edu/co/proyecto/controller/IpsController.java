@@ -3,6 +3,9 @@ package uniandes.edu.co.proyecto.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,16 +27,29 @@ public class IpsController {
 
     @GetMapping("/ips/new")
     public String ipsForm(Model model) {
+        
         model.addAttribute("ips", new IpsEntity());
         return "ipsNuevo";
     }
 
    
     @PostMapping("/ips/new/save")
-    public String ipsGuardar(@ModelAttribute IpsEntity ips) {
+    public ResponseEntity<String> ipsGuardar(@RequestBody IpsEntity ips) {
+        System.out.println("Datos recibidos: " + ips);
+        System.out.println("nombre: " + ips.getNombre());
+        System.out.println("dirección: " + ips.getDireccion());
+        System.out.println("teléfono: " + ips.getTelefono());
+        System.out.println("horario: " + ips.getHorario());
+    
+        if (ips.getNombre() == null || ips.getDireccion() == null || ips.getTelefono() == null || ips.getHorario() == null) {
+            return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios");
+        }
+    
         ipsRepository.insertarIp(ips.getNombre(), ips.getDireccion(), ips.getTelefono(), ips.getHorario());
-        return "redirect:/ips";
+        return ResponseEntity.ok("IPS creada correctamente");
     }
+    
+
 
     @GetMapping("/ips/{nit}/edit")
     public String ipsEditarForm(@PathVariable("nit") int nit, Model model) {

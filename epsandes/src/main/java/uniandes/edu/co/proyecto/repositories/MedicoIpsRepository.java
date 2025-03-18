@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.MedicoIpsEntity;
+import uniandes.edu.co.proyecto.modelo.MedicoIpsPK;
 
-public interface MedicoIpsRepository extends JpaRepository<MedicoIpsEntity, Integer> {
+public interface MedicoIpsRepository extends JpaRepository<MedicoIpsEntity, MedicoIpsPK> {
 
     @Query(value = "SELECT * FROM Medico_IPS", nativeQuery = true)
     Collection<MedicoIpsEntity> darMedicoIps();

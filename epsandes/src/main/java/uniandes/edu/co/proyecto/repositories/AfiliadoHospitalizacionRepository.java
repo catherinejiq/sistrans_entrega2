@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.AfiliadoHospitalizacionEntity;
+import uniandes.edu.co.proyecto.modelo.AfiliadoHospitalizacionPK;
 
-public interface AfiliadoHospitalizacionRepository extends JpaRepository<AfiliadoHospitalizacionEntity, Integer> {
+public interface AfiliadoHospitalizacionRepository extends JpaRepository<AfiliadoHospitalizacionEntity, AfiliadoHospitalizacionPK> {
 
     @Query(value = "SELECT * FROM Hospitalizacion_Afiliado", nativeQuery = true)
     Collection<AfiliadoHospitalizacionEntity> darAfiliadoHospitalizaciones();

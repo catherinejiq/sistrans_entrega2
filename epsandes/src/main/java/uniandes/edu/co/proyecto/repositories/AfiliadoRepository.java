@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import uniandes.edu.co.proyecto.modelo.AfiliadoEntity;
+import uniandes.edu.co.proyecto.modelo.TipoAfiliado;
 
 import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
@@ -20,8 +21,8 @@ public interface AfiliadoRepository extends JpaRepository<AfiliadoEntity, Intege
     
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Afiliados ( tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) "
-                 + "VALUES ( :tipoDocumento, :nombre, TO_DATE(:fechaNacimiento, 'YYYY-MM-DD'), :direccion, :telefono, :parentesco, :tipoAfiliado, :idContribuyente)", 
+    @Query(value = "INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) "
+                 + "VALUES (AFILIADO_SEQ.nextval, :tipoDocumento, :nombre, :fechaNacimiento, :direccion, :telefono, :parentesco, :tipoAfiliado, :idContribuyente)", 
            nativeQuery = true)
     void insertarAfiliado(@Param("tipoDocumento") String tipoDocumento,
                           @Param("nombre") String nombre,
@@ -29,7 +30,7 @@ public interface AfiliadoRepository extends JpaRepository<AfiliadoEntity, Intege
                           @Param("direccion") String direccion,
                           @Param("telefono") String telefono,
                           @Param("parentesco") String parentesco,
-                          @Param("tipoAfiliado") String tipoAfiliado,
+                          @Param("tipoAfiliado") TipoAfiliado tipoAfiliado,
                           @Param("idContribuyente") Integer idContribuyente);
  
     @Modifying

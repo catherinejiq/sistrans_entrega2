@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.ConsultaExamenEntity;
+import uniandes.edu.co.proyecto.modelo.ConsultaExamenPK;
 
-public interface ConsultaExamenRepository extends JpaRepository<ConsultaExamenEntity, Integer> {
+public interface ConsultaExamenRepository extends JpaRepository<ConsultaExamenEntity, ConsultaExamenPK> {
 
     @Query(value = "SELECT * FROM Consulta_Examen", nativeQuery = true)
     Collection<ConsultaExamenEntity> darConsultaExamenes();

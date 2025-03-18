@@ -3,6 +3,7 @@ package uniandes.edu.co.proyecto.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,13 +33,22 @@ public class MedicosController {
 
    
     @PostMapping("/medicos/new/save")
-    public String medicoGuardar(@ModelAttribute MedicoEntity medico) {
-        medicoRepository.insertarMedico(medico.getIdentificacion(),
-                                        medico.getNombre(),
-                                        medico.getNumRegistro(),
-                                        medico.getEspecialidad());
-        return "redirect:/medicos";
+    public ResponseEntity<String> guardarMedico(@RequestBody MedicoEntity medico) {
+    System.out.println("Identificación recibida: " + medico.getIdentificacion());
+    System.out.println("Nombre recibido: " + medico.getNombre());
+    System.out.println("Número de registro recibido: " + medico.getNumRegistro());
+    System.out.println("Especialidad recibida: " + medico.getEspecialidad());
+
+    if (medico.getIdentificacion() == null || medico.getNombre() == null || 
+        medico.getNumRegistro() == null || medico.getEspecialidad() == null) {
+        return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios.");
     }
+
+    medicoRepository.insertarMedico(medico.getIdentificacion(), medico.getNombre(), 
+                                    medico.getNumRegistro(), medico.getEspecialidad());
+
+    return ResponseEntity.ok("Médico creado exitosamente");
+}
 
    
     @GetMapping("/medicos/{id}/edit")

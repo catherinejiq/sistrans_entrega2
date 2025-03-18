@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
 
 
 @Entity
@@ -8,7 +9,9 @@ import jakarta.persistence.*;
 public class AfiliadoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AFILIADO_SEQ")
+    @SequenceGenerator(name = "AFILIADO_SEQ", sequenceName = "AFILIADO_SEQ", allocationSize = 1)
+    @Column(name = "idAfiliado", nullable = false, updatable = false)
     private Integer idAfiliado;
     private String tipoDocumento;
     private String nombre;
@@ -16,24 +19,22 @@ public class AfiliadoEntity {
     private String direccion;
     private String telefono;
     private String parentesco;
+    @Column(nullable = true)
+    private Integer idContribuyente;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoAfiliado tipoAfiliado;
 
-    @ManyToOne
-    @JoinColumn(name = "idContribuyente", nullable = true)
-    private AfiliadoEntity contribuyente;
-
     public AfiliadoEntity(String tipoDocumento, String nombre, String fechaNacimiento,
-            String direccion, String telefono, TipoAfiliado tipoAfiliado, AfiliadoEntity contribuyente, String parentesco) {
+            String direccion, String telefono, TipoAfiliado tipoAfiliado, Integer idContribuyente, String parentesco) {
         this.tipoDocumento = tipoDocumento;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
         this.telefono = telefono;
         this.tipoAfiliado = tipoAfiliado;
-        this.contribuyente = contribuyente;
+        this.idContribuyente = idContribuyente;
         this.parentesco = parentesco;
     }
     public AfiliadoEntity() {
@@ -97,13 +98,13 @@ public class AfiliadoEntity {
         this.tipoAfiliado = tipoAfiliado;
     }
 
-    public AfiliadoEntity getContribuyente() {
-        return contribuyente;
+    public Integer getIdContribuyente() {
+        return idContribuyente;
+    }
+    public void setIdContribuyente(Integer idContribuyente) {
+        this.idContribuyente = idContribuyente;
     }
 
-    public void setContribuyente(AfiliadoEntity contribuyente) {
-        this.contribuyente = contribuyente;
-    }
     public String getParentesco() {
         return parentesco;
     }
@@ -119,6 +120,6 @@ public class AfiliadoEntity {
            ", direccion=" + direccion +
            ", telefono=" + telefono +
            ", parentesco=" + parentesco +
-           ", tipoAfiliado=" + tipoAfiliado + "]";
+           ", tipoAfiliado=" + tipoAfiliado + ", idContribuyente=" + idContribuyente + "]";
 }
 }

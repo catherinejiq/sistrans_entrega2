@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.HospitalizacionMedico;
+import uniandes.edu.co.proyecto.modelo.HospitalizacionMedicoPK;
 
-public interface HospitalizacionMedicoRepository extends JpaRepository<HospitalizacionMedico, Integer> {
+public interface HospitalizacionMedicoRepository extends JpaRepository<HospitalizacionMedico, HospitalizacionMedicoPK> {
 
     @Query(value = "SELECT * FROM Hospitalizacion_Medico", nativeQuery = true)
     Collection<HospitalizacionMedico> darHospitalizacionMedicos();

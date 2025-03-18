@@ -1,20 +1,32 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "IPSs")
 public class IpsEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ips_seq")
+    @SequenceGenerator(name = "ips_seq", sequenceName = "IPS_SEQUENCE", allocationSize = 1)
+    @Column(name = "nit")
     private Integer nit;
+
+
+    @Column(name = "nombre", nullable = false, length = 200)
     private String nombre;
+
+
+    @Column(name = "direccion", nullable = false, length = 200)
     private String direccion;
+
+
+    @Column(name = "telefono", nullable = false, length = 15)
     private String telefono;
+
+    @Column(name = "horario", nullable = false, length = 50)
     private String horario;
 
     public IpsEntity(String nombre, String direccion, String telefono, String horario) {
@@ -24,7 +36,7 @@ public class IpsEntity {
         this.horario = horario;
     }
     public IpsEntity() {
-        ;
+        
     }
 
 

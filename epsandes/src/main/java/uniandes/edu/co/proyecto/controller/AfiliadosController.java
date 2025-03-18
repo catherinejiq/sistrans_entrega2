@@ -1,16 +1,13 @@
 package uniandes.edu.co.proyecto.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.AfiliadoEntity;
+import uniandes.edu.co.proyecto.modelo.TipoAfiliado;
 import uniandes.edu.co.proyecto.repositories.AfiliadoRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,12 +39,32 @@ public class AfiliadosController {
     }
 
     @PostMapping("/afiliados/new/save")
-    public String afiliadoGuardar(@ModelAttribute AfiliadoEntity afiliado) {
-        afiliadoRepository.insertarAfiliado(afiliado.getTipoDocumento(), afiliado.getNombre(),afiliado.getFechaNacimiento(), afiliado.getDireccion(),afiliado.getTelefono(),afiliado.getParentesco(),afiliado.getTipoAfiliado().toString(),afiliado.getContribuyente().getIdAfiliado());
+    public ResponseEntity<String> afiliadoGuardar(@RequestBody AfiliadoEntity afiliado) {
+        System.out.println("ID Afiliado recibido: " + afiliado.getIdAfiliado());
+        System.out.println("Nombre recibido: " + afiliado.getNombre());
+        System.out.println("Tipo de afiliado recibido: " + afiliado.getTipoAfiliado());
+        System.out.println("ID Contribuyente recibido: " + afiliado.getIdContribuyente());
 
-        return "redirect:/afiliados";
+    
+        if (afiliado.getTipoAfiliado() == null) {
+            return ResponseEntity.badRequest().body("Error: El campo 'tipoAfiliado' no puede ser null.");
+        }
+    
+        afiliadoRepository.insertarAfiliado(
+            afiliado.getTipoDocumento(),
+            afiliado.getNombre(),
+            afiliado.getFechaNacimiento(),
+            afiliado.getDireccion(),
+            afiliado.getTelefono(),
+            afiliado.getParentesco(),
+            TipoAfiliado.valueOf(afiliado.getTipoAfiliado().toString()),  
+            afiliado.getIdContribuyente()
+        );
+    
+        return ResponseEntity.ok("Afiliado creado exitosamente");
     }
     
+
 
     @GetMapping("afiliados/{id}/edit")
     public String afiliadoEditarForm(@PathVariable("id") int id, Model model) {
@@ -62,7 +79,7 @@ public class AfiliadosController {
     
     @PostMapping("/afiliados/{id}/edit/save")
     public String afiliadoEditarGuardar(@PathVariable("id") int id, @ModelAttribute AfiliadoEntity afiliadoEntity ) {
-        afiliadoRepository.actualizarAfiliado(id, afiliadoEntity.getTipoDocumento(), afiliadoEntity.getNombre(), afiliadoEntity.getFechaNacimiento(), afiliadoEntity.getDireccion(), afiliadoEntity.getTelefono(), afiliadoEntity.getParentesco(), afiliadoEntity.getTipoAfiliado().toString(), afiliadoEntity.getContribuyente().getIdAfiliado());
+        afiliadoRepository.actualizarAfiliado(id, afiliadoEntity.getTipoDocumento(), afiliadoEntity.getNombre(), afiliadoEntity.getFechaNacimiento(), afiliadoEntity.getDireccion(), afiliadoEntity.getTelefono(), afiliadoEntity.getParentesco(), afiliadoEntity.getTipoAfiliado().toString(), afiliadoEntity.getIdContribuyente());
         return "redirect:/afiliados";
     }
     
@@ -71,9 +88,5 @@ public class AfiliadosController {
         afiliadoRepository.eliminarAfiliado(id);
         return "redirect:/afiliados";
     }
-    
-    "
-    Listo commit
-    "
-    
-}
+} 
+
