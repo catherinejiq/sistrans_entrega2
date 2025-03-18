@@ -6,17 +6,21 @@ import java.io.Serializable;
 @Embeddable
 public class AfiliadoHospitalizacionPK implements Serializable {
 
+
     @ManyToOne
-    @JoinColumn(name = "idAfiliado", nullable = false)
+    @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName ="idAfiliado")
     private AfiliadoEntity afiliado;
 
     @ManyToOne
-    @JoinColumn(name = "idHospitalizacion", nullable = false)
+    @JoinColumn(name = "idHospitalizacion", nullable = false,referencedColumnName = "idHospitalizacion")
     private HospitalizacionEntity hospitalizacion;
 
-    public AfiliadoHospitalizacionPK() {}
+    public AfiliadoHospitalizacionPK() {
+        ;
+    }
 
     public AfiliadoHospitalizacionPK(AfiliadoEntity afiliado, HospitalizacionEntity hospitalizacion) {
+        super();
         this.afiliado = afiliado;
         this.hospitalizacion = hospitalizacion;
     }

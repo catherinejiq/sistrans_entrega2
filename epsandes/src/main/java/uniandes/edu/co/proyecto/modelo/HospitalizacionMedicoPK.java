@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class HospitalizacionMedicoPK implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "idHospitalizacion", nullable = false)
+    @JoinColumn(name = "idHospitalizacion", nullable = false,referencedColumnName = "idHospitalizacion")
     private HospitalizacionEntity hospitalizacion;
 
     @ManyToOne
-    @JoinColumn(name = "idMedico", nullable = false)
+    @JoinColumn(name = "idMedico", nullable = false,referencedColumnName = "idMedico")
     private MedicoEntity medico;
 
     public HospitalizacionMedicoPK() {
@@ -19,6 +19,7 @@ public class HospitalizacionMedicoPK implements Serializable {
     }
 
     public HospitalizacionMedicoPK(HospitalizacionEntity hospitalizacion, MedicoEntity medico) {
+        super();
         this.hospitalizacion = hospitalizacion;
         this.medico = medico;
     }

@@ -1,36 +1,45 @@
-
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "ProcedimientosMedicos")
-public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
+public class ProcedimientoMedicoEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idProcedimiento;
 
     @Column(nullable = false)
     private String tipo;
 
-
-    @ManyToOne
-    @JoinColumn(name = "idOrden", nullable = false)
-    private OrdenServicioEntity ordenServicio;
-
+    @OneToOne
+    @JoinColumn(name = "idServicio", nullable = false,referencedColumnName = "idServicio")
+    private ServicioSaludEntity servicio;
 
     public ProcedimientoMedicoEntity() {
-        super();
+        ;
     }
 
-    public ProcedimientoMedicoEntity(java.util.Date fecha, String descripcion,
-                                    String tipo, OrdenServicioEntity ordenServicio) {
-        super(fecha, descripcion);
+    public ProcedimientoMedicoEntity(String tipo, ServicioSaludEntity servicio) {
         this.tipo = tipo;
-        this.ordenServicio = ordenServicio;
+        this.servicio = servicio;
     }
 
+    public Integer getId() {
+        return idProcedimiento;
+    }
+
+    public void setId(Integer id) {
+        this.idProcedimiento = id;
+    }
 
     public String getTipo() {
         return tipo;
@@ -38,12 +47,14 @@ public class ProcedimientoMedicoEntity extends ServicioSaludEntity {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    } 
-    public OrdenServicioEntity getOrdenServicio() {
-        return ordenServicio;
     }
 
-    public void setOrdenServicio(OrdenServicioEntity ordenServicio) {
-        this.ordenServicio = ordenServicio;
+    public ServicioSaludEntity getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServicioSaludEntity servicio) {
+        this.servicio = servicio;
     }
 }
+

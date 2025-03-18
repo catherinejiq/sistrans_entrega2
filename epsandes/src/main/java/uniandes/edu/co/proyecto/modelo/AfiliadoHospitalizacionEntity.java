@@ -9,7 +9,9 @@ public class AfiliadoHospitalizacionEntity {
     @EmbeddedId
     private AfiliadoHospitalizacionPK id;
 
-    public AfiliadoHospitalizacionEntity() {}
+    public AfiliadoHospitalizacionEntity() {
+        ;
+    }
 
     public AfiliadoHospitalizacionEntity(AfiliadoEntity afiliado, HospitalizacionEntity hospitalizacion) {
         this.id = new AfiliadoHospitalizacionPK(afiliado, hospitalizacion);

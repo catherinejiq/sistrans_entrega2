@@ -1,38 +1,28 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Medicos")
 public class MedicoEntity {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medico_seq")
+    @SequenceGenerator(name = "medico_seq", sequenceName = "MEDICO_SEQ", allocationSize = 1)
     private Integer idMedico;
     private String identificacion;
     private String nombre;
     private String numRegistro;
     private String especialidad;
 
-    @ManyToOne
-    @JoinColumn(name = "nit", nullable = false)
-    private IpsEntity ips;
-
     public MedicoEntity() {
         ;
     }
 
-    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad, IpsEntity ips) {
+    public MedicoEntity(String identificacion, String nombre, String numRegistro, String especialidad) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.numRegistro = numRegistro;
         this.especialidad = especialidad;
-        this.ips = ips;
     }
 
     public Integer getIdMedico() {
@@ -75,11 +65,4 @@ public class MedicoEntity {
         this.especialidad = especialidad;
     }
 
-    public IpsEntity getIps() {
-        return ips;
-    }
-
-    public void setIps(IpsEntity ips) {
-        this.ips = ips;
-    }
 }

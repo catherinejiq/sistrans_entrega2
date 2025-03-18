@@ -8,11 +8,11 @@ import jakarta.persistence.Embeddable;
 public class MedicoIpsPK implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "idMedico", nullable = false)
+    @JoinColumn(name = "idMedico", nullable = false,referencedColumnName = "idMedico")
     private MedicoEntity medico;
 
     @ManyToOne
-    @JoinColumn(name = "nit", nullable = false)
+    @JoinColumn(name = "nit", nullable = false,referencedColumnName = "nit")
     private IpsEntity ips;
 
     public MedicoIpsPK() {
@@ -20,6 +20,7 @@ public class MedicoIpsPK implements Serializable {
     }
 
     public MedicoIpsPK(MedicoEntity medico, IpsEntity ips) {
+        super();
         this.medico = medico;
         this.ips = ips;
     }
@@ -40,13 +41,4 @@ public class MedicoIpsPK implements Serializable {
         this.ips = ips;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        MedicoIpsPK other = (MedicoIpsPK) obj;
-        return medico.equals(other.medico) && ips.equals(other.ips);
-    }
 }
