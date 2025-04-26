@@ -11,7 +11,6 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 
 @Entity

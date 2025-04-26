@@ -1,52 +1,44 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder.In;
-
+import java.util.Date;
 
 @Entity
-@Table(name = "Afiliados")
+@Table(name = "AFILIADO")
 public class AfiliadoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AFILIADO_SEQ")
-    @SequenceGenerator(name = "AFILIADO_SEQ", sequenceName = "AFILIADO_SEQ", allocationSize = 1)
-    @Column(name = "idAfiliado", nullable = false, updatable = false)
-    private Integer idAfiliado;
+    @Column(name = "idAfiliado", nullable = false)
+    private int idAfiliado;
+
+    @Column(name = "tipoDocumento", nullable = false)
     private String tipoDocumento;
+
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    private String fechaNacimiento;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fechaNacimiento", nullable = false)
+    private Date fechaNacimiento;
+
+    @Column(name = "direccion", nullable = false)
     private String direccion;
-    private String telefono;
-    private String parentesco;
-    @Column(nullable = true)
-    private Integer idContribuyente;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private TipoAfiliado tipoAfiliado;
+    public AfiliadoEntity() {}
 
-    public AfiliadoEntity(String tipoDocumento, String nombre, String fechaNacimiento,
-            String direccion, String telefono, TipoAfiliado tipoAfiliado, Integer idContribuyente, String parentesco) {
+    public AfiliadoEntity(int idAfiliado, String tipoDocumento, String nombre, Date fechaNacimiento, String direccion) {
+        this.idAfiliado = idAfiliado;
         this.tipoDocumento = tipoDocumento;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
-        this.telefono = telefono;
-        this.tipoAfiliado = tipoAfiliado;
-        this.idContribuyente = idContribuyente;
-        this.parentesco = parentesco;
-    }
-    public AfiliadoEntity() {
-        ;
     }
 
-
-    public Integer getIdAfiliado() {
+    public int getIdAfiliado() {
         return idAfiliado;
     }
 
-    public void setIdAfiliado(Integer idAfiliado) {
+    public void setIdAfiliado(int idAfiliado) {
         this.idAfiliado = idAfiliado;
     }
 
@@ -66,11 +58,11 @@ public class AfiliadoEntity {
         this.nombre = nombre;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -81,45 +73,4 @@ public class AfiliadoEntity {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public TipoAfiliado getTipoAfiliado() {
-        return tipoAfiliado;
-    }
-
-    public void setTipoAfiliado(TipoAfiliado tipoAfiliado) {
-        this.tipoAfiliado = tipoAfiliado;
-    }
-
-    public Integer getIdContribuyente() {
-        return idContribuyente;
-    }
-    public void setIdContribuyente(Integer idContribuyente) {
-        this.idContribuyente = idContribuyente;
-    }
-
-    public String getParentesco() {
-        return parentesco;
-    }
-    public void setParentesco(String parentesco) {
-        this.parentesco = parentesco;
-    }
-    @Override
-    public String toString() {
-    return "AfiliadoEntity [idAfiliado=" + idAfiliado +
-           ", tipoDocumento=" + tipoDocumento +
-           ", nombre=" + nombre +
-           ", fechaNacimiento=" + fechaNacimiento +
-           ", direccion=" + direccion +
-           ", telefono=" + telefono +
-           ", parentesco=" + parentesco +
-           ", tipoAfiliado=" + tipoAfiliado + ", idContribuyente=" + idContribuyente + "]";
-}
 }
