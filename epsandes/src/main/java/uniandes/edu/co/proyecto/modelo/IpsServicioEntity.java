@@ -3,26 +3,23 @@ package uniandes.edu.co.proyecto.modelo;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Servicio_IPS")
-
+@Table(name = "IPS_SERVICIO")
 public class IpsServicioEntity {
 
     @EmbeddedId
-    private IpsServicioPK id;
+    private IpsServicioPK pk;
 
-    public IpsServicioEntity() {
-        ;
-    }
+    public IpsServicioEntity() {}
 
     public IpsServicioEntity(IpsEntity ips, ServicioSaludEntity servicio) {
-        this.id = new IpsServicioPK(ips, servicio);
+        this.pk = new IpsServicioPK(ips, servicio);
     }
 
-    public IpsServicioPK getId() {
-        return id;
+    public IpsServicioPK getPk() {
+        return pk;
     }
 
-    public void setId(IpsServicioPK id) {
-        this.id = id;
+    public void setPk(IpsServicioPK pk) {
+        this.pk = pk;
     }
 }

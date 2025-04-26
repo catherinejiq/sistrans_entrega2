@@ -1,41 +1,33 @@
 package uniandes.edu.co.proyecto.repositories;
 
+
 import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
 import uniandes.edu.co.proyecto.modelo.IpsServicioEntity;
 import uniandes.edu.co.proyecto.modelo.IpsServicioPK;
 
 public interface IpsServicioRepository extends JpaRepository<IpsServicioEntity, IpsServicioPK> {
 
-    @Query(value = "SELECT * FROM Servicio_IPS", nativeQuery = true)
-    Collection<IpsServicioEntity> darIpsServicios();
+    @Query(value = "SELECT * FROM IPS_SERVICIO", nativeQuery = true)
+    Collection<IpsServicioEntity> getIpsServicios();
 
-    @Query(value = "SELECT * FROM Servicio_IPS WHERE nit = :nit AND idServicio = :idServicio", nativeQuery = true)
-    IpsServicioEntity darIpsServicioPorId(@Param("nit") Integer nit,
-                                          @Param("idServicio") Integer idServicio);
-
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM Servicio_IPS WHERE nit = :nit AND idServicio = :idServicio", nativeQuery = true)
-    void eliminarIpsServicio(@Param("nit") Integer nit,
-                             @Param("idServicio") Integer idServicio);
+    @Query(value = "SELECT * FROM IPS_SERVICIO WHERE IPSS = :ips AND SERVICIOSSALUD = :idServicio", nativeQuery = true)
+    IpsServicioEntity getIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Servicio_IPS SET nit = :nit_actualizado, idServicio = :idServicio_actualizado "
-                 + "WHERE nit = :nit AND idServicio = :idServicio", nativeQuery = true)
-    void actualizarIpsServicio(@Param("nit") Integer nit,
-                               @Param("idServicio") Integer idServicio,
-                               @Param("nit_actualizado") Integer nit_actualizado,
-                               @Param("idServicio_actualizado") Integer idServicio_actualizado);
+    @Query(value = "INSERT INTO IPS_SERVICIO (IPSS, SERVICIOSSALUD) VALUES (:ips, :idServicio)", nativeQuery = true)
+    void insertIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Servicio_IPS (nit, idServicio) VALUES (:nit, :idServicio)", nativeQuery = true)
-    void insertarIpsServicio(@Param("nit") Integer nit,
-                             @Param("idServicio") Integer idServicio);
+    @Query(value = "DELETE FROM IPS_SERVICIO WHERE IPSS = :ips AND SERVICIOSSALUD = :idServicio", nativeQuery = true)
+    void deleteIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 }
+

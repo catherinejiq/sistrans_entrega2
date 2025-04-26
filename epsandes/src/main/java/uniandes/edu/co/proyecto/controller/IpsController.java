@@ -34,16 +34,17 @@ public class IpsController {
     @PostMapping("/ips/new/save")
     public ResponseEntity<String> ipsGuardar(@RequestBody IpsEntity ips) {
         System.out.println("Datos recibidos: " + ips);
+        System.out.println("nit: " + ips.getNit());
         System.out.println("nombre: " + ips.getNombre());
         System.out.println("dirección: " + ips.getDireccion());
         System.out.println("teléfono: " + ips.getTelefono());
         System.out.println("horario: " + ips.getHorario());
     
-        if (ips.getNombre() == null || ips.getDireccion() == null || ips.getTelefono() == null || ips.getHorario() == null) {
+        if (ips.getNit() == null || ips.getNombre() == null || ips.getDireccion() == null || ips.getTelefono() == null || ips.getHorario() == null) {
             return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios");
         }
     
-        ipsRepository.insertarIp(ips.getNombre(), ips.getDireccion(), ips.getTelefono(), ips.getHorario());
+        ipsRepository.insertarIp(ips.getNit(), ips.getNombre(), ips.getDireccion(), ips.getTelefono(), ips.getHorario());
         return ResponseEntity.ok("IPS creada correctamente");
     }
     

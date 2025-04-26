@@ -8,8 +8,7 @@ public class IpsEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ips_seq")
-    @SequenceGenerator(name = "ips_seq", sequenceName = "ips_seq", allocationSize = 1)
+    @Column(name = "NIT", nullable = false)
     private Integer nit;
     private String nombre;
     private String direccion;
@@ -20,7 +19,8 @@ public class IpsEntity {
         
     }
 
-    public IpsEntity(String nombre, String direccion, String telefono, String horario) {
+    public IpsEntity(Integer nit, String nombre, String direccion, String telefono, String horario) {
+        this.nit = nit;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
