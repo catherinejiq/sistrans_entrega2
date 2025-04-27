@@ -249,3 +249,44 @@ VALUES (
     TIMESTAMP '2023-11-08 17:00:00', 
     'LIBRE'
 );
+-- 1. Cita para Dr. Juan Pérez (Disponibilidad 1)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (1, 1, TIMESTAMP '2023-10-23 09:00:00'); -- Carlos Gómez reserva 2 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 1;
+
+-- 2. Cita para Dr. Juan Pérez (Disponibilidad 3)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (3, 3, TIMESTAMP '2023-10-24 08:00:00'); -- Luis Gómez reserva 2 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 3;
+
+-- 3. Cita para Dra. María Gómez (Disponibilidad 5)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (5, 2, TIMESTAMP '2023-10-28 07:00:00'); -- Ana Torres reserva 2 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 5;
+
+-- 4. Cita para Dra. María Gómez (Disponibilidad 6)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (6, 4, TIMESTAMP '2023-10-30 13:00:00'); -- Pedro Torres reserva 3 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 6;
+
+-- 5. Cita para Dra. Laura Castro (Disponibilidad 7)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (7, 5, TIMESTAMP '2023-10-31 15:00:00'); -- Mónica Vélez reserva 3 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 7;
+
+-- 6. Cita para Dr. Roberto Jiménez (Disponibilidad 9)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (9, 1, TIMESTAMP '2023-11-03 09:00:00'); -- Carlos Gómez reserva 4 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 9;
+
+-- 7. Cita para Dr. Roberto Jiménez (Disponibilidad 10)
+INSERT INTO Citas (idDisponibilidad, idAfiliado, fechaReserva)
+VALUES (10, 3, TIMESTAMP '2023-11-04 16:00:00'); -- Luis Gómez reserva 4 días antes
+
+UPDATE Disponibilidad SET estado = 'OCUPADO' WHERE idDisponibilidad = 10;
