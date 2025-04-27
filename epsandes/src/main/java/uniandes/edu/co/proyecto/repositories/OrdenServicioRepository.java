@@ -20,16 +20,6 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
     @Query(value = "SELECT * FROM OrdenServicios WHERE idAfiliado = :idAfiliado", nativeQuery = true)
     Collection<OrdenServicioEntity> darOrdenesPorAfiliado(@Param("idAfiliado") int idAfiliado);
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idAfiliado, idMedico) " +
-                   "VALUES (:tipoOrden, :receta, :estado, TO_DATE(:fecha, 'YYYY-MM-DD'), :idAfiliado, :idMedico)", nativeQuery = true)
-    void insertarOrdenServicio(@Param("tipoOrden") String tipoOrden,
-                               @Param("receta") String receta,
-                               @Param("estado") String estado, 
-                               @Param("fecha") String fecha, 
-                               @Param("idAfiliado") int idAfiliado,
-                               @Param("idMedico") int idMedico);
 
     @Modifying
     @Transactional
@@ -48,4 +38,24 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
     @Transactional
     @Query(value = "DELETE FROM OrdenServicios WHERE idOrden = :id", nativeQuery = true)
     void eliminarOrdenServicio(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idAfiliado, idMedico) " +
+                   "VALUES (:tipoOrden, :receta, :estado, TO_DATE(:fecha, 'YYYY-MM-DD'), :idAfiliado, :idMedico)", 
+           nativeQuery = true)
+    void insertarOrdenServicio(@Param("tipoOrden") String tipoOrden,
+                              @Param("receta") String receta,
+                              @Param("estado") String estado, 
+                              @Param("fecha") String fecha, 
+                              @Param("idAfiliado") int idAfiliado,
+                              @Param("idMedico") int idMedico);
+
+    @Query(value = "SELECT MAX(idOrden) FROM OrdenServicios", nativeQuery = true)
+    int obtenerUltimoId();
 }
+
+    
+
+    
+

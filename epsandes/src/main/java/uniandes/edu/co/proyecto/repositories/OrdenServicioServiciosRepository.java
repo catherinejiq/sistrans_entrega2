@@ -1,11 +1,13 @@
 package uniandes.edu.co.proyecto.repositories;
 
 import java.util.Collection;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+import uniandes.edu.co.proyecto.modelo.ServicioSaludEntity;
 import uniandes.edu.co.proyecto.modelo.OrdenServicioServiciosEntity;
 import uniandes.edu.co.proyecto.modelo.OrdenServicioServiciosPK;
 
@@ -35,7 +37,9 @@ public interface OrdenServicioServiciosRepository extends JpaRepository<OrdenSer
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (:idOrden, :idServicio)", nativeQuery = true)
-    void insertarOrdenServicioServicio(@Param("idOrden") Integer idOrden,
-                                       @Param("idServicio") Integer idServicio);
+    @Query(value = "INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (:idOrden, :idServicio)", 
+           nativeQuery = true)
+    void insertarOrdenServicioServicio(@Param("idOrden") Integer idOrden, 
+                                      @Param("idServicio") Integer idServicio);
 }
+
