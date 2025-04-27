@@ -1,243 +1,251 @@
-
+---------------------------------------------------------
 -- 1. Insertar IPSs
+---------------------------------------------------------
 INSERT INTO IPSs (nit, nombre, direccion, telefono, horario) 
 VALUES (1, 'Clínica San Juan', 'Calle 123 #45-67', '6012345678', 'L-V 8am-6pm');
 
 INSERT INTO IPSs (nit, nombre, direccion, telefono, horario) 
 VALUES (2, 'Hospital Central', 'Av. Principal 789', '6019876543', 'L-D 24 horas');
 
--- 2. Insertar Médicos
-INSERT INTO Medicos (idMedico, identificacion, nombre, numRegistro, especialidad)
-VALUES (1, 'CC1001', 'Dr. Juan Pérez', 'MED123', 'Cardiología');
+INSERT INTO IPSs (nit, nombre, direccion, telefono, horario) 
+VALUES (3, 'Centro Médico Los Andes', 'Carrera 5 #12-30', '6067891234', 'L-S 7am-7pm');
 
-INSERT INTO Medicos (idMedico, identificacion, nombre, numRegistro, especialidad)
-VALUES (2, 'CC1002', 'Dra. María Gómez', 'MED456', 'Pediatría');
+---------------------------------------------------------
+-- 2. Insertar Médicos (sin especificar idMedico)
+---------------------------------------------------------
+INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad)
+VALUES ('CC1001', 'Dr. Juan Pérez', 'MED123', 'Cardiología');
 
--- 3. Insertar Afiliados (2 contribuyentes y 2 beneficiarios)
+INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad)
+VALUES ('CC1002', 'Dra. María Gómez', 'MED456', 'Pediatría');
+
+INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad)
+VALUES ('CC1003', 'Dra. Laura Castro', 'MED789', 'Dermatología');
+
+INSERT INTO Medicos (identificacion, nombre, numRegistro, especialidad)
+VALUES ('CC1004', 'Dr. Roberto Jiménez', 'MED101', 'Traumatología');
+
+---------------------------------------------------------
+-- 3. Insertar Afiliados (Contribuyentes y Beneficiarios)
+---------------------------------------------------------
 -- Contribuyentes
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (1, 'CC', 'Carlos Gómez', DATE '1980-05-15', 'Carrera 45 #67-89', '3151234567', 'Titular', 'CONTRIBUYENTE', NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (1, 'CC', 'Carlos Gómez', DATE '1980-05-15', 'Carrera 45 #67-89');
 
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (2, 'CC', 'Ana Torres', DATE '1975-08-22', 'Calle 70 #12-34', '3102345678', 'Titular', 'CONTRIBUYENTE', NULL);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (2, 'CC', 'Ana Torres', DATE '1975-08-22', 'Calle 70 #12-34');
+
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (5, 'CE', 'Mónica Vélez', DATE '1990-09-25', 'Av. 68 #45-12');
 
 -- Beneficiarios
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (3, 'TI', 'Luis Gómez', DATE '2010-02-15', 'Carrera 45 #67-89', '3157654321', 'Hijo', 'BENEFICIARIO', 1);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (3, 'TI', 'Luis Gómez', DATE '2010-02-15', 'Carrera 45 #67-89');
 
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (4, 'CC', 'Pedro Torres', DATE '2005-07-12', 'Calle 70 #12-34', '3109876543', 'Hijo', 'BENEFICIARIO', 2);
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (4, 'CC', 'Pedro Torres', DATE '2005-07-12', 'Calle 70 #12-34');
 
--- 4. Relacionar Afiliados con IPSs
+INSERT INTO Afiliado (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion) 
+VALUES (6, 'TI', 'Camila Vélez', DATE '2015-03-18', 'Av. 68 #45-12');
+
+---------------------------------------------------------
+-- 4. Relacionar Contribuyentes y Beneficiarios
+---------------------------------------------------------
+INSERT INTO Contribuyente (afiliado) VALUES (1);
+INSERT INTO Contribuyente (afiliado) VALUES (2);
+INSERT INTO Contribuyente (afiliado) VALUES (5);
+
+INSERT INTO Beneficiario (afiliado, contribuyente, parentesco) VALUES (3, 1, 'Hijo');
+INSERT INTO Beneficiario (afiliado, contribuyente, parentesco) VALUES (4, 2, 'Hijo');
+INSERT INTO Beneficiario (afiliado, contribuyente, parentesco) VALUES (6, 5, 'Hija');
+
+---------------------------------------------------------
+-- 5. Relacionar Afiliados con IPSs
+---------------------------------------------------------
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (1, 1);
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (2, 2);
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (3, 1);
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (4, 2);
-
--- 5. Relacionar Médicos con IPSs
-INSERT INTO Medico_IPS (idMedico, nit) VALUES (1, 1);
-INSERT INTO Medico_IPS (idMedico, nit) VALUES (2, 2);
-
--- 6. Insertar Servicios de Salud
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (1, DATE '2023-01-10', 'Consulta general');
-
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (2, DATE '2023-02-15', 'Análisis de sangre');
-
--- 7. Insertar Consultas
-INSERT INTO Consultas (idConsulta, tipoConsulta, idAfiliado, idMedico, idServicio)
-VALUES (1, 'GENERAL', 1, 1, 1);
-
--- 8. Insertar Exámenes
-INSERT INTO ExamenesDiagnosticos (idExamen, resultados, muestras, idServicio)
-VALUES (1, 'Hemoglobina normal', 'Sangre venosa', 2);
-
--- 9. Relacionar Consulta con Examen
-INSERT INTO Consulta_Examen (idConsulta, idExamen) VALUES (1, 1);
-
--- 10. Insertar Orden de Servicio
-INSERT INTO OrdenServicios (idOrden, tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
-VALUES (1, 'Examen sangre', 'Ayuno 8 horas', 'COMPLETADA', DATE '2023-01-09', 1, 1);
-
--- 11. Relacionar Orden con Servicio
-INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (1, 2);
-
--- 12. Insertar Hospitalización
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (3, DATE '2023-03-01', 'Hospitalización por neumonía');
-
-INSERT INTO Hospitalizaciones (idHospitalizacion, estado, tratamiento, idServicio)
-VALUES (1, 'Estable', 'Antibióticos y reposo', 3);
-
--- 13. Relacionar Hospitalización con Médico y Afiliado
-INSERT INTO Hospitalizacion_Medico (idHospitalizacion, idMedico) VALUES (1, 2);
-INSERT INTO Hospitalizacion_Afiliado (idHospitalizacion, idAfiliado) VALUES (1, 3);
-
--- 14. Relacionar Servicio con IPS
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (1, 1);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (2, 1);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (3, 2);
-
--- 15. Relacionar Médico con Afiliado
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (1, 1);
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (2, 3);
-
--- 1. Más IPS
-INSERT INTO IPSs (nit, nombre, direccion, telefono, horario) 
-VALUES (3, 'Centro Médico Los Andes', 'Carrera 5 #12-30', '6067891234', 'L-S 7am-7pm');
-
--- 2. Más Médicos
-INSERT INTO Medicos (idMedico, identificacion, nombre, numRegistro, especialidad)
-VALUES (3, 'CC1003', 'Dra. Laura Castro', 'MED789', 'Dermatología');
-
-INSERT INTO Medicos (idMedico, identificacion, nombre, numRegistro, especialidad)
-VALUES (4, 'CC1004', 'Dr. Roberto Jiménez', 'MED101', 'Traumatología');
-
--- 3. Más Afiliados
--- Nuevo contribuyente
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (5, 'CE', 'Mónica Vélez', DATE '1990-09-25', 'Av. 68 #45-12', '3175554433', 'Titular', 'CONTRIBUYENTE', NULL);
-
--- Beneficiarios asociados al nuevo contribuyente
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (6, 'TI', 'Camila Vélez', DATE '2015-03-18', 'Av. 68 #45-12', '3175554433', 'Hija', 'BENEFICIARIO', 5);
-
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (7, 'CC', 'Alberto Vélez', DATE '1988-07-11', 'Av. 68 #45-12', '3175554433', 'Hermano', 'BENEFICIARIO', 5);
-
--- 4. Relacionar nuevos Afiliados con IPS
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (5, 3);
 INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (6, 3);
-INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (7, 1);  -- Este beneficiario en IPS diferente
 
--- 5. Relacionar nuevos Médicos con IPS
+---------------------------------------------------------
+-- 6. Relacionar Médicos con IPSs
+---------------------------------------------------------
+INSERT INTO Medico_IPS (idMedico, nit) VALUES (1, 1);
+INSERT INTO Medico_IPS (idMedico, nit) VALUES (2, 2);
 INSERT INTO Medico_IPS (idMedico, nit) VALUES (3, 3);
 INSERT INTO Medico_IPS (idMedico, nit) VALUES (4, 1);
 
--- 6. Más Servicios de Salud
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (4, DATE '2023-04-01', 'Terapia física');
+---------------------------------------------------------
+-- 7. Insertar Servicios de Salud
+---------------------------------------------------------
+INSERT INTO ServiciosSalud (fecha, descripcion) VALUES (DATE '2023-01-10', 'Consulta general');
+INSERT INTO ServiciosSalud (fecha, descripcion) VALUES (DATE '2023-02-15', 'Análisis de sangre');
+INSERT INTO ServiciosSalud (fecha, descripcion) VALUES (DATE '2023-04-01', 'Terapia física');
+INSERT INTO ServiciosSalud (fecha, descripcion) VALUES (DATE '2023-05-02', 'Consulta dermatológica');
 
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (5, DATE '2023-04-05', 'Procedimiento menor');
+---------------------------------------------------------
+-- 8. Relacionar Servicios con IPSs
+---------------------------------------------------------
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (1, 1);
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (1, 2);
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (3, 3);
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (3, 4);
 
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (6, DATE '2023-04-10', 'Consulta de seguimiento');
+---------------------------------------------------------
+-- 9. Insertar Consultas
+---------------------------------------------------------
+INSERT INTO Consultas (tipoConsulta, idAfiliado, idMedico, idServicio)
+VALUES ('GENERAL', 1, 1, 1);
 
--- 7. Más Consultas
-INSERT INTO Consultas (idConsulta, tipoConsulta, idAfiliado, idMedico, idServicio)
-VALUES (2, 'URGENCIA', 6, 4, 6);
+INSERT INTO Consultas (tipoConsulta, idAfiliado, idMedico, idServicio)
+VALUES ('ESPECIALISTA', 6, 3, 4);
 
--- 8. Más Exámenes
-INSERT INTO ExamenesDiagnosticos (idExamen, resultados, muestras, idServicio)
-VALUES (2, 'Colesterol elevado', 'Muestra de sangre en ayunas', 4);
+---------------------------------------------------------
+-- 10. Insertar Exámenes
+---------------------------------------------------------
+INSERT INTO ExamenesDiagnosticos (resultados, muestras, idServicio)
+VALUES ('Hemoglobina normal', 'Sangre venosa', 2);
 
--- 9. Nueva Orden de Servicio
-INSERT INTO OrdenServicios (idOrden, tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
-VALUES (2, 'Radiografía', 'Aplicar contraste', 'VIGENTE', DATE '2023-04-03', 4, 7);
+INSERT INTO ExamenesDiagnosticos (resultados, muestras, idServicio)
+VALUES ('Alergia al polen', 'Prueba cutánea', 4);
 
--- 10. Relacionar nueva Orden con Servicio
-INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (2, 5);
+---------------------------------------------------------
+-- 11. Relacionar Consultas con Exámenes
+---------------------------------------------------------
+INSERT INTO Consulta_Examen (idConsulta, idExamen) VALUES (1, 1);
+INSERT INTO Consulta_Examen (idConsulta, idExamen) VALUES (2, 2);
 
--- 11. Terapia
-INSERT INTO Terapias (idTerapia, tipo, cantidadSesiones, idServicio)
-VALUES (1, 'Fisioterapia', 5, 4);
+---------------------------------------------------------
+-- 12. Insertar Órdenes de Servicio
+---------------------------------------------------------
+INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
+VALUES ('Examen sangre', 'Ayuno 8 horas', 'COMPLETADA', DATE '2023-01-09', 1, 1);
 
--- 12. Procedimiento Médico
-INSERT INTO ProcedimientosMedicos (idProcedimiento, tipo, idServicio)
-VALUES (1, 'Extracción de muestra', 5);
+INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
+VALUES ('Terapia respiratoria', 'Aplicar 3 veces al día', 'VIGENTE', DATE '2023-05-01', 3, 6);
 
--- 13. Otra Hospitalización
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (7, DATE '2023-04-15', 'Hospitalización por fractura');
+---------------------------------------------------------
+-- 13. Relacionar Órdenes con Servicios
+---------------------------------------------------------
+INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (1, 2);
+INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (2, 4);
+-- IPS 2 (Hospital Central) ofrece el servicio 2 (Análisis de sangre)
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (2, 2);
 
-INSERT INTO Hospitalizaciones (idHospitalizacion, estado, tratamiento, idServicio)
-VALUES (2, 'En observación', 'Inmovilización y analgésicos', 7);
+-- IPS 1 (Clínica San Juan) ofrece el servicio 3 (Terapia física)
+INSERT INTO Ips_Servicio (IPSs, idServicio) VALUES (1, 3);
+---------------------------------------------------------
+-- 14. Insertar Disponibilidad
+---------------------------------------------------------
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    1, 
+    1, 
+    1, 
+    TIMESTAMP '2023-10-25 09:00:00', 
+    TIMESTAMP '2023-10-25 10:00:00', 
+    'LIBRE'
+);
 
--- 14. Relaciones Hospitalización
-INSERT INTO Hospitalizacion_Medico (idHospitalizacion, idMedico) VALUES (2, 4);
-INSERT INTO Hospitalizacion_Afiliado (idHospitalizacion, idAfiliado) VALUES (2, 7);
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    4, 
+    3, 
+    3, 
+    TIMESTAMP '2023-10-26 14:00:00', 
+    TIMESTAMP '2023-10-26 15:00:00', 
+    'LIBRE'
+);
+---------------------------------------------------------
+-- Disponibilidad para Dr. Juan Pérez (Cardiólogo - IPS 1)
+---------------------------------------------------------
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    1, -- Consulta general
+    1, -- Clínica San Juan
+    1, -- Dr. Juan Pérez
+    TIMESTAMP '2023-10-26 08:00:00', 
+    TIMESTAMP '2023-10-26 09:00:00', 
+    'LIBRE'
+);
 
--- 15. Más relaciones Servicio-IPS
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (4, 3);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (5, 1);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (6, 3);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (7, 2);
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    1, 
+    1, 
+    1, 
+    TIMESTAMP '2023-10-27 10:30:00', 
+    TIMESTAMP '2023-10-27 11:30:00', 
+    'OCUPADO'
+);
 
--- 16. Más relaciones Médico-Afiliado
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (3, 5);
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (4, 6);
--- 1. Nuevo Contribuyente y Beneficiarios
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (8, 'CC', 'Gabriel Morales', DATE '1982-12-08', 'Calle 80 #10-25', '3184445566', 'Titular', 'CONTRIBUYENTE', NULL);
+---------------------------------------------------------
+-- Disponibilidad Dra. María Gómez (Pediatría - IPS 2)
+---------------------------------------------------------
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    2, -- Análisis de sangre
+    2, -- Hospital Central
+    2, -- Dra. María Gómez
+    TIMESTAMP '2023-10-30 07:00:00', 
+    TIMESTAMP '2023-10-30 08:00:00', 
+    'LIBRE'
+);
 
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (9, 'TI', 'Valentina Morales', DATE '2018-06-20', 'Calle 80 #10-25', '3184445566', 'Hija', 'BENEFICIARIO', 8);
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    2, 
+    2, 
+    2, 
+    TIMESTAMP '2023-11-02 13:00:00', 
+    TIMESTAMP '2023-11-02 14:00:00', 
+    'LIBRE'
+);
 
-INSERT INTO Afiliados (idAfiliado, tipoDocumento, nombre, fechaNacimiento, direccion, telefono, parentesco, tipoAfiliado, idContribuyente) 
-VALUES (10, 'CE', 'Claudia Morales', DATE '1995-04-15', 'Calle 80 #10-25', '3184445577', 'Prima', 'BENEFICIARIO', 8);
+---------------------------------------------------------
+-- Disponibilidad Dra. Laura Castro (Dermatología - IPS 3)
+---------------------------------------------------------
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    4, -- Consulta dermatológica
+    3, -- Centro Médico Los Andes
+    3, -- Dra. Laura Castro
+    TIMESTAMP '2023-11-03 15:00:00', 
+    TIMESTAMP '2023-11-03 16:30:00', 
+    'LIBRE'
+);
 
--- 2. Relaciones IPS para nuevos afiliados
-INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (8, 2);
-INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (9, 2);
-INSERT INTO Afiliado_IPS (idAfiliado, nit) VALUES (10, 3);
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    4, 
+    3, 
+    3, 
+    TIMESTAMP '2023-11-06 11:00:00', 
+    TIMESTAMP '2023-11-06 12:00:00', 
+    'OCUPADO'
+);
 
--- 3. Nuevo Servicio de Salud con Consulta Especializada
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (8, DATE '2023-05-02', 'Consulta dermatológica');
+---------------------------------------------------------
+-- Disponibilidad Dr. Roberto Jiménez (Traumatología - IPS 1)
+---------------------------------------------------------
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    3, -- Terapia física
+    1, -- Clínica San Juan
+    4, -- Dr. Roberto Jiménez
+    TIMESTAMP '2023-11-07 09:00:00', 
+    TIMESTAMP '2023-11-07 10:30:00', 
+    'LIBRE'
+);
 
-INSERT INTO Consultas (idConsulta, tipoConsulta, idAfiliado, idMedico, idServicio)
-VALUES (3, 'ESPECIALISTA', 10, 3, 8);
-
--- 4. Examen de alergias relacionado
-INSERT INTO ExamenesDiagnosticos (idExamen, resultados, muestras, idServicio)
-VALUES (3, 'Alergia al polen', 'Prueba cutánea', 8);
-
-INSERT INTO Consulta_Examen (idConsulta, idExamen) VALUES (3, 3);
-
--- 5. Orden de Servicio para terapia
-INSERT INTO OrdenServicios (idOrden, tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
-VALUES (3, 'Terapia respiratoria', 'Aplicar 3 veces al día', 'VIGENTE', DATE '2023-05-01', 3, 10);
-
--- 6. Servicio de Terapia
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (9, DATE '2023-05-05', 'Terapia pulmonar');
-
-INSERT INTO Terapias (idTerapia, tipo, cantidadSesiones, idServicio)
-VALUES (2, 'Respiratoria', 8, 9);
-
-INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (3, 9);
-
--- 7. Procedimiento Quirúrgico
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (10, DATE '2023-05-10', 'Cirugía menor ambulatoria');
-
-INSERT INTO ProcedimientosMedicos (idProcedimiento, tipo, idServicio)
-VALUES (2, 'Extracción de quiste', 10);
-
--- 8. Nueva Orden para Procedimiento
-INSERT INTO OrdenServicios (idOrden, tipoOrden, receta, estado, fecha, idMedico, idAfiliado)
-VALUES (4, 'Cirugía menor', 'Reposo 48 horas', 'COMPLETADA', DATE '2023-05-08', 4, 7);
-
-INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (4, 10);
-
--- 9. Hospitalización Pediátrica
-INSERT INTO ServiciosSalud (idServicio, fecha, descripcion) 
-VALUES (11, DATE '2023-05-12', 'Hospitalización infantil');
-
-INSERT INTO Hospitalizaciones (idHospitalizacion, estado, tratamiento, idServicio)
-VALUES (3, 'Grave', 'Oxígeno y monitoreo constante', 11);
-
-INSERT INTO Hospitalizacion_Medico (idHospitalizacion, idMedico) VALUES (3, 2);
-INSERT INTO Hospitalizacion_Afiliado (idHospitalizacion, idAfiliado) VALUES (3, 9);
-
--- 10. Relaciones Médico-Afiliado adicionales
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (3, 10);
-INSERT INTO Medico_Afiliado (idMedico, idAfiliado) VALUES (4, 8);
-
--- 11. Relaciones Servicio-IPS
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (8, 3);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (9, 2);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (10, 1);
-INSERT INTO Servicio_IPS (idServicio, nit) VALUES (11, 2);
+INSERT INTO Disponibilidad (idServicio, nitIps, idMedico, fechaHoraInicio, fechaHoraFin, estado)
+VALUES (
+    3, 
+    1, 
+    4, 
+    TIMESTAMP '2023-11-08 16:00:00', 
+    TIMESTAMP '2023-11-08 17:00:00', 
+    'LIBRE'
+);
