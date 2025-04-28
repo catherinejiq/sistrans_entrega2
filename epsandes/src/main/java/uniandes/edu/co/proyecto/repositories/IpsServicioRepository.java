@@ -17,17 +17,17 @@ public interface IpsServicioRepository extends JpaRepository<IpsServicioEntity, 
     @Query(value = "SELECT * FROM IPS_SERVICIO", nativeQuery = true)
     Collection<IpsServicioEntity> getIpsServicios();
 
-    @Query(value = "SELECT * FROM IPS_SERVICIO WHERE IPSS = :ips AND SERVICIOSSALUD = :idServicio", nativeQuery = true)
+    @Query(value = "SELECT * FROM IPS_SERVICIO WHERE IPSS = :ips AND idServicio = :idServicio", nativeQuery = true)
     IpsServicioEntity getIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO IPS_SERVICIO (IPSS, SERVICIOSSALUD) VALUES (:ips, :idServicio)", nativeQuery = true)
+    @Query(value = "INSERT INTO IPS_SERVICIO (IPSS, idServicio) VALUES (:ips, :idServicio)", nativeQuery = true)
     void insertIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM IPS_SERVICIO WHERE IPSS = :ips AND SERVICIOSSALUD = :idServicio", nativeQuery = true)
+    @Query(value = "DELETE FROM IPS_SERVICIO WHERE IPSS = :ips AND idServicio = :idServicio", nativeQuery = true)
     void deleteIpsServicio(@Param("ips") Integer ips, @Param("idServicio") Integer servicio);
 }
 

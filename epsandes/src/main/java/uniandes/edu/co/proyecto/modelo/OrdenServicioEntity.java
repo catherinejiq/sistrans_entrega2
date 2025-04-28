@@ -1,7 +1,9 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "OrdenServicios")
@@ -13,13 +15,13 @@ public class OrdenServicioEntity {
     private String tipoOrden;
     private String receta;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EstadoOrden estado;
+    private String estado;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
+    @Column(name = "FECHA", nullable = false)
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha;
 
     @ManyToOne
     @JoinColumn(name = "idAfiliado", nullable = false,referencedColumnName ="idAfiliado" )
@@ -32,7 +34,7 @@ public class OrdenServicioEntity {
     public OrdenServicioEntity() {;
     }
 
-    public OrdenServicioEntity(String tipoOrden, String receta, EstadoOrden estado, Date fecha, AfiliadoEntity afiliado, MedicoEntity medico) {
+    public OrdenServicioEntity(String tipoOrden, String receta, String estado, LocalDate fecha, AfiliadoEntity afiliado, MedicoEntity medico) {
         this.tipoOrden = tipoOrden;
         this.receta = receta;
         this.estado = estado;
@@ -65,19 +67,19 @@ public class OrdenServicioEntity {
         this.receta = receta;
     }
 
-    public EstadoOrden getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoOrden estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

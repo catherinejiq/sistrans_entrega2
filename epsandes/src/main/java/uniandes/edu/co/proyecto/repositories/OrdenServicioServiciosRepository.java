@@ -35,7 +35,9 @@ public interface OrdenServicioServiciosRepository extends JpaRepository<OrdenSer
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (:idOrden, :idServicio)", nativeQuery = true)
-    void insertarOrdenServicioServicio(@Param("idOrden") Integer idOrden,
-                                       @Param("idServicio") Integer idServicio);
+    @Query(value = "INSERT INTO Orden_Servicio (idOrden, idServicio) VALUES (:idOrden, :idServicio)", 
+           nativeQuery = true)
+    void insertarOrdenServicioServicio(@Param("idOrden") Integer idOrden, 
+                                      @Param("idServicio") Integer idServicio);
 }
+
