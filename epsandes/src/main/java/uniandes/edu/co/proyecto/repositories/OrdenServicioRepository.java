@@ -25,7 +25,7 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE OrdenServicios SET tipoOrden = :tipoOrden, receta = :receta, estado = :estado, " +   
+    @Query(value = "UPDATE OrdenServicios SET tipoOrden = :tipoOrden, receta = :receta, estado = :estado, " +
                    "fecha = :fecha, idAfiliado = :idAfiliado, idMedico = :idMedico " +
                    "WHERE idOrden = :idOrden", nativeQuery = true)
     void actualizarOrdenServicio(@Param("idOrden") int id,
