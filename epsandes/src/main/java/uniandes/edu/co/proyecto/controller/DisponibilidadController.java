@@ -28,8 +28,36 @@ public class DisponibilidadController {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
-    @GetMapping("/agenda")
-public List<AgendaDisponibilidad> getAgenda(
+    @GetMapping("/readCommited")
+    public List<AgendaDisponibilidad> getAgendaReadCommited(
+    @RequestParam(value = "inicio",   required = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern="yyyy-MM-dd HH:mm:ss")
+    LocalDateTime inicio,
+    
+    @RequestParam(value = "fin",      required = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern="yyyy-MM-dd HH:mm:ss")
+    LocalDateTime fin,
+    @RequestParam(value = "medico",   required = false) Integer medicoId,
+    @RequestParam(value = "servicio", required = false) Integer servicioId
+    
+) {
+    System.out.println("Endpoint /agenda invocado con parámetros -> inicio: " + inicio +
+                   " | fin: " + fin +
+                   " | servicio: " + servicioId +
+                   " | medico: " + medicoId);
+    
+    try {
+        List<AgendaDisponibilidad> resultado = disponibilidadServicio.consultarAgendaReadCommitted(inicio, fin, medicoId, servicioId);
+        System.out.println("Endpoint /agenda completado. Resultados: " + resultado.size());
+        return resultado;
+    } catch (Exception e) {
+        System.err.println("Error en endpoint /agenda: " + e.getMessage());
+        e.printStackTrace();
+        throw e;
+    }
+}   
+@GetMapping("/agenda")
+    public List<AgendaDisponibilidad> getAgenda(
     @RequestParam(value = "inicio",   required = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern="yyyy-MM-dd HH:mm:ss")
     LocalDateTime inicio,

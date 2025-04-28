@@ -104,7 +104,7 @@ WHERE c.idAfiliado = :idAfiliado
       BETWEEN TIMESTAMP '2023-10-25 09:00:00' AND TIMESTAMP '2023-11-08 17:00:00'
 ORDER BY d.fechaHoraInicio;
 
---RFC5
+--RFC5 y RFC6
 SELECT s.descripcion,
        d.fechaHoraInicio,
        m.nombre
