@@ -104,3 +104,16 @@ WHERE c.idAfiliado = :idAfiliado
       BETWEEN TIMESTAMP '2023-10-25 09:00:00' AND TIMESTAMP '2023-11-08 17:00:00'
 ORDER BY d.fechaHoraInicio;
 
+--RFC5
+SELECT s.descripcion,
+       d.fechaHoraInicio,
+       m.nombre
+  FROM disponibilidad d
+  JOIN serviciosSalud s ON s.idServicio = d.idServicio
+  JOIN medicos m       ON m.idMedico   = d.idMedico
+ WHERE d.idServicio  = 4
+   AND d.idMedico    = 3
+   AND d.fechaHoraInicio BETWEEN 
+       TIMESTAMP '2023-10-25 09:00:00'
+       AND TIMESTAMP'2023-11-08 17:00:00'
+
