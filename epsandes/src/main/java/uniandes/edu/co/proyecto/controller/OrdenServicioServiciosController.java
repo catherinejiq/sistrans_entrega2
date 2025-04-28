@@ -97,10 +97,10 @@ public class OrdenServicioServiciosController {
                     }
                 }
                 
-                return "redirect:/orden-servicio-servicios";
+                return "ORDEN-SERVICIO creado existosamente";
             } catch (Exception e) {
                 e.printStackTrace();
-                return "Error: " + e.getMessage();
+                return "Error: " + e.getMessage() + " No se pudo crear la relación ORDEN-SERVICIO";
             }
         }
 }

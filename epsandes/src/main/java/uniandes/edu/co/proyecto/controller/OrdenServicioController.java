@@ -35,7 +35,7 @@ public class OrdenServicioController {
     }
 
     // 🔹 Obtener una orden de servicio por su ID
-    @GetMapping("orden-servicio/{idOrden}")
+    @GetMapping("/{idOrden}")
     public ResponseEntity<OrdenServicioEntity> obtenerOrden(@PathVariable("idOrden") int idOrden) {
         try {
             OrdenServicioEntity orden = ordenServicioRepository.darOrdenServicio(idOrden);
@@ -46,7 +46,7 @@ public class OrdenServicioController {
     }
 
     // 🔹 Insertar una nueva orden de servicio
-    @PostMapping("orden-servicio/new/save")
+    @PostMapping("/new/save")
     public ResponseEntity<String> guardarOrden(@RequestBody OrdenServicioEntity orden) {
         try {
             ordenServicioRepository.insertarOrdenServicio(
@@ -65,7 +65,7 @@ public class OrdenServicioController {
     }
 
     // 🔹 Editar una orden de servicio existente
-    @PostMapping("orden-servicio/{idOrden}/edit/save")
+    @PostMapping("/{idOrden}/edit/save")
     public ResponseEntity<String> editarOrden(@PathVariable("idOrden") int idOrden, 
                                               @RequestBody OrdenServicioEntity orden) {
         try {
@@ -85,7 +85,7 @@ public class OrdenServicioController {
     }
 
     // 🔹 Eliminar una orden de servicio
-    @DeleteMapping("orden-servicio/{idOrden}/delete")
+    @DeleteMapping("/{idOrden}/delete")
     public ResponseEntity<String> eliminarOrden(@PathVariable("idOrden") int idOrden) {
         try {
             ordenServicioRepository.eliminarOrdenServicio(idOrden);
