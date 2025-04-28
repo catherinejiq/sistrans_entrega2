@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.repository.query.Param;
 
 import uniandes.edu.co.proyecto.modelo.DisponibilidadEntity;
+import uniandes.edu.co.proyecto.modelo.DisponibilidadSlot;
 
 public interface DisponibilidadRepository extends JpaRepository<DisponibilidadEntity, Integer> {
     @Query(value = """
@@ -97,4 +98,27 @@ public interface DisponibilidadRepository extends JpaRepository<DisponibilidadEn
     @Transactional
     @Query(value = "DELETE FROM Disponibilidad WHERE idDisponibilidad = :id", nativeQuery = true)
     void eliminarDisponibilidad(@Param("id") int id);
+
+    @Query(value = """
+      SELECT s.descripcion            AS nombreServicio,
+             d.fechaHoraInicio       AS fechaHoraInicio,
+             i.nombre                AS nombreIps,
+             m.nombre                AS nombreMedico
+      FROM Disponibilidad d
+      JOIN ServiciosSalud s ON d.idServicio = s.idServicio
+      JOIN IPSs            i ON d.nitIps      = i.nit
+      JOIN Medicos        m ON d.idMedico    = m.idMedico
+      WHERE d.idServicio = :codigoServicio
+        AND d.estado     = 'LIBRE'
+        AND d.fechaHoraInicio BETWEEN :start AND :end
+      ORDER BY d.fechaHoraInicio
+      """,
+      nativeQuery = true
+    )
+    List<DisponibilidadSlot> findNext4Weeks(
+      @Param("codigoServicio") Integer codigoServicio,
+      @Param("start")          LocalDateTime now,  // como '2025-04-27T00:00:00'
+      @Param("end")            LocalDateTime fourWeeksLater
+    );
+
 }

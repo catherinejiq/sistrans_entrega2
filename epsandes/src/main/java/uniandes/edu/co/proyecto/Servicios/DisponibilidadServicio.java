@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import uniandes.edu.co.proyecto.modelo.DisponibilidadSlot;
 import uniandes.edu.co.proyecto.repositories.AgendaDisponibilidad;
 import uniandes.edu.co.proyecto.repositories.DisponibilidadRepository;
 
@@ -92,4 +93,10 @@ public List<AgendaDisponibilidad> consultarAgendaReadCommitted(
         );
     }
 }
+@Transactional(readOnly = true)
+    public List<DisponibilidadSlot> consultarAgendaProximas4Semanas(Integer codigoServicio) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime fourWeeksLater = now.plusWeeks(4);
+        return repo.findNext4Weeks(codigoServicio, now, fourWeeksLater);
+    }
 }

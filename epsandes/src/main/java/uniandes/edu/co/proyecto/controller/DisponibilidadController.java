@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import uniandes.edu.co.proyecto.Servicios.DisponibilidadServicio;
 import uniandes.edu.co.proyecto.modelo.DisponibilidadEntity;
+import uniandes.edu.co.proyecto.modelo.DisponibilidadSlot;
 import uniandes.edu.co.proyecto.repositories.AgendaDisponibilidad;
 import uniandes.edu.co.proyecto.repositories.DisponibilidadRepository;
 import uniandes.edu.co.proyecto.modelo.EstadoDisponibilidad;
@@ -150,5 +151,12 @@ public List<AgendaDisponibilidad> testAgenda() {
     public String eliminar(@PathVariable("id") int id) {
         disponibilidadRepository.eliminarDisponibilidad(id);
         return "redirect:/disponibilidades";
+    }
+
+    @GetMapping("/proximas4semanas/{servicio}")
+    public List<DisponibilidadSlot> getAgenda4Semanas(
+        @PathVariable("servicio") Integer codigoServicio
+    ) {
+        return disponibilidadServicio.consultarAgendaProximas4Semanas(codigoServicio);
     }
 }
