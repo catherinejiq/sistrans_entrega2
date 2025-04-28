@@ -25,7 +25,7 @@ public class MedicoEntity {
         this.especialidad = especialidad;
     }
 
-    public Integer getIdMedico() {
+    public int getIdMedico() {
         return idMedico;
     }
 

@@ -2,6 +2,8 @@ package uniandes.edu.co.proyecto.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import uniandes.edu.co.proyecto.modelo.OrdenServicioEntity;
+
+import java.time.LocalDate;
 import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,14 +25,14 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE OrdenServicios SET tipoOrden = :tipoOrden, receta = :receta, estado = :estado, " +
-                   "fecha = TO_DATE(:fecha, 'YYYY-MM-DD'), idAfiliado = :idAfiliado, idMedico = :idMedico " +
-                   "WHERE idOrden = :id", nativeQuery = true)
-    void actualizarOrdenServicio(@Param("id") int id,
+    @Query(value = "UPDATE OrdenServicios SET tipoOrden = :tipoOrden, receta = :receta, estado = :estado, " +   
+                   "fecha = :fecha, idAfiliado = :idAfiliado, idMedico = :idMedico " +
+                   "WHERE idOrden = :idOrden", nativeQuery = true)
+    void actualizarOrdenServicio(@Param("idOrden") int id,
                                  @Param("tipoOrden") String tipoOrden,
                                  @Param("receta") String receta,
                                  @Param("estado") String estado,
-                                 @Param("fecha") String fecha,
+                                 @Param("fecha") LocalDate fecha,
                                  @Param("idAfiliado") int idAfiliado,
                                  @Param("idMedico") int idMedico);
 
@@ -42,12 +44,12 @@ public interface OrdenServicioRepository extends JpaRepository<OrdenServicioEnti
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO OrdenServicios (tipoOrden, receta, estado, fecha, idAfiliado, idMedico) " +
-                   "VALUES (:tipoOrden, :receta, :estado, TO_DATE(:fecha, 'YYYY-MM-DD'), :idAfiliado, :idMedico)", 
+                   "VALUES (:tipoOrden, :receta, :estado, :fecha, :idAfiliado, :idMedico)", 
            nativeQuery = true)
     void insertarOrdenServicio(@Param("tipoOrden") String tipoOrden,
                               @Param("receta") String receta,
                               @Param("estado") String estado, 
-                              @Param("fecha") String fecha, 
+                              @Param("fecha") LocalDate fecha, 
                               @Param("idAfiliado") int idAfiliado,
                               @Param("idMedico") int idMedico);
 

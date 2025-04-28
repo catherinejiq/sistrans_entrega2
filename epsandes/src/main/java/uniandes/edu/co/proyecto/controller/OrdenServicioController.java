@@ -1,156 +1,98 @@
 package uniandes.edu.co.proyecto.controller;
 
-import java.util.Date;
-
-import java.text.SimpleDateFormat;
-
 import java.util.Collection;
 
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 
 import uniandes.edu.co.proyecto.modelo.OrdenServicioEntity;
 import uniandes.edu.co.proyecto.repositories.OrdenServicioRepository;
-import uniandes.edu.co.proyecto.repositories.OrdenServicioServiciosRepository;
 
 
 
 @RestController
+@RequestMapping("/orden-servicio")  // Prefijo para las rutas
 public class OrdenServicioController {
 
     @Autowired
     private OrdenServicioRepository ordenServicioRepository;
 
-    @Autowired
-    private OrdenServicioServiciosRepository ordenServicioServiciosRepository;
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      sdf.setLenient(false);
-      binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }
-
-
-    @GetMapping("/ordenes-servicio")
-    public String ordenesServicio(Model model) {
-        Collection<OrdenServicioEntity> ordenes = ordenServicioRepository.darOrdenesServicio();
-        model.addAttribute("ordenes", ordenes);
-
-        return model.toString();
-    }
-
-
-    @GetMapping("/ordenes-servicio/new")
-    public String ordenServicioForm(Model model) {
-        model.addAttribute("ordenServicio", new OrdenServicioEntity());
-        return "ordenServicioNuevo";
-    }
-
-
-    @PostMapping("/ordenes-servicio/new/save")
-    public String ordenServicioGuardar(@ModelAttribute OrdenServicioEntity ordenServicio) {
-
-        String tipoOrden = ordenServicio.getTipoOrden();
-        String receta = ordenServicio.getReceta();
-        String estado = ordenServicio.getEstado().toString();
-        
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaStr = sdf.format(ordenServicio.getFecha());
-        
-
-        int idAfiliado = ordenServicio.getAfiliado().getIdAfiliado();
-        int idMedico = ordenServicio.getMedico().getIdMedico();
-        
-        ordenServicioRepository.insertarOrdenServicio(tipoOrden, receta, estado, fechaStr, idAfiliado, idMedico);
-        return "redirect:/ordenes-servicio";
-    }
-
-    @GetMapping("/ordenes-servicio/{id}/edit")
-    public String ordenServicioEditarForm(@PathVariable("id") int id, Model model) {
-        OrdenServicioEntity orden = ordenServicioRepository.darOrdenServicio(id);
-        if (orden != null) {
-            model.addAttribute("ordenServicio", orden);
-            return "ordenServicioEditar"; 
-        } else {
-            return "redirect:/ordenes-servicio";
+    // 🔹 Obtener todas las órdenes de servicio
+    @GetMapping
+    public ResponseEntity<Collection<OrdenServicioEntity>> obtenerOrdenes() {
+        try {
+            Collection<OrdenServicioEntity> ordenes = ordenServicioRepository.darOrdenesServicio();
+            return ResponseEntity.ok(ordenes);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
-    @PostMapping("/ordenes-servicio/{id}/edit/save")
-    public String ordenServicioEditarGuardar(@PathVariable("id") int id, @ModelAttribute OrdenServicioEntity ordenServicio) {
-        String tipoOrden = ordenServicio.getTipoOrden();
-        String receta = ordenServicio.getReceta();
-        String estado = ordenServicio.getEstado().toString();
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaStr = sdf.format(ordenServicio.getFecha());
-        
-        int idAfiliado = ordenServicio.getAfiliado().getIdAfiliado();
-        int idMedico = ordenServicio.getMedico().getIdMedico();
-        
-        ordenServicioRepository.actualizarOrdenServicio(id, tipoOrden, receta, estado, fechaStr, idAfiliado, idMedico);
-        return "redirect:/ordenes-servicio";
+    // 🔹 Obtener una orden de servicio por su ID
+    @GetMapping("orden-servicio/{idOrden}")
+    public ResponseEntity<OrdenServicioEntity> obtenerOrden(@PathVariable("idOrden") int idOrden) {
+        try {
+            OrdenServicioEntity orden = ordenServicioRepository.darOrdenServicio(idOrden);
+            return (orden != null) ? ResponseEntity.ok(orden) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-
-    @GetMapping("/ordenes-servicio/{id}/delete")
-    public String ordenServicioEliminar(@PathVariable("id") int id) {
-        ordenServicioRepository.eliminarOrdenServicio(id);
-        return "redirect:/ordenes-servicio";
+    // 🔹 Insertar una nueva orden de servicio
+    @PostMapping("orden-servicio/new/save")
+    public ResponseEntity<String> guardarOrden(@RequestBody OrdenServicioEntity orden) {
+        try {
+            ordenServicioRepository.insertarOrdenServicio(
+                orden.getTipoOrden(),
+                orden.getReceta(),
+                orden.getEstado(),
+                orden.getFecha(),
+                orden.getAfiliado().getIdAfiliado(),
+                orden.getMedico().getIdMedico()
+            );
+            return new ResponseEntity<>("Orden de servicio creada exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error al crear la orden de servicio: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
-
-        ///RF6
-        @PostMapping("/ordenes-servicio/registrar")
-        public String registrarOrdenServicio(@RequestBody Map<String, Object> payload) {
-            try {
-                
-                String tipoOrden = (String) payload.get("tipoOrden");
-                String receta = (String) payload.get("receta");
-                String estado = (String) payload.get("estado");
-                String fecha = (String) payload.get("fecha");
-                Integer idAfiliado = ((Number) payload.get("idAfiliado")).intValue();
-                Integer idMedico = ((Number) payload.get("idMedico")).intValue();
-                List<Integer> idsServicios = (List<Integer>) payload.get("idsServicios");
-                
-                
-                ordenServicioRepository.insertarOrdenServicio(tipoOrden, receta, estado, fecha, idAfiliado, idMedico);
-                
-                
-                int idOrden = ordenServicioRepository.obtenerUltimoId();
-                
-                
-                if (idsServicios != null && !idsServicios.isEmpty()) {
-                    for (Integer idServicio : idsServicios) {
-                        ordenServicioServiciosRepository.insertarOrdenServicioServicio(idOrden, idServicio);
-                    }
-                }
-                
-                return "redirect:/ordenes-servicio";
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "Error: " + e.getMessage();
-            }
+    // 🔹 Editar una orden de servicio existente
+    @PostMapping("orden-servicio/{idOrden}/edit/save")
+    public ResponseEntity<String> editarOrden(@PathVariable("idOrden") int idOrden, 
+                                              @RequestBody OrdenServicioEntity orden) {
+        try {
+            ordenServicioRepository.actualizarOrdenServicio(
+                idOrden,
+                orden.getTipoOrden(),
+                orden.getReceta(),
+                orden.getEstado(),
+                orden.getFecha(),
+                orden.getAfiliado().getIdAfiliado(),
+                orden.getMedico().getIdMedico()
+            );
+            return new ResponseEntity<>("Orden de servicio actualizada exitosamente", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al actualizar la orden de servicio", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    
+    }
 
-
- } 
+    // 🔹 Eliminar una orden de servicio
+    @DeleteMapping("orden-servicio/{idOrden}/delete")
+    public ResponseEntity<String> eliminarOrden(@PathVariable("idOrden") int idOrden) {
+        try {
+            ordenServicioRepository.eliminarOrdenServicio(idOrden);
+            return new ResponseEntity<>("Orden de servicio eliminada exitosamente", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al eliminar la orden de servicio", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
 
