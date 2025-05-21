@@ -1,7 +1,5 @@
 package uniandes.edu.co.demo.modelo;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +10,7 @@ import lombok.ToString;
 public class Medico {
 
     @Id
-    private String id; 
+    private String idMedico; 
     private String identificacion;
     private String nombre;
     private String numRegistro;
@@ -28,11 +26,11 @@ public class Medico {
     }
 
     public String getId() {
-        return id;
+        return idMedico;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String idMedico) {
+        this.idMedico = idMedico;
     }
 
     public String getIdentificacion() {
