@@ -16,8 +16,7 @@ import org.springframework.data.annotation.Id;
 public class ServicioSalud {
 
     @Id
-    private String _id;
-    private Integer idServicio;
+    private String idServicio;
     private LocalDate fecha;
     private String descripcion;
 
@@ -25,26 +24,19 @@ public class ServicioSalud {
         ;
     }
 
-    public ServicioSalud(Integer idServicio, LocalDate fecha, String descripcion) {
+    public ServicioSalud(String idServicio, LocalDate fecha, String descripcion) {
 
         this.idServicio = idServicio;
         this.fecha = fecha;
         this.descripcion = descripcion;
     }
 
-    public String get_id() {
-        return _id;
-    }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
-    public Integer getIdServicio() {
+    public String getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(Integer idServicio) {
+    public void setIdServicio(String idServicio) {
         this.idServicio = idServicio;
     }
 

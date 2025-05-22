@@ -21,7 +21,7 @@ public interface OrdenServicioRepository extends MongoRepository<OrdenServicio, 
     Optional<OrdenServicio> buscarPorId(String id);
 
     // Insertar orden
-    @Query("{ $insert: { _id: ?0, tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idMedico: ?5, idAfiliado: ?6, servicios: ?7 } }")
+    @Query("{ $insert: { id: ?0, tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idMedico: ?5, idAfiliado: ?6, servicios: ?7 } }")
     void insertarMedico(int id, String tipoOrden, String receta, String estado, String fecha, String idMedico, Integer idAfiliado, List<Integer> servicios);
 
     @Query("{ _id: ?0 }")

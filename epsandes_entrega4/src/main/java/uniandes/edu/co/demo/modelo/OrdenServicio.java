@@ -15,18 +15,13 @@ public class OrdenServicio {
 
     @Id
     private String idOrden;
-
     private String tipoOrden;
     private String receta;
     private String estado;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha;
-
     private String idAfiliado; // referenciado como String
-    private String identificacionMedico;
-
-    // Servicios embebidos
+    private String idMedico;
     private List<Integer> servicios;
 
     // Getters, setters, constructor vacío...
@@ -79,12 +74,12 @@ public class OrdenServicio {
         this.idAfiliado = idAfiliado;
     }
 
-    public String getIdentificacionMedico() {
-        return identificacionMedico;
+    public String getIdMedico() {
+        return idMedico;
     }
 
-    public void setIdentificacionMedico(String identificacionMedico) {
-        this.identificacionMedico = identificacionMedico;
+    public void setIdMedico(String idMedico) {
+        this.idMedico = idMedico;
     }
 
     public List<Integer> getServicios() {
