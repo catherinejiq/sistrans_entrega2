@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.repositories;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +13,28 @@ import org.springframework.data.repository.query.Param;
 import uniandes.edu.co.proyecto.modelo.DisponibilidadEntity;
 
 public interface DisponibilidadRepository extends JpaRepository<DisponibilidadEntity, Integer> {
+    @Query(value = """
+        SELECT s.descripcion AS nombreServicio,
+               d.fechaHoraInicio AS fechaHoraInicio,
+               m.nombre AS nombreMedico
+        FROM disponibilidad d
+        JOIN serviciosSalud s ON s.idServicio = d.idServicio
+        JOIN medicos m ON m.idMedico = d.idMedico
+        WHERE (d.idServicio = :idServicio OR :idServicio IS NULL)
+          AND (d.idMedico = :idMedico OR :idMedico IS NULL)
+          AND (
+                (:fechaInicio IS NULL AND :fechaFin IS NULL)
+                OR 
+                (d.fechaHoraInicio BETWEEN :fechaInicio AND :fechaFin)
+              )
+        ORDER BY d.fechaHoraInicio
+        """, nativeQuery = true)
+    List<AgendaDisponibilidad> consultarAgenda(
+        @Param("fechaInicio") LocalDateTime fechaInicio,
+        @Param("fechaFin")    LocalDateTime fechaFin,
+        @Param("idMedico")    Integer idMedico,
+        @Param("idServicio")  Integer idServicio
+    );
 
     @Query(value = "SELECT * FROM Disponibilidad", nativeQuery = true)
     Collection<DisponibilidadEntity> darDisponibilidades();
