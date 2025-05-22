@@ -18,18 +18,19 @@ public class Medico {
 
     public Medico() {}
 
-    public Medico(String identificacion, String nombre, String numRegistro, String especialidad) {
+    public Medico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad) {
+        this.idMedico = idMedico;
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.numRegistro = numRegistro;
         this.especialidad = especialidad;
     }
 
-    public String getId() {
+    public String getIdMedico() {
         return idMedico;
     }
 
-    public void setId(String idMedico) {
+    public void setIdMedico(String idMedico) {
         this.idMedico = idMedico;
     }
 

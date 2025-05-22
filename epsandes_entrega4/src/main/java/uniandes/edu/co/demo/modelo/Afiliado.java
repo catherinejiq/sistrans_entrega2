@@ -10,9 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Afiliado {
 
     @Id
-    private String id; // MongoDB ID interno
+    private String idAfiliado; // MongoDB ID interno
     private String tipo; // "contribuyente" o "beneficiario"
-    private String idAfiliado;
     private String tipoDocumento; 
     private String nombre;
     private Date fechaNacimiento;
@@ -28,12 +27,6 @@ public class Afiliado {
     public Afiliado() {}
 
     // Getters y setters
-    public String getId() { 
-        return id; 
-    }
-    public void setId(String id) { 
-        this.id = id; 
-    }
 
     public String getTipo() { 
         return tipo; 

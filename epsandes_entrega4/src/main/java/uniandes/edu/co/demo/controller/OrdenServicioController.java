@@ -27,8 +27,8 @@ public class OrdenServicioController {
 
     @PostMapping("/new/save")
     public ResponseEntity<String> registrarOrdenServicio(@RequestBody OrdenServicio orden) {
-    if (orden.getTipoOrden() == null || orden.getReceta() == null || orden.getEstado() == null ||
-        orden.getFecha() == null || orden.getIdAfiliado() == null || orden.getIdentificacionMedico() == null ||
+    if (orden.getIdOrden()==null || orden.getTipoOrden() == null || orden.getReceta() == null || orden.getEstado() == null ||
+        orden.getFecha() == null || orden.getIdAfiliado() == null || orden.getIdMedico() == null ||
         orden.getServicios() == null || orden.getServicios().isEmpty()) {
         return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios.");
     }
@@ -42,8 +42,8 @@ public class OrdenServicioController {
 
     }
 
-    if (orden.getIdentificacionMedico() == null || medicoRepository.findByIdentificacion(orden.getIdentificacionMedico()).isEmpty()) {
-            return ResponseEntity.badRequest().body("Error: Servicio con ID " + orden.getIdentificacionMedico() + " no encontrado.");
+    if (orden.getIdMedico() == null || medicoRepository.findById(orden.getIdMedico()).isEmpty()) {
+            return ResponseEntity.badRequest().body("Error: Medico con ID " + orden.getIdMedico() + " no encontrado.");
         }
             // Guardar la orden con solo IDs referenciados
     ordenServicioRepository.save(orden);
