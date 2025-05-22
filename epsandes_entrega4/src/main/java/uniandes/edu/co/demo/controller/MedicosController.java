@@ -21,7 +21,7 @@ public class MedicosController {
     // Crear un nuevo 
     @PostMapping("/new/save")
     public ResponseEntity<String> crearMedico(@RequestBody Medico medico) {
-        if (medico.getIdentificacion() == null || medico.getNombre() == null ||
+        if (medico.getIdMedico() == null || medico.getIdentificacion() == null || medico.getNombre() == null ||
             medico.getNumRegistro() == null || medico.getEspecialidad() == null) {
             return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios.");
         }
@@ -32,18 +32,18 @@ public class MedicosController {
 
     // Obtener un medico por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Medico> obtenerMedicoPorId(@PathVariable String id) {
-        return medicoRepository.findById(id)
+    public ResponseEntity<Medico> obtenerMedicoPorId(@PathVariable String idMedico) {
+        return medicoRepository.findById(idMedico)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     // Actualizar un medico existente
     @PostMapping("/{id}/edit/save")
-    public ResponseEntity<String> actualizarMedico(@PathVariable("id") int id, @RequestBody Medico medico) {
+    public ResponseEntity<String> actualizarMedico(@PathVariable("idMedico") String idMedico, @RequestBody Medico medico) {
         try {
             medicoRepository.actualizarMedico(
-                id,
+                medico.getIdMedico(),
                 medico.getIdentificacion(),
                 medico.getNombre(),
                 medico.getNumRegistro(),
@@ -68,9 +68,9 @@ public class MedicosController {
 
     // Eliminar un medico por su ID
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> eliminarMedico(@PathVariable("id") int id) {
+    public ResponseEntity<String> eliminarMedico(@PathVariable("idMedico") String idMedico) {
         try {
-            medicoRepository.eliminarMedicoPorId(id);
+            medicoRepository.eliminarMedicoPorId(idMedico);
             return new ResponseEntity<>("Medico eliminado exitosamente", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al eliminar el medico: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
