@@ -1,5 +1,6 @@
 package uniandes.edu.co.demo.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,19 +19,23 @@ public interface OrdenServicioRepository extends MongoRepository<OrdenServicio, 
 
     // Buscar por ID (_id en Mongo)
     @Query("{ '_id': ?0 }")
-    Optional<OrdenServicio> buscarPorId(String id);
+    List<OrdenServicio> buscarPorId(String id);
 
     // Insertar orden
-    @Query("{ $insert: { id: ?0, tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idMedico: ?5, idAfiliado: ?6, servicios: ?7 } }")
-    void insertarMedico(int id, String tipoOrden, String receta, String estado, String fecha, String idMedico, Integer idAfiliado, List<Integer> servicios);
+    @Query("{ $insert: { idOrden: ?0, tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idAfiliado: ?5, idMedico: ?6, servicios: ?7 } }")
+    void insertarOrden(String idOrden, String tipoOrden, String receta, String estado, String fecha, String idAfiliado, String idMedico, List<Integer> servicios);
 
-    @Query("{ _id: ?0 }")
-    @Update("{ $set: { tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idMedico: ?5, idAfiliado: ?6, servicios: ?7}}")
-    void actualizarMedico(int id, String tipoOrden, String receta, String estado, String fecha, String idMedico, String idAfiliado, List<Integer> servicios);  
 
-   // Eliminar un medico por su ID
-    @Query(value = "{_id: ?0}", delete = true)
-    void eliminarMedicoPorId(int id);
+    @Query("{ idOrden: ?0 }")
+    @Update("{ $set: { tipoOrden: ?1, receta: ?2, estado: ?3, fecha: ?4, idAfiliado: ?5, idMedico: ?6, servicios: ?7}}")
+    void actualizarOrden(String idOrden, String tipoOrden, String receta, String estado, LocalDate fecha, String idAfiliado, String idMedico, List<Integer> servicios);
+
+    @Query(value= "{ idOrden: ?0 }", delete = true)
+    void eliminarOrdenPorId(String idOrden);
+
+
+
+
 
 
 }

@@ -5,10 +5,8 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 import org.springframework.stereotype.Repository;
 import uniandes.edu.co.demo.modelo.Medico;
-import uniandes.edu.co.demo.modelo.ServicioSalud;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface MedicoRepository extends MongoRepository<Medico, String> {
@@ -17,11 +15,14 @@ public interface MedicoRepository extends MongoRepository<Medico, String> {
     @Query("{}")
     List<Medico> buscarTodosLosMedicos();
 
+    @Query("{_id: ?0}")
+    List<Medico> buscarPorId(String id);
+
     // Insertar medico
     @Query("{ $insert: { idMedico: ?0, identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4 } }")
     void insertarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad);
 
-    @Query("{ idMedico: ?0 }")
+    @Query("{idMedico:?0}")
     @Update("{ $set: { identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4}}")
     void actualizarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad);  
 

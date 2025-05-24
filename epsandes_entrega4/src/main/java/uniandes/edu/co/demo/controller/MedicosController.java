@@ -32,18 +32,25 @@ public class MedicosController {
 
     // Obtener un medico por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Medico> obtenerMedicoPorId(@PathVariable String idMedico) {
-        return medicoRepository.findById(idMedico)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<List<Medico>> obtenerMedicoPorId(@PathVariable("id") String idMedico) {
+        try {
+            List<Medico> medicos = medicoRepository.buscarPorId(idMedico);
+            if (medicos != null && !medicos.isEmpty()) {
+                return ResponseEntity.ok(medicos);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Actualizar un medico existente
     @PostMapping("/{id}/edit/save")
-    public ResponseEntity<String> actualizarMedico(@PathVariable("idMedico") String idMedico, @RequestBody Medico medico) {
+    public ResponseEntity<String> actualizarMedico(@PathVariable("id") String idMedico, @RequestBody Medico medico) {
         try {
             medicoRepository.actualizarMedico(
-                medico.getIdMedico(),
+                idMedico,
                 medico.getIdentificacion(),
                 medico.getNombre(),
                 medico.getNumRegistro(),
@@ -68,7 +75,7 @@ public class MedicosController {
 
     // Eliminar un medico por su ID
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> eliminarMedico(@PathVariable("idMedico") String idMedico) {
+    public ResponseEntity<String> eliminarMedico(@PathVariable("id") String idMedico) {
         try {
             medicoRepository.eliminarMedicoPorId(idMedico);
             return new ResponseEntity<>("Medico eliminado exitosamente", HttpStatus.OK);
