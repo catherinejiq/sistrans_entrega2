@@ -153,10 +153,5 @@ public List<AgendaDisponibilidad> testAgenda() {
         return "redirect:/disponibilidades";
     }
 
-    @GetMapping("/proximas4semanas/{servicio}")
-    public List<DisponibilidadSlot> getAgenda4Semanas(
-        @PathVariable("servicio") Integer codigoServicio
-    ) {
-        return disponibilidadServicio.consultarAgendaProximas4Semanas(codigoServicio);
-    }
+    
 }
