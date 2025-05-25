@@ -61,6 +61,7 @@ public class AgendaController {
     
     @PostMapping("/agendar")
     public ResponseEntity<?> agendarCita(@RequestBody Map<String,String> payload) {
+        String citaId = payload.get("id");
         String dispId = payload.get("disponibilidadId");
         String afiId  = payload.get("afiliadoId");
         String ordId  = payload.get("ordenId");
@@ -86,6 +87,7 @@ public class AgendaController {
 
         
         Cita c = new Cita();
+        c.setId(citaId);
         c.setDisponibilidadId(dispId);
         c.setAfiliadoId(afiId);
         c.setFechaReserva(new Date());
