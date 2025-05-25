@@ -1,0 +1,603 @@
+[
+  {
+    "_id": "1",
+    "tipoOrden": "Consulta",
+    "receta": "Acetaminofén 500mg cada 8 horas por 3 días",
+    "estado": "completada",
+    "fecha": "2025-01-15",
+    "idAfiliado": "1",
+    "idMedico": "1",
+    "servicios": [1, 13]
+  },
+  {
+    "_id": "2",
+    "tipoOrden": "Especialista",
+    "receta": "Ibuprofeno 400mg cada 12 horas por 5 días",
+    "estado": "pendiente",
+    "fecha": "2025-01-16",
+    "idAfiliado": "2",
+    "idMedico": "2",
+    "servicios": [2, 18]
+  },
+  {
+    "_id": "3",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Ayuno de 12 horas antes del examen",
+    "estado": "en_proceso",
+    "fecha": "2025-01-17",
+    "idAfiliado": "3",
+    "idMedico": "3",
+    "servicios": [3, 14, 16]
+  },
+  {
+    "_id": "4",
+    "tipoOrden": "Terapia",
+    "receta": "Salbutamol inhalador 2 puff cada 6 horas",
+    "estado": "completada",
+    "fecha": "2025-01-18",
+    "idAfiliado": "4",
+    "idMedico": "1",
+    "servicios": [4, 8]
+  },
+  {
+    "_id": "5",
+    "tipoOrden": "Cirugía",
+    "receta": "Diclofenaco 75mg cada 12 horas post-cirugía",
+    "estado": "programada",
+    "fecha": "2025-01-19",
+    "idAfiliado": "5",
+    "idMedico": "4",
+    "servicios": [5, 15]
+  },
+  {
+    "_id": "6",
+    "tipoOrden": "Control",
+    "receta": "Ácido fólico 5mg diario",
+    "estado": "completada",
+    "fecha": "2025-01-20",
+    "idAfiliado": "6",
+    "idMedico": "4",
+    "servicios": [6]
+  },
+  {
+    "_id": "7",
+    "tipoOrden": "Consulta",
+    "receta": "Enjuague bucal con clorhexidina 2 veces al día",
+    "estado": "pendiente",
+    "fecha": "2025-01-21",
+    "idAfiliado": "7",
+    "idMedico": "6",
+    "servicios": [7]
+  },
+  {
+    "_id": "8",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de fortalecimiento 3 veces por semana",
+    "estado": "en_proceso",
+    "fecha": "2025-01-22",
+    "idAfiliado": "8",
+    "idMedico": "9",
+    "servicios": [8, 19]
+  },
+  {
+    "_id": "9",
+    "tipoOrden": "Prevención",
+    "receta": "No requiere medicación",
+    "estado": "completada",
+    "fecha": "2025-01-23",
+    "idAfiliado": "9",
+    "idMedico": "2",
+    "servicios": [9]
+  },
+  {
+    "_id": "10",
+    "tipoOrden": "Consulta",
+    "receta": "Sertralina 50mg diario en la mañana",
+    "estado": "completada",
+    "fecha": "2025-01-24",
+    "idAfiliado": "10",
+    "idMedico": "10",
+    "servicios": [10, 21]
+  },
+  {
+    "_id": "11",
+    "tipoOrden": "Consulta",
+    "receta": "Dieta hipocalórica y ejercicio moderado",
+    "estado": "pendiente",
+    "fecha": "2025-01-25",
+    "idAfiliado": "11",
+    "idMedico": "1",
+    "servicios": [11]
+  },
+  {
+    "_id": "12",
+    "tipoOrden": "Procedimiento",
+    "receta": "Betadine tópico 2 veces al día",
+    "estado": "completada",
+    "fecha": "2025-01-26",
+    "idAfiliado": "12",
+    "idMedico": "5",
+    "servicios": [12]
+  },
+  {
+    "_id": "13",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Ayuno de 8 horas",
+    "estado": "en_proceso",
+    "fecha": "2025-01-27",
+    "idAfiliado": "1",
+    "idMedico": "7",
+    "servicios": [13, 17]
+  },
+  {
+    "_id": "14",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Suspender medicamentos cardíacos 24h antes",
+    "estado": "programada",
+    "fecha": "2025-01-28",
+    "idAfiliado": "2",
+    "idMedico": "3",
+    "servicios": [14]
+  },
+  {
+    "_id": "15",
+    "tipoOrden": "Control",
+    "receta": "Tramadol 50mg cada 8 horas si hay dolor",
+    "estado": "completada",
+    "fecha": "2025-01-29",
+    "idAfiliado": "3",
+    "idMedico": "9",
+    "servicios": [15]
+  },
+  {
+    "_id": "16",
+    "tipoOrden": "Diagnóstico",
+    "receta": "No requiere preparación especial",
+    "estado": "pendiente",
+    "fecha": "2025-01-30",
+    "idAfiliado": "4",
+    "idMedico": "7",
+    "servicios": [16]
+  },
+  {
+    "_id": "17",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Ayuno de 6 horas antes del examen",
+    "estado": "en_proceso",
+    "fecha": "2025-01-31",
+    "idAfiliado": "5",
+    "idMedico": "4",
+    "servicios": [17]
+  },
+  {
+    "_id": "18",
+    "tipoOrden": "Consulta",
+    "receta": "Vitamina D 1000 UI diaria",
+    "estado": "completada",
+    "fecha": "2025-02-01",
+    "idAfiliado": "6",
+    "idMedico": "2",
+    "servicios": [18]
+  },
+  {
+    "_id": "19",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de coordinación diarios",
+    "estado": "en_proceso",
+    "fecha": "2025-02-02",
+    "idAfiliado": "7",
+    "idMedico": "10",
+    "servicios": [19, 23]
+  },
+  {
+    "_id": "20",
+    "tipoOrden": "Consulta",
+    "receta": "Hidrocortisona crema 1% aplicar 2 veces al día",
+    "estado": "completada",
+    "fecha": "2025-02-03",
+    "idAfiliado": "8",
+    "idMedico": "8",
+    "servicios": [20]
+  },
+  {
+    "_id": "21",
+    "tipoOrden": "Terapia",
+    "receta": "Técnicas de relajación y respiración",
+    "estado": "pendiente",
+    "fecha": "2025-02-04",
+    "idAfiliado": "9",
+    "idMedico": "10",
+    "servicios": [21]
+  },
+  {
+    "_id": "22",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Evitar ruidos fuertes 24h antes",
+    "estado": "programada",
+    "fecha": "2025-02-05",
+    "idAfiliado": "10",
+    "idMedico": "6",
+    "servicios": [22]
+  },
+  {
+    "_id": "23",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de pronunciación diarios",
+    "estado": "en_proceso",
+    "fecha": "2025-02-06",
+    "idAfiliado": "11",
+    "idMedico": "6",
+    "servicios": [23]
+  },
+  {
+    "_id": "24",
+    "tipoOrden": "Control",
+    "receta": "Metformina 850mg cada 12 horas",
+    "estado": "completada",
+    "fecha": "2025-02-07",
+    "idAfiliado": "12",
+    "idMedico": "5",
+    "servicios": [24]
+  },
+  {
+    "_id": "25",
+    "tipoOrden": "Consulta",
+    "receta": "Gotas lubricantes oculares cada 4 horas",
+    "estado": "pendiente",
+    "fecha": "2025-02-08",
+    "idAfiliado": "1",
+    "idMedico": "7",
+    "servicios": [25]
+  },
+  {
+    "_id": "26",
+    "tipoOrden": "Consulta",
+    "receta": "Omeprazol 20mg en ayunas por 14 días",
+    "estado": "completada",
+    "fecha": "2025-02-09",
+    "idAfiliado": "2",
+    "idMedico": "1",
+    "servicios": [1]
+  },
+  {
+    "_id": "27",
+    "tipoOrden": "Especialista",
+    "receta": "Loratadina 10mg diaria por 7 días",
+    "estado": "en_proceso",
+    "fecha": "2025-02-10",
+    "idAfiliado": "3",
+    "idMedico": "8",
+    "servicios": [2, 20]
+  },
+  {
+    "_id": "28",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Suspender anticoagulantes 48h antes",
+    "estado": "programada",
+    "fecha": "2025-02-11",
+    "idAfiliado": "4",
+    "idMedico": "3",
+    "servicios": [3, 13]
+  },
+  {
+    "_id": "29",
+    "tipoOrden": "Terapia",
+    "receta": "Broncodilatador antes de cada sesión",
+    "estado": "pendiente",
+    "fecha": "2025-02-12",
+    "idAfiliado": "5",
+    "idMedico": "1",
+    "servicios": [4, 8]
+  },
+  {
+    "_id": "30",
+    "tipoOrden": "Control",
+    "receta": "Calcio + Vitamina D una tableta diaria",
+    "estado": "completada",
+    "fecha": "2025-02-13",
+    "idAfiliado": "6",
+    "idMedico": "9",
+    "servicios": [24, 15]
+  },
+  {
+    "_id": "31",
+    "tipoOrden": "Especialista",
+    "receta": "Enalapril 10mg cada 12 horas",
+    "estado": "completada",
+    "fecha": "2025-02-14",
+    "idAfiliado": "7",
+    "idMedico": "3",
+    "servicios": [2, 14]
+  },
+  {
+    "_id": "32",
+    "tipoOrden": "Prevención",
+    "receta": "Vacuna contra influenza - dosis única",
+    "estado": "pendiente",
+    "fecha": "2025-02-15",
+    "idAfiliado": "8",
+    "idMedico": "2",
+    "servicios": [9]
+  },
+  {
+    "_id": "33",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Contraste oral 2 horas antes del examen",
+    "estado": "programada",
+    "fecha": "2025-02-16",
+    "idAfiliado": "9",
+    "idMedico": "7",
+    "servicios": [17, 3]
+  },
+  {
+    "_id": "34",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de fortalecimiento lumbar",
+    "estado": "en_proceso",
+    "fecha": "2025-02-17",
+    "idAfiliado": "10",
+    "idMedico": "9",
+    "servicios": [8, 19]
+  },
+  {
+    "_id": "35",
+    "tipoOrden": "Consulta",
+    "receta": "Fluoxetina 20mg diaria en la mañana",
+    "estado": "completada",
+    "fecha": "2025-02-18",
+    "idAfiliado": "11",
+    "idMedico": "10",
+    "servicios": [10]
+  },
+  {
+    "_id": "36",
+    "tipoOrden": "Control",
+    "receta": "Hierro 325mg cada 8 horas con las comidas",
+    "estado": "pendiente",
+    "fecha": "2025-02-19",
+    "idAfiliado": "12",
+    "idMedico": "4",
+    "servicios": [6, 13]
+  },
+  {
+    "_id": "37",
+    "tipoOrden": "Procedimiento",
+    "receta": "Sulfadiazina de plata tópica cada 12 horas",
+    "estado": "completada",
+    "fecha": "2025-02-20",
+    "idAfiliado": "1",
+    "idMedico": "8",
+    "servicios": [12]
+  },
+  {
+    "_id": "38",
+    "tipoOrden": "Consulta",
+    "receta": "Fluoruro tópico - aplicación profesional",
+    "estado": "en_proceso",
+    "fecha": "2025-02-21",
+    "idAfiliado": "2",
+    "idMedico": "6",
+    "servicios": [7]
+  },
+  {
+    "_id": "39",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Suspender medicamentos ototóxicos 48h antes",
+    "estado": "programada",
+    "fecha": "2025-02-22",
+    "idAfiliado": "3",
+    "idMedico": "6",
+    "servicios": [22]
+  },
+  {
+    "_id": "40",
+    "tipoOrden": "Especialista",
+    "receta": "Carbamazepina 200mg cada 12 horas",
+    "estado": "completada",
+    "fecha": "2025-02-23",
+    "idAfiliado": "4",
+    "idMedico": "7",
+    "servicios": [2, 21]
+  },
+  {
+    "_id": "41",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de articulación y vocalización",
+    "estado": "pendiente",
+    "fecha": "2025-02-24",
+    "idAfiliado": "5",
+    "idMedico": "6",
+    "servicios": [23]
+  },
+  {
+    "_id": "42",
+    "tipoOrden": "Control",
+    "receta": "Losartán 50mg diario en la mañana",
+    "estado": "en_proceso",
+    "fecha": "2025-02-25",
+    "idAfiliado": "6",
+    "idMedico": "5",
+    "servicios": [24, 14]
+  },
+  {
+    "_id": "43",
+    "tipoOrden": "Consulta",
+    "receta": "Tropicamida gotas - dilatación pupilar",
+    "estado": "completada",
+    "fecha": "2025-02-26",
+    "idAfiliado": "7",
+    "idMedico": "7",
+    "servicios": [25]
+  },
+  {
+    "_id": "44",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Ayuno completo 12 horas antes",
+    "estado": "programada",
+    "fecha": "2025-02-27",
+    "idAfiliado": "8",
+    "idMedico": "1",
+    "servicios": [13, 16]
+  },
+  {
+    "_id": "45",
+    "tipoOrden": "Cirugía",
+    "receta": "Cefazolina 1g IV pre-quirúrgico",
+    "estado": "programada",
+    "fecha": "2025-02-28",
+    "idAfiliado": "9",
+    "idMedico": "9",
+    "servicios": [5, 15]
+  },
+  {
+    "_id": "46",
+    "tipoOrden": "Consulta",
+    "receta": "Paracetamol 500mg cada 6 horas por dolor",
+    "estado": "completada",
+    "fecha": "2025-03-01",
+    "idAfiliado": "10",
+    "idMedico": "1",
+    "servicios": [1]
+  },
+  {
+    "_id": "47",
+    "tipoOrden": "Especialista",
+    "receta": "Amoxicilina 500mg cada 8 horas por 7 días",
+    "estado": "pendiente",
+    "fecha": "2025-03-02",
+    "idAfiliado": "11",
+    "idMedico": "2",
+    "servicios": [18, 9]
+  },
+  {
+    "_id": "48",
+    "tipoOrden": "Terapia",
+    "receta": "Nebulizaciones con suero fisiológico",
+    "estado": "en_proceso",
+    "fecha": "2025-03-03",
+    "idAfiliado": "12",
+    "idMedico": "1",
+    "servicios": [4]
+  },
+  {
+    "_id": "49",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Preparación intestinal con polietilenglicol",
+    "estado": "programada",
+    "fecha": "2025-03-04",
+    "idAfiliado": "1",
+    "idMedico": "5",
+    "servicios": [3, 17]
+  },
+  {
+    "_id": "50",
+    "tipoOrden": "Control",
+    "receta": "Ácido fólico 5mg + Hierro 60mg diario",
+    "estado": "completada",
+    "fecha": "2025-03-05",
+    "idAfiliado": "2",
+    "idMedico": "4",
+    "servicios": [6]
+  },
+  {
+    "_id": "51",
+    "tipoOrden": "Procedimiento",
+    "receta": "Povidona yodada + gasa estéril cada 24h",
+    "estado": "pendiente",
+    "fecha": "2025-03-06",
+    "idAfiliado": "3",
+    "idMedico": "8",
+    "servicios": [12]
+  },
+  {
+    "_id": "52",
+    "tipoOrden": "Terapia",
+    "receta": "Ejercicios de motricidad fina y gruesa",
+    "estado": "en_proceso",
+    "fecha": "2025-03-07",
+    "idAfiliado": "4",
+    "idMedico": "10",
+    "servicios": [19, 23]
+  },
+  {
+    "_id": "53",
+    "tipoOrden": "Consulta",
+    "receta": "Dieta baja en sodio y grasas saturadas",
+    "estado": "completada",
+    "fecha": "2025-03-08",
+    "idAfiliado": "5",
+    "idMedico": "1",
+    "servicios": [11]
+  },
+  {
+    "_id": "54",
+    "tipoOrden": "Especialista",
+    "receta": "Betametasona crema 0.05% cada 12 horas",
+    "estado": "pendiente",
+    "fecha": "2025-03-09",
+    "idAfiliado": "6",
+    "idMedico": "8",
+    "servicios": [20]
+  },
+  {
+    "_id": "55",
+    "tipoOrden": "Diagnóstico",
+    "receta": "Suspender diuréticos 24h antes del examen",
+    "estado": "programada",
+    "fecha": "2025-03-10",
+    "idAfiliado": "7",
+    "idMedico": "3",
+    "servicios": [14, 16]
+  },
+  {
+    "_id": "56",
+    "tipoOrden": "Terapia",
+    "receta": "Técnicas de manejo de ansiedad",
+    "estado": "en_proceso",
+    "fecha": "2025-03-11",
+    "idAfiliado": "8",
+    "idMedico": "10",
+    "servicios": [21]
+  },
+  {
+    "_id": "57",
+    "tipoOrden": "Control",
+    "receta": "Glibenclamida 5mg antes del desayuno",
+    "estado": "completada",
+    "fecha": "2025-03-12",
+    "idAfiliado": "9",
+    "idMedico": "5",
+    "servicios": [24]
+  },
+  {
+    "_id": "58",
+    "tipoOrden": "Consulta",
+    "receta": "Lágrimas artificiales sin conservantes",
+    "estado": "pendiente",
+    "fecha": "2025-03-13",
+    "idAfiliado": "10",
+    "idMedico": "7",
+    "servicios": [25]
+  },
+  {
+    "_id": "59",
+    "tipoOrden": "Prevención",
+    "receta": "Vacuna neumocócica - dosis única",
+    "estado": "programada",
+    "fecha": "2025-03-14",
+    "idAfiliado": "11",
+    "idMedico": "2",
+    "servicios": [9]
+  },
+  {
+    "_id": "60",
+    "tipoOrden": "Especialista",
+    "receta": "Levetiracetam 500mg cada 12 horas",
+    "estado": "completada",
+    "fecha": "2025-03-15",
+    "idAfiliado": "12",
+    "idMedico": "7",
+    "servicios": [2, 10]
+  }
+
+]

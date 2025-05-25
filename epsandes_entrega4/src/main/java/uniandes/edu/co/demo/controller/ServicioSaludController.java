@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.demo.modelo.ServicioSalud;
 import uniandes.edu.co.demo.repository.ServicioSaludRepository;
-
+@RestController
 @RequestMapping("/servicios")
 public class ServicioSaludController {
 
@@ -25,7 +26,7 @@ public class ServicioSaludController {
     // Crear un nuevo 
     @PostMapping("/new/save")
     public ResponseEntity<String> crearServicio(@RequestBody ServicioSalud servicio) {
-        if (servicio.getIdServicio() == null || servicio.getFecha() == null ||
+        if (servicio.getFecha() == null ||
             servicio.getDescripcion() == null) {
             return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios.");
         }

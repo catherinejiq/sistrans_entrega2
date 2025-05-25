@@ -1,0 +1,134 @@
+[
+  {
+    "_id": "2",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Juan Cortes",
+    "fechaNacimiento": "2001-04-25T00:00:00.000+00:00",
+    "direccion": "Cra 56, Bogota",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": ["1"]
+  },
+  {
+    "_id": "1",
+    "tipo": "beneficiario",
+    "tipoDocumento": "TI",
+    "nombre": "Yefran C",
+    "fechaNacimiento": "2005-08-05T00:00:00.000+00:00",
+    "direccion": "Cra 56, Bogota",
+    "parentesco": "hijo",
+    "idContribuyente": "2",
+    "beneficiarios": null
+  },
+  {
+    "_id": "3",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Laura Méndez",
+    "fechaNacimiento": "1985-07-12T00:00:00.000+00:00",
+    "direccion": "Calle 45 #12-34, Medellín",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": ["4", "5"]
+  },
+  {
+    "_id": "4",
+    "tipo": "beneficiario",
+    "tipoDocumento": "TI",
+    "nombre": "Camila Méndez",
+    "fechaNacimiento": "2010-03-19T00:00:00.000+00:00",
+    "direccion": "Calle 45 #12-34, Medellín",
+    "parentesco": "hija",
+    "idContribuyente": "3",
+    "beneficiarios": null
+  },
+  {
+    "_id": "5",
+    "tipo": "beneficiario",
+    "tipoDocumento": "TI",
+    "nombre": "Santiago Méndez",
+    "fechaNacimiento": "2012-06-11T00:00:00.000+00:00",
+    "direccion": "Calle 45 #12-34, Medellín",
+    "parentesco": "hijo",
+    "idContribuyente": "3",
+    "beneficiarios": null
+  },
+  {
+    "_id": "6",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Carlos Ruiz",
+    "fechaNacimiento": "1978-01-28T00:00:00.000+00:00",
+    "direccion": "Av. 68 #22-45, Cali",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": ["7"]
+  },
+  {
+    "_id": "7",
+    "tipo": "beneficiario",
+    "tipoDocumento": "TI",
+    "nombre": "Samuel Ruiz",
+    "fechaNacimiento": "2008-09-14T00:00:00.000+00:00",
+    "direccion": "Av. 68 #22-45, Cali",
+    "parentesco": "hijo",
+    "idContribuyente": "6",
+    "beneficiarios": null
+  },
+  {
+    "_id": "8",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Angela Torres",
+    "fechaNacimiento": "1990-11-20T00:00:00.000+00:00",
+    "direccion": "Cra 90 #10-10, Bogotá",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": ["9", "10"]
+  },
+  {
+    "_id": "9",
+    "tipo": "beneficiario",
+    "tipoDocumento": "RC",
+    "nombre": "Valentina Torres",
+    "fechaNacimiento": "2020-02-14T00:00:00.000+00:00",
+    "direccion": "Cra 90 #10-10, Bogotá",
+    "parentesco": "hija",
+    "idContribuyente": "8",
+    "beneficiarios": null
+  },
+  {
+    "_id": "10",
+    "tipo": "beneficiario",
+    "tipoDocumento": "RC",
+    "nombre": "Luciana Torres",
+    "fechaNacimiento": "2022-07-08T00:00:00.000+00:00",
+    "direccion": "Cra 90 #10-10, Bogotá",
+    "parentesco": "hija",
+    "idContribuyente": "8",
+    "beneficiarios": null
+  },
+  {
+    "_id": "11",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Diego Martínez",
+    "fechaNacimiento": "1995-05-15T00:00:00.000+00:00",
+    "direccion": "Calle 33 #20-17, Barranquilla",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": []
+  },
+  {
+    "_id": "12",
+    "tipo": "contribuyente",
+    "tipoDocumento": "C.C",
+    "nombre": "Juliana López",
+    "fechaNacimiento": "1988-12-02T00:00:00.000+00:00",
+    "direccion": "Cra 50 #14-15, Bucaramanga",
+    "parentesco": null,
+    "idContribuyente": null,
+    "beneficiarios": []
+  }
+]

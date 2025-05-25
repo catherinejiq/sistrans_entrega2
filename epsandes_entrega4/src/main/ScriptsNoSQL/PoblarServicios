@@ -1,0 +1,127 @@
+[
+    {
+        "_id": "1",
+        "fecha": "2025-05-20",
+        "descripcion": "Consulta con médico general"
+    },
+    {
+        "_id": "2",
+        "fecha": "2025-05-21",
+        "descripcion": "Consulta con especialista"
+    },
+    {
+        "_id": "3",
+        "fecha": "2025-05-22",
+        "descripcion": "Examen diagnóstico"
+    },
+    {
+        "_id": "4",
+        "fecha": "2025-05-23",
+        "descripcion": "Terapia respiratoria"
+    },
+    {
+        "_id": "5",
+        "fecha": "2025-05-24",
+        "descripcion": "Procedimiento quirúrgico ambulatorio"
+    },
+    {
+        "_id": "6",
+        "fecha": "2025-05-25",
+        "descripcion": "Control prenatal"
+    },
+    {
+        "_id": "7",
+        "fecha": "2025-05-26",
+        "descripcion": "Consulta odontológica"
+    },
+    {
+        "_id": "8",
+        "fecha": "2025-05-27",
+        "descripcion": "Sesión de fisioterapia"
+    },
+    {
+        "_id": "9",
+        "fecha": "2025-05-28",
+        "descripcion": "Vacunación"
+    },
+    {
+        "_id": "10",
+        "fecha": "2025-05-29",
+        "descripcion": "Consulta de salud mental"
+    },
+    {
+        "_id": "11",
+        "fecha": "2025-05-30",
+        "descripcion": "Consulta nutricional"
+    },
+    {
+        "_id": "12",
+        "fecha": "2025-05-31",
+        "descripcion": "Curación de heridas"
+    },
+    {
+        "_id": "13",
+        "fecha": "2025-06-01",
+        "descripcion": "Toma de muestras de laboratorio"
+    },
+    {
+        "_id": "14",
+        "fecha": "2025-06-02",
+        "descripcion": "Electrocardiograma"
+    },
+    {
+        "_id": "15",
+        "fecha": "2025-06-03",
+        "descripcion": "Consulta de seguimiento postoperatorio"
+    },
+    {
+        "_id": "16",
+        "fecha": "2025-06-04",
+        "descripcion": "Radiografía de tórax"
+    },
+    {
+        "_id": "17",
+        "fecha": "2025-06-05",
+        "descripcion": "Ecografía abdominal"
+    },
+    {
+        "_id": "18",
+        "fecha": "2025-06-06",
+        "descripcion": "Consulta con pediatra"
+    },
+    {
+        "_id": "19",
+        "fecha": "2025-06-07",
+        "descripcion": "Terapia ocupacional"
+    },
+    {
+        "_id": "20",
+        "fecha": "2025-06-08",
+        "descripcion": "Consulta dermatológica"
+    },
+    {
+        "_id": "21",
+        "fecha": "2025-06-09",
+        "descripcion": "Sesión de psicoterapia"
+    },
+    {
+        "_id": "22",
+        "fecha": "2025-06-10",
+        "descripcion": "Evaluación audiológica"
+    },
+    {
+        "_id": "23",
+        "fecha": "2025-06-11",
+        "descripcion": "Terapia del lenguaje"
+    },
+    {
+        "_id": "24",
+        "fecha": "2025-06-12",
+        "descripcion": "Control de enfermedades crónicas"
+    },
+    {
+        "_id": "25",
+        "fecha": "2025-06-13",
+        "descripcion": "Consulta oftalmológica"
+    }
+]

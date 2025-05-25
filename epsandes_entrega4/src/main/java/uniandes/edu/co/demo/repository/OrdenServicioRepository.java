@@ -2,14 +2,12 @@ package uniandes.edu.co.demo.repository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 
 import uniandes.edu.co.demo.modelo.OrdenServicio;
-import uniandes.edu.co.demo.modelo.ServicioSalud;
 
 public interface OrdenServicioRepository extends MongoRepository<OrdenServicio, String> {
     

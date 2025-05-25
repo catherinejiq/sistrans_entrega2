@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface ServicioSaludRepository extends MongoRepository<ServicioSalud, String> {
 
     // Obtener todos los médicos (equivalente a findAll)
-    @Query("{}")
+    @Query(value = "{}")
     List<ServicioSalud> buscarTodosLosServicios();
 
     Optional<ServicioSalud> findByIdServicio(Integer idServicio);

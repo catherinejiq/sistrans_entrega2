@@ -1,0 +1,107 @@
+[
+    {
+        "_id": "1",
+        "identificacion": "202116255",
+        "nombre": "Yefran",
+        "numRegistro": "123",
+        "especialidad": "Medicina general",
+        "ips": [
+            2345679,
+            1234568
+        ]
+    },
+    {
+        "_id": "2",
+        "identificacion": "202116256",
+        "nombre": "Laura Suárez",
+        "numRegistro": "124",
+        "especialidad": "Pediatría",
+        "ips": [
+            1234568
+        ]
+    },
+    {
+        "_id": "3",
+        "identificacion": "202116257",
+        "nombre": "Carlos Gómez",
+        "numRegistro": "125",
+        "especialidad": "Cardiología",
+        "ips": [
+            2345679
+        ]
+    },
+    {
+        "_id": "4",
+        "identificacion": "202116258",
+        "nombre": "Ana Rodríguez",
+        "numRegistro": "126",
+        "especialidad": "Ginecología",
+        "ips": [
+            3456780,
+            4567891
+        ]
+    },
+    {
+        "_id": "5",
+        "identificacion": "202116259",
+        "nombre": "Jorge Herrera",
+        "numRegistro": "127",
+        "especialidad": "Medicina interna",
+        "ips": [
+            4567891
+        ]
+    },
+    {
+        "_id": "6",
+        "identificacion": "202116260",
+        "nombre": "Marcela López",
+        "numRegistro": "128",
+        "especialidad": "Otorrinolaringología",
+        "ips": [
+            3456780
+        ]
+    },
+    {
+        "_id": "7",
+        "identificacion": "202116261",
+        "nombre": "Andrés Pérez",
+        "numRegistro": "129",
+        "especialidad": "Neurología",
+        "ips": [
+            5678902,
+            1234568
+        ]
+    },
+    {
+        "_id": "8",
+        "identificacion": "202116262",
+        "nombre": "Sandra Torres",
+        "numRegistro": "130",
+        "especialidad": "Dermatología",
+        "ips": [
+            5678902
+        ]
+    },
+    {
+        "_id": "9",
+        "identificacion": "202116263",
+        "nombre": "Mateo Ramírez",
+        "numRegistro": "131",
+        "especialidad": "Ortopedia",
+        "ips": [
+            4567891,
+            2345679
+        ]
+    },
+    {
+        "_id": "10",
+        "identificacion": "202116264",
+        "nombre": "Natalia Castro",
+        "numRegistro": "132",
+        "especialidad": "Psicología",
+        "ips": [
+            1234568,
+            5678902
+        ]
+    }
+]
