@@ -22,6 +22,8 @@ public class OrdenServicio {
     private LocalDate fecha;
     private String idAfiliado; // referenciado como String
     private String idMedico;
+    private Afiliado afiliado;
+    private Medico medico;
     private List<Integer> servicios;
 
     // Getters, setters, constructor vacío...
@@ -88,5 +90,19 @@ public class OrdenServicio {
 
     public void setServicios(List<Integer> servicios) {
         this.servicios = servicios;
+    }
+
+    public Afiliado getAfiliado() {
+        return afiliado;
+    }
+
+    public void setAfiliado(Afiliado afiliado) {
+        this.afiliado = afiliado;
+    }
+    public Medico getMedico() {
+        return medico;
+    }
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 }
