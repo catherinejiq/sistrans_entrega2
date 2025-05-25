@@ -22,7 +22,7 @@ public class MedicosController {
     @PostMapping("/new/save")
     public ResponseEntity<String> crearMedico(@RequestBody Medico medico) {
         if (medico.getIdMedico() == null || medico.getIdentificacion() == null || medico.getNombre() == null ||
-            medico.getNumRegistro() == null || medico.getEspecialidad() == null) {
+            medico.getNumRegistro() == null || medico.getEspecialidad() == null || medico.getIps() == null || medico.getIps().isEmpty()) {
             return ResponseEntity.badRequest().body("Error: Todos los campos son obligatorios.");
         }
 
