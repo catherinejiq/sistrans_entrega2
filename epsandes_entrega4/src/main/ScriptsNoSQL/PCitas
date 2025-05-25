@@ -1,436 +1,107 @@
 [
-    {
-        "_id": "1",
-        "disponibilidadId": "1",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-05-24",
-        "ordenId": "1"
-    },
-    {
-        "_id": "2",
-        "disponibilidadId": "2",
-        "afiliadoId": "2",
-        "fechaReserva": "2025-05-24",
-        "ordenId": "2"
-    },
-    {
-        "_id": "3",
-        "disponibilidadId": "4",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-05-24",
-        "ordenId": "6"
-    },
-    {
-        "_id": "4",
-        "disponibilidadId": "5",
-        "afiliadoId": "5",
-        "fechaReserva": "2025-05-25",
-        "ordenId": "24"
-    },
-    {
-        "_id": "5",
-        "disponibilidadId": "7",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-05-25",
-        "ordenId": "25"
-    },
-    {
-        "_id": "6",
-        "disponibilidadId": "8",
-        "afiliadoId": "8",
-        "fechaReserva": "2025-05-25",
-        "ordenId": "37"
-    },
-    {
-        "_id": "7",
-        "disponibilidadId": "9",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-05-25",
-        "ordenId": "45"
-    },
-    {
-        "_id": "8",
-        "disponibilidadId": "11",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-05-25",
-        "ordenId": "26"
-    },
-    {
-        "_id": "9",
-        "disponibilidadId": "12",
-        "afiliadoId": "2",
-        "fechaReserva": "2025-05-26",
-        "ordenId": "47"
-    },
-    {
-        "_id": "10",
-        "disponibilidadId": "14",
-        "afiliadoId": "6",
-        "fechaReserva": "2025-05-26",
-        "ordenId": "36"
-    },
-    {
-        "_id": "11",
-        "disponibilidadId": "15",
-        "afiliadoId": "12",
-        "fechaReserva": "2025-05-26",
-        "ordenId": "42"
-    },
-    {
-        "_id": "12",
-        "disponibilidadId": "16",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-05-26",
-        "ordenId": "39"
-    },
-    {
-        "_id": "13",
-        "disponibilidadId": "18",
-        "afiliadoId": "8",
-        "fechaReserva": "2025-05-27",
-        "ordenId": "51"
-    },
-    {
-        "_id": "14",
-        "disponibilidadId": "19",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-05-27",
-        "ordenId": "34"
-    },
-    {
-        "_id": "15",
-        "disponibilidadId": "20",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-05-27",
-        "ordenId": "35"
-    },
-    {
-        "_id": "16",
-        "disponibilidadId": "22",
-        "afiliadoId": "11",
-        "fechaReserva": "2025-05-27",
-        "ordenId": "32"
-    },
-    {
-        "_id": "17",
-        "disponibilidadId": "23",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-05-28",
-        "ordenId": "28"
-    },
-    {
-        "_id": "18",
-        "disponibilidadId": "25",
-        "afiliadoId": "5",
-        "fechaReserva": "2025-05-28",
-        "ordenId": "15"
-    },
-    {
-        "_id": "19",
-        "disponibilidadId": "26",
-        "afiliadoId": "6",
-        "fechaReserva": "2025-05-28",
-        "ordenId": "41"
-    },
-    {
-        "_id": "20",
-        "disponibilidadId": "27",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-05-29",
-        "ordenId": "55"
-    },
-    {
-        "_id": "21",
-        "disponibilidadId": "29",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-05-29",
-        "ordenId": "52"
-    },
-    {
-        "_id": "22",
-        "disponibilidadId": "30",
-        "afiliadoId": "11",
-        "fechaReserva": "2025-05-29",
-        "ordenId": "10"
-    },
-    {
-        "_id": "23",
-        "disponibilidadId": "32",
-        "afiliadoId": "2",
-        "fechaReserva": "2025-05-30",
-        "ordenId": "18"
-    },
-    {
-        "_id": "24",
-        "disponibilidadId": "33",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-05-30",
-        "ordenId": "40"
-    },
-    {
-        "_id": "25",
-        "disponibilidadId": "34",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-05-30",
-        "ordenId": "50"
-    },
-    {
-        "_id": "26",
-        "disponibilidadId": "36",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-05-30",
-        "ordenId": "7"
-    },
-    {
-        "_id": "27",
-        "disponibilidadId": "37",
-        "afiliadoId": "8",
-        "fechaReserva": "2025-05-31",
-        "ordenId": "58"
-    },
-    {
-        "_id": "28",
-        "disponibilidadId": "39",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-05-31",
-        "ordenId": "19"
-    },
-    {
-        "_id": "29",
-        "disponibilidadId": "40",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-05-31",
-        "ordenId": "56"
-    },
-    {
-        "_id": "30",
-        "disponibilidadId": "41",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-05-31",
-        "ordenId": "44"
-    },
-    {
-        "_id": "31",
-        "disponibilidadId": "43",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-06-01",
-        "ordenId": "49"
-    },
-    {
-        "_id": "32",
-        "disponibilidadId": "44",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-06-01",
-        "ordenId": "12"
-    },
-    {
-        "_id": "33",
-        "disponibilidadId": "46",
-        "afiliadoId": "6",
-        "fechaReserva": "2025-06-02",
-        "ordenId": "53"
-    },
-    {
-        "_id": "34",
-        "disponibilidadId": "47",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-06-02",
-        "ordenId": "31"
-    },
-    {
-        "_id": "35",
-        "disponibilidadId": "49",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-06-02",
-        "ordenId": "29"
-    },
-    {
-        "_id": "36",
-        "disponibilidadId": "50",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-06-02",
-        "ordenId": "48"
-    },
-    {
-        "_id": "37",
-        "disponibilidadId": "51",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-06-03",
-        "ordenId": "46"
-    },
-    {
-        "_id": "38",
-        "disponibilidadId": "53",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-06-03",
-        "ordenId": "16"
-    },
-    {
-        "_id": "39",
-        "disponibilidadId": "54",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-06-03",
-        "ordenId": "17"
-    },
-    {
-        "_id": "40",
-        "disponibilidadId": "55",
-        "afiliadoId": "5",
-        "fechaReserva": "2025-06-03",
-        "ordenId": "57"
-    },
-    {
-        "_id": "41",
-        "disponibilidadId": "57",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-06-04",
-        "ordenId": "43"
-    },
-    {
-        "_id": "42",
-        "disponibilidadId": "58",
-        "afiliadoId": "8",
-        "fechaReserva": "2025-06-04",
-        "ordenId": "54"
-    },
-    {
-        "_id": "43",
-        "disponibilidadId": "59",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-06-04",
-        "ordenId": "8"
-    },
-    {
-        "_id": "44",
-        "disponibilidadId": "61",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-06-05",
-        "ordenId": "13"
-    },
-    {
-        "_id": "45",
-        "disponibilidadId": "62",
-        "afiliadoId": "2",
-        "fechaReserva": "2025-06-05",
-        "ordenId": "22"
-    },
-    {
-        "_id": "46",
-        "disponibilidadId": "63",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-06-05",
-        "ordenId": "33"
-    },
-    {
-        "_id": "47",
-        "disponibilidadId": "65",
-        "afiliadoId": "5",
-        "fechaReserva": "2025-06-05",
-        "ordenId": "5"
-    },
-    {
-        "_id": "48",
-        "disponibilidadId": "66",
-        "afiliadoId": "6",
-        "fechaReserva": "2025-06-05",
-        "ordenId": "23"
-    },
-    {
-        "_id": "49",
-        "disponibilidadId": "67",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-06-06",
-        "ordenId": "3"
-    },
-    {
-        "_id": "50",
-        "disponibilidadId": "69",
-        "afiliadoId": "9",
-        "fechaReserva": "2025-06-06",
-        "ordenId": "4"
-    },
-    {
-        "_id": "51",
-        "disponibilidadId": "70",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-06-06",
-        "ordenId": "11"
-    },
-    {
-        "_id": "52",
-        "disponibilidadId": "72",
-        "afiliadoId": "2",
-        "fechaReserva": "2025-06-07",
-        "ordenId": "9"
-    },
-    {
-        "_id": "53",
-        "disponibilidadId": "73",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-06-07",
-        "ordenId": "14"
-    },
-    {
-        "_id": "54",
-        "disponibilidadId": "74",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-06-07",
-        "ordenId": "20"
-    },
-    {
-        "_id": "55",
-        "disponibilidadId": "76",
-        "afiliadoId": "6",
-        "fechaReserva": "2025-06-08",
-        "ordenId": "21"
-    },
-    {
-        "_id": "56",
-        "disponibilidadId": "77",
-        "afiliadoId": "7",
-        "fechaReserva": "2025-06-08",
-        "ordenId": "27"
-    },
-    {
-        "_id": "57",
-        "disponibilidadId": "78",
-        "afiliadoId": "8",
-        "fechaReserva": "2025-06-08",
-        "ordenId": "30"
-    },
-    {
-        "_id": "58",
-        "disponibilidadId": "80",
-        "afiliadoId": "10",
-        "fechaReserva": "2025-06-08",
-        "ordenId": "38"
-    },
-    {
-        "_id": "59",
-        "disponibilidadId": "81",
-        "afiliadoId": "1",
-        "fechaReserva": "2025-06-09",
-        "ordenId": "59"
-    },
-    {
-        "_id": "60",
-        "disponibilidadId": "83",
-        "afiliadoId": "3",
-        "fechaReserva": "2025-06-09",
-        "ordenId": "60"
-    },
-    {
-        "_id": "61",
-        "disponibilidadId": "84",
-        "afiliadoId": "4",
-        "fechaReserva": "2025-06-09",
-        "ordenId": "1"
-    },
-    {
-        "_id": "62",
-        "disponibilidadId": "85",
-        "afiliadoId": "5",
-        "fechaReserva": "2025-06-09",
-        "ordenId": "2"
-    }
+  {
+    "id": "1",
+    "disponibilidadId": "1",
+    "afiliadoId": "1",
+    "fechaReserva": "2025-05-24T10:30:00.000+00:00",
+    "ordenId": "1"
+  },
+  {
+    "id": "2",
+    "disponibilidadId": "2",
+    "afiliadoId": "2",
+    "fechaReserva": "2025-06-24T14:15:00.000+00:00",
+    "ordenId": "2"
+  },
+  {
+    "id": "3",
+    "disponibilidadId": "4",
+    "afiliadoId": "3",
+    "fechaReserva": "2025-05-25T16:45:00.000+00:00",
+    "ordenId": "6"
+  },
+  {
+    "id": "4",
+    "disponibilidadId": "5",
+    "afiliadoId": "4",
+    "fechaReserva": "2025-05-25T08:20:00.000+00:00",
+    "ordenId": "24"
+  },
+  {
+    "id": "5",
+    "disponibilidadId": "7",
+    "afiliadoId": "5",
+    "fechaReserva": "2025-05-25T09:30:00.000+00:00",
+    "ordenId": "25"
+  },
+  {
+    "id": "6",
+    "disponibilidadId": "8",
+    "afiliadoId": "6",
+    "fechaReserva": "2025-05-25T11:45:00.000+00:00",
+    "ordenId": "37"
+  },
+  {
+    "id": "7",
+    "disponibilidadId": "9",
+    "afiliadoId": "7",
+    "fechaReserva": "2025-05-25T13:15:00.000+00:00",
+    "ordenId": "45"
+  },
+  {
+    "id": "8",
+    "disponibilidadId": "11",
+    "afiliadoId": "8",
+    "fechaReserva": "2025-05-25T18:30:00.000+00:00",
+    "ordenId": "26"
+  },
+  {
+    "id": "9",
+    "disponibilidadId": "12",
+    "afiliadoId": "9",
+    "fechaReserva": "2025-05-25T07:45:00.000+00:00",
+    "ordenId": "47"
+  },
+  {
+    "id": "10",
+    "disponibilidadId": "14",
+    "afiliadoId": "10",
+    "fechaReserva": "2025-05-26T12:20:00.000+00:00",
+    "ordenId": "36"
+  },
+  {
+    "id": "11",
+    "disponibilidadId": "15",
+    "afiliadoId": "11",
+    "fechaReserva": "2025-05-26T15:10:00.000+00:00",
+    "ordenId": "42"
+  },
+  {
+    "id": "12",
+    "disponibilidadId": "16",
+    "afiliadoId": "12",
+    "fechaReserva": "2025-05-26T17:00:00.000+00:00",
+    "ordenId": "39"
+  },
+  {
+    "id": "13",
+    "disponibilidadId": "18",
+    "afiliadoId": "1",
+    "fechaReserva": "2025-05-27T08:45:00.000+00:00",
+    "ordenId": "51"
+  },
+  {
+    "id": "14",
+    "disponibilidadId": "19",
+    "afiliadoId": "2",
+    "fechaReserva": "2025-05-27T10:15:00.000+00:00",
+    "ordenId": "34"
+  },
+  {
+    "id": "15",
+    "disponibilidadId": "20",
+    "afiliadoId": "3",
+    "fechaReserva": "2025-05-27T14:30:00.000+00:00",
+    "ordenId": "35"
+  }
 ]
