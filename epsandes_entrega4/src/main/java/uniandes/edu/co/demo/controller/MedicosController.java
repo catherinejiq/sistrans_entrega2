@@ -54,7 +54,8 @@ public class MedicosController {
                 medico.getIdentificacion(),
                 medico.getNombre(),
                 medico.getNumRegistro(),
-                medico.getEspecialidad()
+                medico.getEspecialidad(),
+                medico.getIps()
             );
             return new ResponseEntity<>("Medico actualizado exitosamente", HttpStatus.OK);
         } catch (Exception e) {

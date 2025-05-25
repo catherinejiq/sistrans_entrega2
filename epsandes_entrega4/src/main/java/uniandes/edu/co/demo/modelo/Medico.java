@@ -1,5 +1,7 @@
 package uniandes.edu.co.demo.modelo;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,15 +17,17 @@ public class Medico {
     private String nombre;
     private String numRegistro;
     private String especialidad;
+    private List<Integer> ips;
 
     public Medico() {}
 
-    public Medico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad) {
+    public Medico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad, List<Integer> ips) {
         this.idMedico = idMedico;
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.numRegistro = numRegistro;
         this.especialidad = especialidad;
+        this.ips = ips;
     }
 
     public String getIdMedico() {
@@ -64,5 +68,11 @@ public class Medico {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+    }
+    public List<Integer> getIps() {
+        return ips;
+    }
+    public void setIps(List<Integer> ips) {
+        this.ips = ips;
     }
 }

@@ -19,12 +19,12 @@ public interface MedicoRepository extends MongoRepository<Medico, String> {
     List<Medico> buscarPorId(String id);
 
     // Insertar medico
-    @Query("{ $insert: { idMedico: ?0, identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4 } }")
-    void insertarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad);
+    @Query("{ $insert: { idMedico: ?0, identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4, ips: ?5 } }")
+    void insertarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad, List<Integer> ips);
 
     @Query("{idMedico:?0}")
-    @Update("{ $set: { identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4}}")
-    void actualizarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad);  
+    @Update("{ $set: { identificacion: ?1, nombre: ?2, numRegistro: ?3, especialidad: ?4, ips: ?5 } }")
+    void actualizarMedico(String idMedico, String identificacion, String nombre, String numRegistro, String especialidad, List<Integer> ips);
 
    // Eliminar un medico por su ID
     @Query(value = "{idMedico: ?0}", delete = true)
